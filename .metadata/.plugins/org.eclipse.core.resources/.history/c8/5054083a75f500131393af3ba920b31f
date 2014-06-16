@@ -12,13 +12,8 @@
 	$lu->DTO->setValue('user',$u);
 	$lu->insertUser();
 	$lu->db->close();
-<<<<<<< HEAD
-	print "FATTO ciao ciaooooo";
+	print "FATTO";
 
-=======
-	print "FATTO...OK";
- 
->>>>>>> cd68903f766e562077294ed2180ea83c049f9593
 
 
 ?>
