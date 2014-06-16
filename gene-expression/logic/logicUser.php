@@ -25,21 +25,16 @@
 		function insertUser() {
 			$this->user = $this->DTO->getValue('user');
 			$list = $this->createList();
-			//$this->db = openDb();
 			$this->db->insert('user',$list);
-			//closeDb($db);
 		}
 		
 		function deleteUserById() {
 			$this->user = $this->DTO->getValue('user');
 			$this->db = openDb();
 			$this->db->delete('user','id='.$this->user->id);
-			closeDb($db);
 		}
 		
 		function retrieveUserById($iduser) {
-			//$this->user = $this->DTO->getValue('user');
-			$this->db = openDb();
 			$this->db->execute("SELECT * FROM user WHERE id='".$iduser."'");
 			$result = $this->db->fetchrow();
 			if ($result) {
@@ -51,14 +46,11 @@
 				$user->name = $result['name'];
 				$user->surname = $result['surname']; 
 				$user->type = $result['type'];
-				closeDb($db);
 				return $user;
 				} else {
-					closeDb($db);
 					return NULL;
 				}
 			} else {
-				closeDb($db);
 				return NULL;
 			}
 			
