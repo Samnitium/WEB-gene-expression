@@ -25,9 +25,9 @@
 		function insertUser() {
 			$this->user = $this->DTO->getValue('user');
 			$list = $this->createList();
-			$this->db = openDb();
+			//$this->db = openDb();
 			$this->db->insert('user',$list);
-			closeDb($db);
+			//closeDb($db);
 		}
 		
 		function deleteUserById() {
