@@ -1,0 +1,26 @@
+<?php
+
+	
+	include('../model/user.php');
+	include('logic.php');
+	
+	class LogicUser extends Logic {
+
+		var $user;
+	
+		function __construct() {
+			parent::__construct();
+			$this->user = new User();	
+		}	
+	
+		function insertAnswer() {
+			$this->answer = $this->DTO->getValue('answer');
+			$list = $this->createList();
+			$this->db->insert('answer',$list);
+		}
+		
+	}
+
+
+
+?>

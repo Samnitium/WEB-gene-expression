@@ -1,0 +1,21 @@
+<?php
+
+
+	class LogicUser extends Logic {
+
+		var $user;
+	
+		function __construct() {
+			parent::__construct();
+			$this->answer = new Answer();	
+		}	
+	
+		function insertAnswer() {
+			$this->answer = $this->DTO->getValue('answer');
+			$list = $this->createList();
+			$this->db->insert('answer',$list);
+	}
+
+
+
+?>

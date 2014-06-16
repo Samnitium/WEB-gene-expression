@@ -1,0 +1,60 @@
+<?php
+
+	
+	include('../model/user.php');
+	include('logic.php');
+	
+	class LogicUser extends Logic {
+
+		var $user;
+	
+		function __construct() {
+			parent::__construct();
+			$this->user = null;	
+		}
+		
+		
+		public function __get($value) {
+			return $this->$value;
+		}
+	
+		public function __set($name,$value) {
+			$this->$name = $value;
+		}	
+	
+		function insertUser() {
+			$this->user = $this->DTO->getValue('user');
+			$list = $this->createList();
+			$this->db = openDb();
+			$this->db->insert('user',$list);
+			closeDb($db);
+		}
+		
+		function deleteUserById() {
+			$this->user = $this->DTO->getValue('user');
+			$this->db = openDb();
+			$this->db->delete('user','id='.$this->user->id);
+			closeDb($db);
+		}
+		
+		function retrieveUserById() {
+			$this->user = $this->DTO->getValue('user');
+		}
+		
+		function createList() {
+			$list = array();
+			$list['id'] = $this->user->id;
+			$list['email'] = $this->user->email;
+			$list['password'] = $this->user->password;
+			$list['name'] = $this->user->name;
+			$list['surname'] = $this->user->surname;
+			$list['type'] = $this->user->type;
+			return $list;
+			
+		}
+		
+	}
+
+
+
+?>

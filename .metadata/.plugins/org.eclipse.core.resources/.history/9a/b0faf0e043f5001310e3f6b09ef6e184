@@ -1,0 +1,38 @@
+<?php
+
+	
+	include('../model/user.php');
+	include('logic.php');
+	
+	class LogicUser extends Logic {
+
+		var $user;
+	
+		function __construct() {
+			parent::__construct();
+			$this->user = null;	
+		}	
+	
+		function insertUser() {
+			//$this->user = $this->DTO->getValue('user');
+			$list = $this->createList();
+			$this->db->insert('answer',$list);
+		}
+		
+		function createList() {
+			$list = array();
+			$list['id'] = $this->answer->text;
+			$list['email'] = $this->answer->data;
+			$list['password'] = $this->answer->hour;
+			$list['name'] = $this->answer->question->id;
+			$list['surname'] = $this->answer->user->id;
+			$list['type'] = $this->user->type;
+			return $list;
+			
+		}
+		
+	}
+
+
+
+?>

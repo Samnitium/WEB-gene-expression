@@ -1,0 +1,16 @@
+<?php
+
+	class Logic {
+	
+		var $db;
+		var $DTO;
+		
+		function __construct() {
+			
+			$this->db = new db('localhost','imago','root','',true);
+			$this->DTO = new DTO();
+		}	
+	
+	}
+
+?>

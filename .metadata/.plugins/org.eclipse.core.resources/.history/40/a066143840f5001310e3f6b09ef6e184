@@ -1,0 +1,32 @@
+<?php
+	class Analysis {
+	
+		var $id;
+		var $name;
+		var $data;
+		
+		
+		
+		public function __construct() {
+			$this->id = null;
+			$this->name = null;
+			$this->data = null;
+			
+		}
+	
+	public function __get($value) {
+		return $this->$value;
+	}
+	
+	public function __set($name,$value) {
+		$this->$name = $value;
+	}
+	
+	
+		
+}
+	
+	
+	
+
+?>

@@ -1,0 +1,31 @@
+<?php
+	class User {
+	
+		var $name;
+		var $surname;
+		var $city;
+	
+		public function __construct() {
+			$this->name = null;
+			$this->surname = null;
+			$this->city = null;
+		}
+	
+	public function __get($value) {
+		return $this->$value;
+	}
+	
+	public function __set($name,$value) {
+		$this->$name = $value;
+	}
+	
+	public function toString() {
+		return "Name:  ".$this->name."  -  Surname:  ".$this->surname."  -  City:  ".$this->city;
+	}
+		
+}
+	
+	
+	
+
+?>
