@@ -32,7 +32,7 @@
 			$this->db->delete('experiment','id='.$this->experiment->id);
 		}
 		
-		function retrieveUserById($idexperiment) {
+		function retrieveExperimentById($idexperiment) {
 			$this->db->execute("SELECT * FROM experiment WHERE id='".$idexperiment."'");
 			$result = $this->db->fetchrow();
 			if ($result) {

@@ -38,7 +38,7 @@
 		}
 		
 		function retrieveWiewPermissionByIdUser($idUser) {
-			$this->db->execute("SELECT * FROM wiewPermission WHERE id_user='".$idUser."'");
+			$this->db->execute("SELECT id_experiment FROM wiewPermission WHERE id_user='".$idUser."'");
 			$result = $this->db->fetchrowset();
 			if ($result) {
 				if (count($result)!=0) {

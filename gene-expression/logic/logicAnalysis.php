@@ -44,7 +44,7 @@
 				$analysis->p_value = $result['p_value'];
 				$analysis->foldChange = $result['foldChange'];
 				$analysis->name = $result['name']; 
-				$analysis->data = $result['data'];
+				$analysis->date = $result['date'];
 				$analysis->id_experiment = $result['id_experiment'];
 				return $analysis;
 				} else {
@@ -63,7 +63,7 @@
 			$list['p_value'] = $this->analysis->p_value;
 			$list['foldChange'] = $this->analysis->foldChange;
 			$list['name'] = $this->analysis->name;
-			$list['data'] = $this->analysis->tdata;
+			$list['date'] = $this->analysis->date;
 			$list['id_experiment'] = $this->analysis->id_experiment;
 			return $list;
 			

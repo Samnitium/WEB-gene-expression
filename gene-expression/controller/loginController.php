@@ -14,9 +14,13 @@
 			 $_SESSION['iduser'] = $user->id;
 			 $lu->db->close();
 			 if($user->type=="superuser") {
+			 	$_SESSION['iduser'] = $user->id;
+			 	$lu->db->close();
 			 	header("Location: superUserChoiceController.php");
 			 }
 			 else {
+			 	$_SESSION['iduser'] = $user->id;
+			 	$lu->db->close();
 			 	header("Location: userChoiceController.php");
 			 }
 			 header('Location: choiceController.php');
