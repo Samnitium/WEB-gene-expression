@@ -2,7 +2,6 @@
 
 	include_once ('../template/cls_fast_template.php');
 
-
 	session_start();
 	$tlp = new FastTemplate("../view");
 	$tlp->define( array('login'=>"login.html"));
