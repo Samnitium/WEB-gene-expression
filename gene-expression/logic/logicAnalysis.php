@@ -1,7 +1,7 @@
 <?php
 
 	
-	include('../model/user.php');
+	include('../model/analysis.php');
 	include('logic.php');
 	
 	class LogicAnalysis extends Logic {
@@ -30,14 +30,10 @@
 		
 		function deleteAnalysisById() {
 			$this->analysis= $this->DTO->getValue('analysis');
-			$this->db = openDb();
 			$this->db->delete('analysis','id='.$this->analysis->id);
-			closeDb($db);
 		}
 		
-		function retrieveAnalysiById($idanalysis) {
-			//$this->user = $this->DTO->getValue('user');
-			$this->db = openDb();
+		function retrieveAnalysisById($idanalysis) {
 			$this->db->execute("SELECT * FROM analysis WHERE id='".$idanalysis."'");
 			$result = $this->db->fetchrow();
 			if ($result) {
@@ -50,14 +46,11 @@
 				$analysis->name = $result['name']; 
 				$analysis->data = $result['data'];
 				$analysis->id_experiment = $result['id_experiment'];
-				closeDb($db);
 				return $analysis;
 				} else {
-					closeDb($db);
 					return NULL;
 				}
 			} else {
-				closeDb($db);
 				return NULL;
 			}
 			
