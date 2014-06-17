@@ -3,14 +3,14 @@
 	
 		var $id;
 		var $name;
-		var $data;
+		var $date;
 		
 		
 		
 		public function __construct() {
 			$this->id = null;
 			$this->name = null;
-			$this->data = null;
+			$this->date = null;
 			
 		}
 	
