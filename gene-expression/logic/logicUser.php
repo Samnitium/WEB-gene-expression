@@ -56,6 +56,29 @@
 			
 		}
 		
+		
+		function retrieveUserByEmail($email) {
+			$this->db->execute("SELECT * FROM user WHERE email='".$email."'");
+			$result = $this->db->fetchrow();
+			if ($result) {
+				if (count($result)!=0) {
+				$user = new User();
+				$user->id = $result['id'];
+				$user->email = $result['email'];
+				$user->password = $result['password'];
+				$user->name = $result['name'];
+				$user->surname = $result['surname']; 
+				$user->type = $result['type'];
+				return $user;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
 		function createList() {
 			$list = array();
 			$list['id'] = $this->user->id;
