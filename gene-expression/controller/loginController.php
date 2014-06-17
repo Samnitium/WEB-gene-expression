@@ -13,6 +13,12 @@
 			if (isset($user) && $user->password==$_POST['password']) {
 			 $_SESSION['iduser'] = $user->id;
 			 $lu->db->close();
+			 if($user->type=="superuser") {
+			 	header("Location: superUserChoiceController.php");
+			 }
+			 else {
+			 	header("Location: userChoiceController.php");
+			 }
 			 header('Location: choiceController.php');
 			} else if (isset($user)) {
 				$_SESSION['password_error'] = "there is a mistake entering the password";
