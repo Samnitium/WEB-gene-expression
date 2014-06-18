@@ -2,7 +2,7 @@
 
 	
 	include('../model/analysis.php');
-	include('logic.php');
+	include_once('logic.php');
 	
 	class LogicAnalysis extends Logic {
 

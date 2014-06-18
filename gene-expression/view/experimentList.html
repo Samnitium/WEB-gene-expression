@@ -6,8 +6,11 @@
 	</head>
 	<body>
 		<h1><font color="orange" size="8">Select the experiment</font></h1><br><br>
-		<select>
-			{EXPERIMENT}
-		</select><br><br>
+		<form action="{ACTION}" method="post">
+			<select name="experiment">
+				{EXPERIMENT}
+			</select><br><br>
+			<input type="submit" value="send" />
+		</form>
 	</body>
 </html>

@@ -23,7 +23,7 @@
 			 	$lu->db->close();
 			 	header("Location: userChoiceController.php");
 			 }
-			 header('Location: choiceController.php');
+			 header('Location: userChoiceController.php');
 			} else if (isset($user)) {
 				$_SESSION['password_error'] = "there is a mistake entering the password";
 				$lu->db->close();

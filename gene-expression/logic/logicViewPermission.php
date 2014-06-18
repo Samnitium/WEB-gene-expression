@@ -2,15 +2,15 @@
 
 	
 	include('../model/viewPermission.php');
-	include('logic.php');
+	include_once('logic.php');
 	
 	class LogicViewPermission extends Logic {
 
-		var $wiewPermission;
+		var $viewPermission;
 	
 		function __construct() {
 			parent::__construct();
-			$this->wiewPermission = null;	
+			$this->viewPermission = null;	
 		}
 		
 		
@@ -23,48 +23,45 @@
 		}	
 	
 		function insertAnalysis() {
-			$this->wiewPermission = $this->DTO->getValue('wiewPermission');
+			$this->viewPermission = $this->DTO->getValue('viewPermission');
 			$list = $this->createList();
-			$this->db->insert('wiewPermission',$list);
+			$this->db->insert('viewpermission',$list);
 		}
 		
-		function deleteWiewPermissionByIdUser() {
-			$this->wiewPermission= $this->DTO->getValue('wiewPermission');
-			$this->db->delete('wiewPermission','id_user='.$this->wiewPermission->id_user);
+		function deleteViewPermissionByIdUser() {
+			$this->viewPermission= $this->DTO->getValue('viewPermission');
+			$this->db->delete('viewpermission','id_user='.$this->viewPermission->id_user);
 		}
-		function deleteWiewPermissionByIdExperiment() {
-			$this->wiewPermission= $this->DTO->getValue('wiewPermission');
-			$this->db->delete('wiewPermission','id_experiment='.$this->wiewPermission->id_experiment);
+		function deleteViewPermissionByIdExperiment() {
+			$this->viewPermission= $this->DTO->getValue('viewPermission');
+			$this->db->delete('viewpermission','id_experiment='.$this->viewPermission->id_experiment);
 		}
 		
-		function retrieveWiewPermissionByIdUser($idUser) {
-			$this->db->execute("SELECT id_experiment FROM wiewPermission WHERE id_user='".$idUser."'");
+		function retrieveViewPermissionByIdUser($idUser) {
+			$this->db->execute("SELECT id_experiment FROM viewpermission WHERE id_user='".$idUser."'");
 			$result = $this->db->fetchrowset();
 			if ($result) {
 				if (count($result)!=0) {
+				
 				return $result;
 				} else {
-					closeDb($db);
 					return NULL;
 				}
 			} else {
-				closeDb($db);
 				return NULL;
 			}
 		}
 			
-			function retrieveWiewPermissionByIdExperiment($idExperiment) {
-			$this->db->execute("SELECT * FROM wiewPermission WHERE id_experiment='".$idExperiment."'");
+		function retrieveViewPermissionByIdExperiment($idExperiment) {
+			$this->db->execute("SELECT * FROM viewpermission WHERE id_experiment='".$idExperiment."'");
 			$result = $this->db->fetchrowset();
 			if ($result) {
 				if (count($result)!=0) {
 				return $result;
 				} else {
-					closeDb($db);
 					return NULL;
 				}
 			} else {
-				closeDb($db);
 				return NULL;
 			}
 			
@@ -73,7 +70,7 @@
 		function createList() {
 			$list = array();
 			$list['id_user'] = $this->viewPermission->id_user;
-			$list['id_experiment'] = $this->viewPermission->ide_experiment;
+			$list['id_experiment'] = $this->viewPermission->id_experiment;
 			return $list;
 			
 		}

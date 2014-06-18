@@ -1,7 +1,7 @@
 <?php
 
 	include('../model/experiment.php');
-	include('logic.php');
+	include_once('logic.php');
 	
 	class LogicExperiment extends Logic {
 
