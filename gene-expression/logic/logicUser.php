@@ -2,7 +2,7 @@
 
 	
 	include('../model/user.php');
-	include('logic.php');
+	include_once('logic.php');
 	
 	class LogicUser extends Logic {
 

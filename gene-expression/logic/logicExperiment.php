@@ -22,7 +22,7 @@
 		}	
 	
 		function insertExperiment() {
-			$this->user = $this->DTO->getValue('experiment');
+			$this->experiment = $this->DTO->getValue('experiment');
 			$list = $this->createList();
 			$this->db->insert('experiment',$list);
 		}
@@ -51,9 +51,15 @@
 			
 		}
 		
+		function retrieveAll() {
+			$this->db->execute("SELECT * FROM experiment");
+			$result = $this->db->fetchrowset();
+			return $result;
+			
+		}
+		
 		function createList() {
 			$list = array();
-			$list['id'] = $this->experiment->id;
 			$list['name'] = $this->experiment->name;
 			$list['date'] = $this->experiment->date;
 			return $list;

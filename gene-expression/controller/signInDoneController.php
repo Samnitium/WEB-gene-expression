@@ -9,7 +9,7 @@
 		$name = $_POST['name'];
 		$surname = $_POST['surname'];
 		$rpassword = $_POST['rpassword'];
-		if ($email=="" || $password=="" || $name=="" || $surname=="" || $rpassword=="") {
+		if (trim($email)=="" || trim($password)=="" || trim($name)=="" || trim($surname)=="" || trim($rpassword)=="") {
 			fillDatesSession($name,$surname,$email,$password,$rpassword);
 			$_SESSION['empty'] = "fill all the fields";
 			header("Location: signInController.php");
@@ -34,6 +34,10 @@
 			header("Location: welcomeController.php");
 		}
 	}
+	else  {
+		header("Location: signInController.php");
+	}
+
 
 	function fillDatesSession($name,$surname,$email,$password,$rpassword) {
 			$_SESSION['email'] = $email;
