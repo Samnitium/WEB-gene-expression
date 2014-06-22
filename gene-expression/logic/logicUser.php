@@ -57,6 +57,13 @@
 		}
 		
 		
+		function retrieveAllUsers($type) {
+			$this->db->execute("SELECT * FROM user WHERE type='".$type."'");
+			$result = $this->db->fetchrowset();
+			return $result;
+		}
+		
+		
 		function retrieveUserByEmail($email) {
 			$this->db->execute("SELECT * FROM user WHERE email='".$email."'");
 			$result = $this->db->fetchrow();

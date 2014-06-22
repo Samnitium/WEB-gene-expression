@@ -22,7 +22,7 @@
 			$this->$name = $value;
 		}	
 	
-		function insertAnalysis() {
+		function insertViewPermission() {
 			$this->viewPermission = $this->DTO->getValue('viewPermission');
 			$list = $this->createList();
 			$this->db->insert('viewpermission',$list);
@@ -32,9 +32,16 @@
 			$this->viewPermission= $this->DTO->getValue('viewPermission');
 			$this->db->delete('viewpermission','id_user='.$this->viewPermission->id_user);
 		}
-		function deleteViewPermissionByIdExperiment() {
-			$this->viewPermission= $this->DTO->getValue('viewPermission');
-			$this->db->delete('viewpermission','id_experiment='.$this->viewPermission->id_experiment);
+		function deleteViewPermissionByIdExperiment($id_experiment) {
+			$this->db->delete('viewpermission','id_experiment='.$id_experiment);
+		}
+		
+		function retrievePermissionDisableByIdUser($idUser) {
+			$this->db->execute("SELECT distinct id
+								FROM experiment
+								WHERE id NOT IN (select distinct id_experiment from viewpermission where id_user='".$idUser."')");
+			$result = $this->db->fetchrowset();
+			return $result;
 		}
 		
 		function retrieveViewPermissionByIdUser($idUser) {

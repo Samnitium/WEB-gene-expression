@@ -27,9 +27,8 @@
 			$this->db->insert('experiment',$list);
 		}
 		
-		function deleteExperimentById() {
-			$this->user = $this->DTO->getValue('experiment');
-			$this->db->delete('experiment','id='.$this->experiment->id);
+		function deleteExperimentById($idexp) {
+			$this->db->delete('experiment','id='.$idexp);
 		}
 		
 		function retrieveExperimentById($idexperiment) {
