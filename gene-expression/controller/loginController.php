@@ -5,7 +5,7 @@
 	session_start();
 	if(isset($_POST['username']) && isset($_POST['password'])) {
 		if (ltrim($_POST['username'])=="" || ltrim($_POST['password'])=="") {
-			$_SESSION['empty'] = 'fill all the fields';
+			$_SESSION['empty'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>Please, fill all the fields</a></div>";
 			header("Location: welcomeController.php");	
 		} else {
 			$lu = new logicUser();
@@ -23,11 +23,11 @@
 			 	header("Location: userChoiceController.php");
 			 }
 		} else if (isset($user)) {
-			$_SESSION['password_error'] = "there is a mistake entering the password";
+			$_SESSION['password_error'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>There is a mistake entering the password</a></div>";
 			$lu->db->close();
 			header("Location: welcomeController.php");	 
 		} else {
-			$_SESSION['not_registered'] = "you have to register yet";
+			$_SESSION['not_registered'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>You have to register yet</a></div>";
 			$lu->db->close();
 			header("Location: welcomeController.php");	 	
 		}

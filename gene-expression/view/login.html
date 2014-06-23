@@ -3,35 +3,72 @@
 <html>
 	<head>
 	<title> Login user</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
+    	
+	<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+	<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+	<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+	<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
+	
+	<style> 
+	
+	body #background{
+		content : "";
+    	display: block;
+		position: absolute;
+		top: 0;
+    	left: 0;
+		background-image: url("http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/genome.jpg");
+		filter:alpha(opacity=50);
+    	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+    	opacity:.50;
+    	width: 100%;
+    	height: 100%;
+	}
+	.container {
+		position: absolute;
+		margin-left: 100px;
+		margin-top:130px;
+	}
+	
+	
+	</style>
 	</head>
 	<body>
 	
-	<h1>LOGIN</h1><br><br /><br><br>
+	<div id="background"> </div>
+	
+    <div class ="container">	
+    	<div class="page-header">
+  			<h1>Mendel Institute <small>Login</small></h1>
+		</div>
 		{WELCOME}<br>
 		{MESSAGE_ERROR}<br><br>
-	<form action="{ACTION}" method="post">
-	<fieldset>
-
+		<form action="{ACTION}" method="post" class="form-signin" role="form">
 	
 
-	<p> Enter your username and password: <br>
-	<label>
-	Username: <input type="text" name="username" value="{USERNAME}" >
-	</label><br>
-	<label>
-	Password: <input type="password" name="password" value="{PASSWORD}">
-	</label><br>
-	</p>
-
-	<label>
-		<input type="submit" name="submit" value="login">
-	</label>
-
-	</fieldset>
-	</form><br><br><br>
+		<!--<div class="container">-->
+		<div class="panel panel-success" style="width: 330px; margin-top:-50px;">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Enter your username and password: </h3>
+  			</div>
 	
-	Do you want register??<br>
-	Please, click here <a href="signInController.php">sign in</a>
-
+		<div class="row">
+ 			<div class="input-group">
+ 		 		<input type="text" class="form-control" placeholder="Email" name="username" value="{USERNAME}" style="margin-left:65px; width: 200px;border-radius: 8px;">
+			</div><p>
+    		<div class="input-group">
+    			<input type="text" class="form-control" placeholder="Password" name="password" value="{PASSWORD}" style=" margin-left:65px; width: 200px;border-radius: 8px;">
+    		<div>	
+      		<br><button class="btn btn-lg btn-success btn-block" type="submit"name="submit" value="login" style=" margin-left:65px; height:35px; width:200px; border-radius: 8px"> LogIn </button>
+      		
+		</div><!-- /.row -->
+		</form>
+		<div class="panel-footer"  style="width: 328px; margin-left:0px;">Do you want register?<br>
+		Please, click here <a href="signInController.php">sign in</a></div>
+ 		
+		</div> <!--panel -->
+		</div><!--container-->
 </body>
 </html>
