@@ -7,11 +7,11 @@
 	$tlp = new FastTemplate("../view");
 	$tlp->define( array('login'=>"signIn.html"));
 	if (isset($_SESSION['empty'])) {
-		$tlp->assign('MESSAGE_ERROR',$_SESSION ["<div class='alert alert-danger'><a href='#' class='alert-link'>empty</a></div>"]);
+		$tlp->assign('MESSAGE_ERROR',$_SESSION ['empty']);
 	} else if (isset($_SESSION['error_password'])) {
-		$tlp->assign('MESSAGE_ERROR',$_SESSION ["<div class='alert alert-danger'><a href='#' class='alert-link'>error_password</a></div>"]);
+		$tlp->assign('MESSAGE_ERROR',$_SESSION ['error_password']);
 	} else if (isset($_SESSION['exist_email'])) {
-		$tlp->assign('MESSAGE_ERROR',$_SESSION ["<div class='alert alert-danger'><a href='#' class='alert-link'>exist_email</a></div>"]);
+		$tlp->assign('MESSAGE_ERROR',$_SESSION ['exist_email']);
 	} else {
 		$tlp->assign('MESSAGE_ERROR',"");	
 	}

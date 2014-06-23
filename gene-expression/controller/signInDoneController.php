@@ -11,11 +11,11 @@
 		$rpassword = $_POST['rpassword'];
 		if (trim($email)=="" || trim($password)=="" || trim($name)=="" || trim($surname)=="" || trim($rpassword)=="") {
 			fillDatesSession($name,$surname,$email,$password,$rpassword);
-			$_SESSION['empty'] = "fill all the fields";
+			$_SESSION['empty'] = "<div class='alert alert-danger'>fill all the fields</div>";
 			header("Location: signInController.php");
 		} else if ($password!=$rpassword) {
 			fillDatesSession($name,$surname,$email,$password,$rpassword);
-			$_SESSION['error_password'] = "the two passwords do not match";
+			$_SESSION['error_password'] = "<div class='alert alert-danger'>the two passwords do not match</div>";
 			header("Location: signInController.php");
 		}
 		
@@ -24,7 +24,7 @@
 			if (($lu->retrieveUserByEmail($_POST['email']))!=NULL) {
 				$lu->db->close();
 				fillDatesSession($name,$surname,$email,$password,$rpassword);
-				$_SESSION['exist_email'] = "Sorry, this email already exists";
+				$_SESSION['exist_email'] = "<div class='alert alert-danger'>Sorry, this email already exists</div>";
 				header("Location: signInController.php");
 			} else {
 				$user = new User();
@@ -36,7 +36,7 @@
 				$lu->DTO->setValue('user',$user);
 				$lu->insertUser();
 				$lu->db->close();
-				$_SESSION['welcome'] = "Welcome ".$user->name.", You can now proceed with the login";
+				$_SESSION['welcome'] = "<div class='alert alert-success'>Welcome ".$user->name.", You can now proceed with the login</div>";
 				header("Location: welcomeController.php");
 			}
 		}
