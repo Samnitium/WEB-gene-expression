@@ -23,11 +23,11 @@
 			 	header("Location: userChoiceController.php");
 			 }
 		} else if (isset($user)) {
-			$_SESSION['password_error'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>There is a mistake entering the password</a></div>";
+			$_SESSION['password_error'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>The username or password is not correct</a></div>";
 			$lu->db->close();
 			header("Location: welcomeController.php");	 
 		} else {
-			$_SESSION['not_registered'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>You have to register yet</a></div>";
+			$_SESSION['not_registered'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>You are not registered yet</a></div>";
 			$lu->db->close();
 			header("Location: welcomeController.php");	 	
 		}
