@@ -3,38 +3,54 @@
 <html>
 	<head> 
 	<title> Registration user</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+	<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+	<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+	<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+	<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 	</head>
+	
 	<body>
 	
-	<h1>REGISTRATION</h1><br><br /><br><br>
 	{MESSAGE_ERROR}<br><br>
+	
+	<div class ="container">	
+    	<div class="page-header">
+  			<h1>Mendel Institute <small>Registration</small></h1>
+		</div>
 	<form action="{ACTION}" method="post">
-	<fieldset>
-
-	<p> Enter your dates: <br>
-	<label>
-	Name: <input type="text" name="name" value="{NAME}" >
-	</label><br>
-	<label>
-	Surname: <input type="text" name="surname" value="{SURNAME}">
-	</label><br>
-	<label>
-	Email: <input type="text" name="email" value="{EMAIL}">
-	</label><br>
-	<label>
-	Password: <input type="password" name="password" value="{PASSWORD}">
-	</label><br>
-	<label>
-	Repeat password: <input type="password" name="rpassword" value="{RPASSWORD}">
-	</label><br>
-	</p>
-
-	<label>
-		<input type="submit" name="submit" value="sign in">
-	</label>
-
-	</fieldset>
-	</form><br><br><br>
+	<!--<div class="container">-->
+	<div class="panel panel-success" style="width: 330px;margin-left:100px;">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Please, enter your dates: </h3>
+  			</div>
+	
+		<div class="row">
+ 			<div class="input-group">
+ 		 		<input type="text" class="form-control" placeholder="name" name="name" value="{NAME}" style="margin-left:65px; width: 200px;border-radius: 8px;">
+			</div><p>
+			<div class="input-group">
+ 		 		<input type="text" class="form-control" placeholder="surname" name="surname" value="{SURNAME}" style="margin-left:65px; width: 200px;border-radius: 8px;">
+			</div><p>
+			<div class="input-group">
+ 		 		<input type="text" class="form-control" placeholder="email" name="email" value="{EMAIL}" style="margin-left:65px; width: 200px;border-radius: 8px;">
+			</div><p>
+    		<div class="input-group">
+    			<input type="password" class="form-control" placeholder="password" name="password" value="{PASSWORD}" style=" margin-left:65px; width: 200px;border-radius: 8px;">
+    		<div><p>	
+    		<div class="input-group">
+ 		 		<input type="password" class="form-control" placeholder="Repeat password" name="rpassword" value="{RPASSWORD}" style="margin-left:65px; width: 200px;border-radius: 8px;">
+			</div><p>
+      		<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="sign in" style=" margin-left:65px; height:39px; width:200px; border-radius: 8px"> Sign In </button>
+      		
+		</div><!-- /.row -->
+		</form>
+ 		
+		</div> <!--panel -->
+		</div><!--container-->
+		<div id="logo">
+			<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/logoMendel.png" style="margin-left:600px;margin-top:-350px;">
+		</div>
 	
 
 </body>
