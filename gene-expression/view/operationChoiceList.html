@@ -3,15 +3,45 @@
 <html>
 	<head>
 		<title>What is the experiment to show?</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h1><font color="orange" size="8">What do you want to do?</font></h1><br><br>
-		<p align="right">
-		<a href="logoutController.php"><font size="5dp">sign out</font></a>
-		</p><br><br><br>
-			<a href="{INSERT}">INSERT NEW EXPERIMENT</a><br><br>
-			<a href="{DELETE}">DELETE AN EXPERIMENT</a><br><br>
-			<a href="{PERMISSION}">ADD USER PERMISSION</a><br><br>
-			<a href="{SHOW}">SHOW EXPERIMENTS</a><br>
+		<div style="text-align:right; margin-right:20px; margin-top:5px;"> <a href="logoutController.php"><font size="3dp">sign out</font></a></div>
+		<div id="container" align="center">
+		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:10px;" >
+  			<div class="page-header">
+  				<h1> Experiment administration</h1>
+			</div>
+		</nav>
+		
+		
+		<div class="list-group" style="width:800px;" >
+  			<a href="{INSERT}" class="list-group-item">
+    			<h4 class="list-group-item-heading">Insert</h4>
+   				 <p class="list-group-item-text">add a new exeperiment</p>
+  			</a>
+  			<a href="{DELETE}" class="list-group-item">
+    			<h4 class="list-group-item-heading">Delete</h4>
+   				 <p class="list-group-item-text">delete an exeperiment</p>
+  			</a>
+  			<a href="{PERMISSION}" class="list-group-item">
+    			<h4 class="list-group-item-heading">Add permissions</h4>
+   				 <p class="list-group-item-text">enable an user to visualize an experiment</p>
+  			</a>
+  			<a href="{INSERT}" class="list-group-item">
+    			<h4 class="list-group-item-heading">Show</h4>
+   				 <p class="list-group-item-text">show all experiments</p>
+  			</a>
+		</div>
+		</div>
+		
+		
+			<div id ="footer" style="margin-top:90px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+			</div>
 	</body>
 </html>
