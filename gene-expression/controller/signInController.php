@@ -12,6 +12,8 @@
 		$tlp->assign('MESSAGE_ERROR',$_SESSION ['error_password']);
 	} else if (isset($_SESSION['exist_email'])) {
 		$tlp->assign('MESSAGE_ERROR',$_SESSION ['exist_email']);
+	} else if (isset($_SESSION['error_email'] )) {
+		$tlp->assign('MESSAGE_ERROR',$_SESSION['error_email'] );
 	} else {
 		$tlp->assign('MESSAGE_ERROR',"");	
 	}
