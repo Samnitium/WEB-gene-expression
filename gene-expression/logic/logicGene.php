@@ -2,7 +2,7 @@
 
 	
 	include('../model/gene.php');
-	include('logic.php');
+	include_once('logic.php');
 	
 	class LogicGene extends Logic {
 
@@ -55,10 +55,16 @@
 			
 		}
 		
+		function retrieveGeneByGeneSymbol($geneSymbol) {
+			$this->db->execute("SELECT * FROM gene WHERE geneSymbol='".$geneSymbol."'");
+			$result = $this->db->fetchrow();
+			return $result;
+		}
+		
+		
 		function createList() {
 			$list = array();
-			$list['id'] = $this->gene->id;
-			$list['geneSimbol'] = $this->gene->geneSymbol;
+			$list['geneSymbol'] = $this->gene->geneSymbol;
 			$list['geneAssignment'] = $this->gene->geneAssignment;
 			$list['refSeq'] = $this->gene->refSeq;
 			return $list;

@@ -12,17 +12,26 @@
 			$_SESSION['empty'] = "fill the field of the experiment's name";
 			header("Location: insertExperimentController.php");
 		} else {
+			
 			$le = new LogicExperiment();
-			$experiment = new Experiment();
-			$experiment->name = $_POST['name'];
-			$experiment->date = date("Y-m-d", time());
-			$le->DTO->setValue('experiment',$experiment);
-			$le->insertExperiment();
+			if ($_SESSION['insert_experiment']==true) {
+				$experiment = new Experiment();
+				$experiment->name = $_POST['name'];
+				$experiment->date = date("Y-m-d", time());
+				$le->DTO->setValue('experiment',$experiment);
+				$le->insertExperiment();
+				$_SESSION['insert_experiment'] = false;
+			}
+			$_SESSION['idexperiment']=$le->db->insertedid();
 			$le->db->close();
 			$tlp->define( array('addAnalysis'=>"addAnalysis.html"));
+			if (isset($_SESSION['error_upload'])) {
+				$tlp->assign('MESSAGE_UPLOAD',$_SESSION['error_upload']);
+				$_SESSION['error_upload'] = "";
+			} else $tlp->assign('MESSAGE_UPLOAD',"");
 			$tlp->assign('HOME',"superUserChoiceController.php");
 			$tlp->assign('NAME_EXPERIMENT',$_POST['name']);
-			$tlp->assign('ADD_ANALISYS',"ss");
+			$tlp->assign('ACTION',"testuploadController.php");
 			$tlp->parse('STATE','addAnalysis');
 			Header("Content-type: text/html");
 			$tlp->FastPrint();	

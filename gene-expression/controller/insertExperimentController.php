@@ -14,12 +14,13 @@
 		$tlp->assign('HOME',"superUserChoiceController.php");
 		$tlp->assign('ACTION',"addAnalysisController.php");
 	
-		if (isset($_SESSION['name']) )
+		if (isset($_SESSION['name']) ) 
 			$tlp->assign('NAME',$_SESSION['name']);
 		else $tlp->assign('NAME',""); 
 	
 		$_SESSION['name'] = "";
 		$_SESSION['empty'] = "";	
+		$_SESSION['insert_experiment']=true;
 		$tlp->parse('STATE','insertExperiment');
 	
 		Header("Content-type: text/html");

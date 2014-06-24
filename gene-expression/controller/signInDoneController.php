@@ -27,9 +27,9 @@
 				$_SESSION['exist_email'] = "<div class='alert alert-danger'>Sorry, this email already exists</div>";
 				header("Location: signInController.php");
 			} else {
-				$from = "bernardini.davide@yahoo.it";
+				$from = "";
     			$subject = "registration mendel";
-    			$message = "ciao e forza roma";
+    			$message = "Welcome Mendel";
    				 // send mail
    				$fatto = mail($email,$subject,$message,"From:".$from."\n");
 				if ($fatto==FALSE) {

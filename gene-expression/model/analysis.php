@@ -6,7 +6,7 @@
 		var $p_value;
 		var $foldChange;
 		var $name;
-		var $data;
+		var $date;
 		var $id_experiment;
 		
 		
@@ -16,7 +16,7 @@
 			$this->p_value = null;
 			$this->foldChange = null;
 			$this->name = null;
-			$this->data = null;
+			$this->date = null;
 			$this->id_experiment = null;
 			
 		}

@@ -33,6 +33,10 @@
 			$this->db->delete('analysis','id='.$this->analysis->id);
 		}
 		
+		function deleteAnalysisByIdExperiment($idexperiment) {
+			$this->db->delete('analysis','id_experiment='.$idexperiment);
+		}
+		
 		function retrieveAnalysisById($idanalysis) {
 			$this->db->execute("SELECT * FROM analysis WHERE id='".$idanalysis."'");
 			$result = $this->db->fetchrow();
@@ -58,8 +62,7 @@
 		
 		function createList() {
 			$list = array();
-			$list['id'] = $this->user->id;
-			$list['geneSimbol'] = $this->analysis->geneSymbol;
+			$list['geneSymbol'] = $this->analysis->geneSymbol;
 			$list['p_value'] = $this->analysis->p_value;
 			$list['foldChange'] = $this->analysis->foldChange;
 			$list['name'] = $this->analysis->name;
