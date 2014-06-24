@@ -10,9 +10,8 @@
 		$_SESSION['page_corrent'] = "userChoiceController.php";
 		$tlp = new FastTemplate("../view");
 		$tlp->define(array('experimentList' => "experimentlist.html", 'experiment' => "experiment.html"));
-		$tlp->assign('ACTION',"");
 		$lu = new LogicUser();
-		
+		$tlp->assign('ACTION',"showAnalysisList.php");
 		$eLogic = new logicExperiment();
 		$user = $lu->retrieveUserById($_SESSION['iduser']);
 		$lu->db->close();
@@ -21,7 +20,7 @@
 			$experiments = $eLogic->retrieveAll();
 			if (isset($experiments) && count($experiments)!=0) {
 					foreach ($experiments as $exp) {	
-						$tlp -> assign(array('NAME'=>$exp['name'], 'DATE'=> $exp['date']));
+						$tlp -> assign(array('ID'=>$exp['id'], 'NAME'=>$exp['name'], 'DATE'=> $exp['date']));
 						$tlp->parse('EXPERIMENT',".experiment");
 					}
 			}
@@ -33,7 +32,7 @@
 				foreach ($viewPermission as $e) {	
 					$experiment = $eLogic -> retrieveExperimentById($e['id_experiment']);
 					if (isset($experiment)) {
-						$tlp -> assign(array('NAME'=>$experiment->name, 'DATE'=> $experiment->date));
+						$tlp -> assign(array('ID'=>$experiment->id,'NAME'=>$experiment->name, 'DATE'=> $experiment->date));
 						$tlp->parse('EXPERIMENT',".experiment");
 					}
 				}

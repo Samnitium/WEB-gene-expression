@@ -37,6 +37,12 @@
 			$this->db->delete('analysis','id_experiment='.$idexperiment);
 		}
 		
+		function retrieveAnalysisByIdExperiment($idexperiment) {
+			$this->db->execute("SELECT * FROM analysis WHERE id_experiment='".$idexperiment."'");
+			$result = $this->db->fetchrowset();
+			return $result;
+		}
+		
 		function retrieveAnalysisById($idanalysis) {
 			$this->db->execute("SELECT * FROM analysis WHERE id='".$idanalysis."'");
 			$result = $this->db->fetchrow();
