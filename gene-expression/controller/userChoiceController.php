@@ -9,7 +9,7 @@
 	if(isset($_SESSION['iduser'])) {
 		$_SESSION['page_corrent'] = "userChoiceController.php";
 		$tlp = new FastTemplate("../view");
-		$tlp->define(array('experimentList' => "experimentlist.html", 'experiment' => "experiment.html"));
+		$tlp->define(array('experimentList' => "experimentList.html", 'experiment' => "experiment.html"));
 		$lu = new LogicUser();
 		$tlp->assign('ACTION',"showAnalysisList.php");
 		$eLogic = new logicExperiment();

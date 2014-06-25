@@ -3,20 +3,36 @@
 <html>
 	<head>
 		<title>Enabling user permissions</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h1><font color="orange" size="8">Select the user</font></h1><br><br>
-		<p align="right">
-		<a href="{HOME}"><font size="5dp">home</font></a>
-		</p>
-		<p align="right">
-		<a href="logoutController.php"><font size="5dp">sign out</font></a>
-		</p><br><br>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		<div align="center">
+		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:10px;" >
+  			<div class="page-header">
+  				<h1>Enable user permission</h1>
+			</div>
+		</nav>
+		
 		<form action="{ACTION}" method="get">
-			<select name="user">
-				{USER}
-			</select><br><br>
-			<input type="submit" value="send" />
+			<div class="panel panel-success" style="width: 330px;">
+  				<div class="panel-heading">
+    				<h3 class="panel-title">Please, select the user: </h3>
+  				</div>
+				<select name="user">
+					{USER}
+				</select><br><br>
+				<input type="submit" value="send" />
+			</div>
 		</form>
+		</div>
+		<div id ="footer" style="margin-top:90px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+		</div>
 	</body>
 </html>

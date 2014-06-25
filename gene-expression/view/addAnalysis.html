@@ -3,31 +3,42 @@
 <html>
 	<head> 
 	<title> Add the analysys to experiment</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	
-	<h1>ADD THE ANALYSIS</h1><br><br /><br><br>
-	<p align="right">
-		<a href="{HOME}"><font size="5dp">home</font></a>
-	</p>
-	<p align="right">
-		<a href="logoutController.php"><font size="5dp">sign out</font></a>
-	</p><br><br><br>
-	
-	<h1>DO YOU WANT ADD THE ANALYSIS TO EXPERIMENT "{NAME_EXPERIMENT}"</h1><br><br>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		<div align="center">
+		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:10px;" >
+  			<div class="page-header">
+  				<h1>Add the analysis to experiment "{NAME_EXPERIMENT}"</h1>
+			</div>
+		</nav>
 	
 	{MESSAGE_UPLOAD}
 	<p>
-		Please, add the analisys loading the file: <br><br>
-		<form action="{ACTION}" method="post"  enctype="multipart/form-data">
-            <input type="hidden" name="action" value="upload" />
-            <label>Load your file:</label>
-            <input type="file" name="user_file" />
-            <br />
-            <input type="submit" value="load" />
-        </form>
+		<div class="panel panel-success" style="width: 330px;">
+  				<div class="panel-heading">
+    				<h3 class="panel-title">Please, add the analisys loading the file: </h3>
+  				</div>
+			<form action="{ACTION}" method="post"  enctype="multipart/form-data">
+        	    <input type="hidden" name="action" value="upload" />
+            	<input type="file" name="user_file" />
+            	<br />
+            	<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="load" style=" height:39px; width:200px; border-radius: 8px">load</button>
+            	
+        	</form>
+        </div>
+       </div>
 		
 	</p>
+	<div id ="footer" style="margin-top:90px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+	</div>
 
 	
 	
