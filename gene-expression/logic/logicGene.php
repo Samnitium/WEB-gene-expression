@@ -58,7 +58,20 @@
 		function retrieveGeneByGeneSymbol($geneSymbol) {
 			$this->db->execute("SELECT * FROM gene WHERE geneSymbol='".$geneSymbol."'");
 			$result = $this->db->fetchrow();
-			return $result;
+			if ($result) {
+				if (count($result)!=0) {
+				$gene = new Gene();
+				$gene->id = $result['id'];
+				$gene->geneSymbol = $result['geneSymbol'];
+				$gene->geneAssignment = $result['geneAssignment'];
+				$gene->refSeq = $result['refSeq'];
+				return $gene;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
 		}
 		
 		

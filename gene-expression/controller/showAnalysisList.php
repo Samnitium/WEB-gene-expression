@@ -12,6 +12,7 @@
 			$_SESSION['page_corrent'] = "showAnalysisList.php";
 			$tlp = new FastTemplate("../view");
 			$tlp->define(array('analysisList' => "showViewAnalysisList.html", 'analysis' => "rowAnalysis.html"));
+		    $tlp->assign('NAME_EXPERIMENT',$id_exp[1]);
 			if ($_SESSION['type']=='superuser') {
 				$tlp->assign('HOME',"superUserChoiceController.php");
 			} else $tlp->assign('HOME',"userChoiceController.php");
@@ -19,7 +20,7 @@
 			$analysisList = $la->retrieveAnalysisByIdExperiment($id_exp[0]); 
 			if (isset($analysisList) && count($analysisList)!=0) {
 				foreach ($analysisList as $an) {	
-					$tlp -> assign(array('GENE_SYMBOL'=>$an['geneSymbol'], 'P_VALUE'=>$an['p_value'], 'FOLD_CHANGE'=>$an['foldChange'], 'NAME'=>$an['name'], 'DATE'=>$an['date']));
+					$tlp -> assign(array('GENE_SYMBOL'=>"<a href='showGene.php?gene_symbol=".$an['geneSymbol']."'>".$an['geneSymbol']."</a>", 'P_VALUE'=>$an['p_value'], 'FOLD_CHANGE'=>$an['foldChange'], 'NAME'=>$an['name'], 'DATE'=>$an['date']));
 					$tlp->parse('ROW',".analysis");
 				}
 			} else {
