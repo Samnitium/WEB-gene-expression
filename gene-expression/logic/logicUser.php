@@ -30,7 +30,6 @@
 		
 		function deleteUserById() {
 			$this->user = $this->DTO->getValue('user');
-			$this->db = openDb();
 			$this->db->delete('user','id='.$this->user->id);
 		}
 		
@@ -84,6 +83,12 @@
 				return NULL;
 			}
 			
+		}
+		
+		function updateUser() {
+			$this->user = $this->DTO->getValue('user');
+			$this->db->execute("UPDATE user SET password='".$this->user->password."', name='".$this->user->name."', surname='".$this->user->surname."' WHERE id='".$this->user->id."'");
+					
 		}
 		
 		function createList() {

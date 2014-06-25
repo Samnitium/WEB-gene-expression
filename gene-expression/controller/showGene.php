@@ -28,7 +28,7 @@
 		
 		 
 			$lg->db->close();
-	
+			
 			$tlp->parse('STATE',"gene");
 			Header("Content-type: text/html");
 			$tlp->FastPrint();
