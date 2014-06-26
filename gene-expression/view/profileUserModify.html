@@ -3,22 +3,53 @@
 <html>
 	<head>
 		<title>Profile User Modify</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 		
 	</head>
 	<body>
-  		<h1>MODIUFY USER'S DATE</h1><br><br>
-		
-		  <p align="right"> <a href="{HOME}"><font size="5dp">home</font></a><br> </p>
-		  <p align="right"> <a href="logoutController.php"><font size="5dp">logout</font></a></p><br><br>
-	  	{MESSAGE_ERROR}<br><br>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		  <div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		  <div align="center">
+			<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:0px;" >
+  				<div class="page-header">
+  					<h1>Control panel</h1>
+				</div>
+			</nav>
+		  
+		  {MESSAGE_ERROR}
+		  <div class="panel panel-success" style="width: 330px;">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Modify your profile: </h3>
+  			</div>
+  			
+	  	
 		<form action="{ACTION}" method="post">
-			<fieldset>
-				<label>Name: <input type="text" name="name" value="{NAME}" /></label><br>
-				<label>Surname: <input type="text" name="surname" value="{SURNAME}" /></label><br>
-				<label>Password: <input type="text" name="password" value="{PASSWORD}" /></label><br>
-				<label><input type="submit" name="submit" value="save" /></label><br>
-			</fieldset>
+			<div class="row">
+ 			<div class="input-group" align="center">
+ 		 		<label>Name:<input type="text" class="form-control" placeholder="{NAME}" name="username" value="{NAME}" style="margin-left:20px; width: 100px;border-radius: 8px;"></label>
+			</div><p>
+			<div class="input-group" align="center">
+ 		 		<label>Surname:<input type="text" class="form-control" placeholder="{SURNAME}" name="username" value="{SURNAME}" style="margin-left:20px; width: 100px;border-radius: 8px;"></label>
+			</div><p>
+    		<div class="input-group" align="center">
+    			<label>Password:<input type="password" class="form-control" placeholder="{PASSWORD}" name="password" value="{PASSWORD}" style=" margin-left:20px; width: 100px;border-radius: 8px;"></label>
+    		</div>	
+
+    		</div>	
+
+      		<br><button class="btn btn-lg btn-success btn-block" type="submit"name="submit" value="save" align="center" style="  height:39px; width:200px; border-radius: 8px"> Save </button>
+      		
+			</div><!-- /.row -->
 		</form>
+			</div>
+			</div>
+			<div id ="footer" style="margin-top:50px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+		</div>
 
 	</body>
 </html>

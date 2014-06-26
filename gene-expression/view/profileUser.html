@@ -3,22 +3,40 @@
 <html>
 	<head>
 		<title>User's date</title>
-		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-  		<h1>USER'S DATES</h1><br><br>
 		
-		  <p align="right"> <a href="{HOME}"><font size="5dp">home</font></a><br> </p>
-		  <p align="right"> <a href="logoutController.php"><font size="5dp">logout</font></a></p><br><br>
-		  {WELCOME}<br>
-		<ul type="square">
-			<li> <font size="8dp">Name:  {NAME_USER}</font> </li>
-			<li><font size="8dp">Surname:  {SURNAME_USER}</font> </li>
-			<li><font size="8dp">E-mail:  {EMAIL}</font></li>
-			<li><font size="8dp">Role:  {ROLE}</font></li>
-		</ul>
-		<br><br>
-		<a href="{HREF}">Modify</a>
+		  <div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		  <div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		  <div align="center">
+			<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:0px;" >
+  				<div class="page-header">
+  					<h1>Control panel</h1>
+				</div>
+			</nav>
+		  <br>
+		  <div class="panel panel-success" style="width: 330px;">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">User profile: </h3>
+  			</div>
+			<ul style="list-style-type: none;">
+			<li> <font size="3dp">Name:  {NAME_USER}</font> </li>
+			<li><font size="3dp">Surname:  {SURNAME_USER}</font> </li>
+			<li><font size="3dp">E-mail:  {EMAIL}</font></li>
+			<li><font size="3dp">Role:  {ROLE}</font></li>
+			</ul>
+			<a href="{HREF}">Modify</a>
+		</div>
+		</div>
+		<div id ="footer" style="margin-top:90px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+		</div>
+		
 		
 
 	</body>
