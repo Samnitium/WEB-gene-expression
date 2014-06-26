@@ -1,0 +1,10 @@
+\select@language {english}
+\contentsline {part}{I\hspace {1em}Introduction}{3}
+\contentsline {chapter}{\numberline {1}Gene Expression}{4}
+\contentsline {section}{\numberline {1.1}prima sezione}{4}
+\contentsline {section}{\numberline {1.2}Talk About the Institute C.S.S. Mendel?}{4}
+\contentsline {chapter}{\numberline {2}Main features of the project}{6}
+\contentsline {section}{\numberline {2.1}Aims}{6}
+\contentsline {section}{\numberline {2.2}Function and structure}{6}
+\contentsline {section}{\numberline {2.3}Tools}{6}
+\contentsline {part}{II\hspace {1em}Implementation}{7}
