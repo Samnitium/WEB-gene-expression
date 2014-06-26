@@ -57,44 +57,100 @@
 	*/
 	function generaBase(B, S){
 		var base = new THREE.Object3D();
+		base.position.set(0,0,0);
 	
 		var sphereGeometry = new THREE.SphereGeometry(1,24,24);
 		var sphereMaterial = new THREE.MeshPhongMaterial({color: 0x000000});
 		var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
-		sphere.material.opacity = .8;
+		sphere.position.x = -6.9;
+		sphere.material.opacity = .9;
 		sphere.material.transparent = true;
 		base.add(sphere);
 	  
-		var cylinderGeometry = new THREE.CylinderGeometry( .2, .2, 4, 32 );
+		var cylinderGeometry = new THREE.CylinderGeometry( .2, .2, 6, 32 );
 		switch (B){
 			case "Adenina":
 				var cylinderMaterial = new THREE.MeshPhongMaterial({color: 0xffff00});
+				break;
 			case "Timina":
 				var cylinderMaterial = new THREE.MeshPhongMaterial({color: 0xff0000});
-			case "Uracile":
-				var cylinderMaterial = new THREE.MeshPhongMaterial({color: 0xff8000});
+				break;
 			case "Citosina":
 				var cylinderMaterial = new THREE.MeshPhongMaterial({color: 0x0000ff});
+				break;
 			case "Guanina":
 				var cylinderMaterial = new THREE.MeshPhongMaterial({color: 0x00ff00});
+				break;
+			case "Uracile":
+				var cylinderMaterial = new THREE.MeshPhongMaterial({color: 0xff8000});
+				break;
 		}
 		var cylinder = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
 		cylinder.rotation.z = Math.PI/2;
-		cylinder.position.set(2.9,0,0);
+		cylinder.position.set(3.9,0,0);
 		sphere.add(cylinder);
 		
 		if(S==="mirror")
-			base.rotation.x = Math.PI/2
+			base.rotation.y = Math.PI;
 		
 		return base;
 	}
 	
-	scene.add(generaBase("Timina", "no"));
+	//genero il primo normale e speculare
+	baseNormal = generaBase("Uracile", "no");
+	baseMirror = generaBase("Uracile", "mirror");
+	var i;
+	//genero i rispettivi array di basi azotate
+	opNormal = new Array();
+	opMirror = new Array();
+	for (i=0;i<70;i++){
+		//numero random tra 1 e 4, il caso 5 è per l'uracile
+		rnd = Math.floor((Math.random() * 4) + 1);
+		//per ogni caso creo la base e la sua complementare
+		switch (rnd){
+			case 1:
+				opNormal[i] = generaBase("Adenina", "no");
+				opMirror[i] = generaBase("Timina", "no");
+				break;
+			case 2:
+				opNormal[i] = generaBase("Timina", "no");
+				opMirror[i] = generaBase("Adenina", "no");
+				break;
+			case 3:
+				opNormal[i] = generaBase("Citosina", "no");
+				opMirror[i] = generaBase("Guanina", "no");
+				break;
+			case 4:
+				opNormal[i] = generaBase("Guanina", "no");
+				opMirror[i] = generaBase("Citosina", "no");
+				break;
+			case 5:
+				opNormal[i] = generaBase("Uracile", "no");
+				opMirror[i] = generaBase("Adenina", "no");
+				break;
+		}
+		//ruoto le basi..
+		opNormal[i].rotation.y = (Math.PI/16)*(1+i);
+		opNormal[i].position.set(0,1.2*(1+i),0);
+		opMirror[i].rotation.y = (Math.PI/16)*(1+i);
+		opMirror[i].position.set(0,1.2*(1+i),0);
+		//..e le aggiungo alle rispettive eliche
+		baseNormal.add(opNormal[i]);
+		baseMirror.add(opMirror[i]);
+		
+	}
+	
+	//unisco la struttura
+	var dna = new THREE.Object3D();
+	dna.add(baseNormal);
+	dna.add(baseMirror);
+	dna.position.y = -50;
+	scene.add(dna);
 	  
 	/*	FINE CATENA DI DNA		*/
 
     // position and point the camera to the center of the scene
-    camera.position.set(-30,40,30);
+    camera.position.set(-60,60,60);
     camera.up = new THREE.Vector3(0,1,0);
     camera.lookAt(scene.position);
 
@@ -104,7 +160,7 @@
 
     // add spotlight for the shadows
     var spotLight = new THREE.SpotLight( 0xffffff );
-    spotLight.position.set(-40,60,-10);
+    spotLight.position.set(-80,200,0);
     scene.add(spotLight);
 
     // add axis helper
