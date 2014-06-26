@@ -27,15 +27,7 @@
 				$_SESSION['exist_email'] = "<div class='alert alert-danger'>Sorry, this email already exists</div>";
 				header("Location: signInController.php");
 			} else {
-				$from = "";
-    			$subject = "registration mendel";
-    			$message = "Welcome Mendel";
-   				 // send mail
-   				$fatto = mail($email,$subject,$message,"From:".$from."\n");
-				if ($fatto==FALSE) {
-   					$_SESSION['error_email'] = "<div class='alert alert-danger'>This email doesn't exist</div>";	
-   					header("Location: signInController.php");
-				} 
+				$code = md5(time());
 				$user = new User();
 				$user->name = $name;
 				$user->surname = $surname;
@@ -43,10 +35,24 @@
 				$user->password = $password;
 				$user->type = "user";
 				$lu->DTO->setValue('user',$user);
-				$lu->insertUser();
+				$lu->insertUser($code);
+				$idlast = $lu->db->insertedid();
 				$lu->db->close();
-				$_SESSION['welcome'] = "<div class='alert alert-success'>Welcome ".$user->name.", You can now proceed with the login</div>";
-				header("Location: welcomeController.php");
+				$from = "davidebernardini91@gmail.com";
+    			$subject = "registration mendel";
+    			$message = "Welcome Mendel, Now to proceed with the activation of the account, click on the following 
+    						<a href='activeAccountController.php?id=".$idlast."&code=".$code."'>link</a>";
+   				 // send mail
+   				$fatto = mail($email,$subject,$message,"From:".$from."\n");
+				if ($fatto==FALSE) {
+   					$_SESSION['error_email'] = "<div class='alert alert-danger'>This email doesn't exist</div>";	
+   					header("Location: signInController.php");
+				} 
+				
+				//$_SESSION['welcome'] = "<div class='alert alert-success'>Welcome ".$user->name.", You can now proceed with the login</div>";
+				
+				$_SESSION['active'] = true;
+				header("Location: messageLoginController.php");
 			}
 		}
 	}
