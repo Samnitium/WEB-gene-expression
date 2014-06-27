@@ -7,18 +7,29 @@
 \contentsline {section}{\numberline {2.1}Aims}{6}
 \contentsline {section}{\numberline {2.2}Function and structure}{6}
 \contentsline {section}{\numberline {2.3}Tools}{6}
-\contentsline {chapter}{\numberline {3}Implementation}{7}
-\contentsline {chapter}{\numberline {4}Technologies}{8}
-\contentsline {section}{\numberline {4.1}Client-Server Architecture}{8}
-\contentsline {subsection}{\numberline {4.1.1}Communication Protocol}{9}
-\contentsline {subsection}{\numberline {4.1.2}Sever-Side}{9}
-\contentsline {subsubsection}{Server Tasks}{9}
-\contentsline {subsubsection}{The PHP language}{9}
-\contentsline {subsubsection}{XAMPP}{10}
-\contentsline {subsection}{\numberline {4.1.3}Database}{10}
-\contentsline {subsubsection}{MySQL}{10}
-\contentsline {subsubsection}{DataBase structure}{10}
-\contentsline {paragraph}{}{11}
-\contentsline {subsubsection}{JavaScript and jQuery}{11}
-\contentsline {paragraph}{JavaScript}{11}
-\contentsline {subparagraph}{jQuery}{11}
+\contentsline {chapter}{\numberline {3}Technologies}{7}
+\contentsline {section}{\numberline {3.1}Client-Server Architecture}{7}
+\contentsline {subsection}{\numberline {3.1.1}Communication Protocol}{8}
+\contentsline {subsection}{\numberline {3.1.2}Sever-Side}{8}
+\contentsline {subsubsection}{Server Tasks}{8}
+\contentsline {subsubsection}{The PHP language}{8}
+\contentsline {subsubsection}{XAMPP}{9}
+\contentsline {subsection}{\numberline {3.1.3}Database}{9}
+\contentsline {subsubsection}{MySQL}{9}
+\contentsline {subsubsection}{DataBase structure}{9}
+\contentsline {paragraph}{}{10}
+\contentsline {subsubsection}{JavaScript and jQuery}{10}
+\contentsline {paragraph}{JavaScript}{10}
+\contentsline {subparagraph}{jQuery}{10}
+\contentsline {chapter}{\numberline {4}Implementation}{12}
+\contentsline {section}{\numberline {4.1}MVC pattern}{12}
+\contentsline {paragraph}{Model}{12}
+\contentsline {paragraph}{View}{12}
+\contentsline {paragraph}{Controller}{12}
+\contentsline {section}{\numberline {4.2}Packages}{13}
+\contentsline {paragraph}{Controller}{13}
+\contentsline {paragraph}{Logic}{13}
+\contentsline {paragraph}{View}{13}
+\contentsline {paragraph}{Util}{13}
+\contentsline {paragraph}{Template}{13}
+\contentsline {paragraph}{Bootstrap}{13}
