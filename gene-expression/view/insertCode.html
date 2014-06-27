@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+	<title> Insert code</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	
+	<div align="center">
+	<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:0px;" >
+  			<div class="page-header">
+  				<h1>Insert code</h1>
+			</div>
+		</nav>
+		
+	
+	
+	<div class='alert alert-danger'><a href='#' class='alert-link'>I was sent an email in which you will be given the code to enter below to activate your account</a></div>
+	
+	{MESSAGE_ERROR}<br><br>
+	<form action="{ACTION}" method="post">
+	
+
+	
+	<div class="panel panel-success" style="width: 330px;">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Please, enter your code: </h3>
+  			</div>
+	
+		<div class="row">
+ 			<div class="input-group">
+ 		 		<input type="text" class="form-control" placeholder="code" name="code" value="{CODE}" style=" width: 200px;border-radius: 8px;">
+			</div><p>
+			
+      		<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="send" style=" height:39px; width:200px; border-radius: 8px">Send</button>
+      		
+		</div><!-- /.row -->
+		</form>
+		
+		
+	</div>
+		<div id ="footer" style="margin-top:90px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+		</div>
+	
+
+</body>
+</html>

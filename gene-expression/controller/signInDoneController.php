@@ -4,12 +4,12 @@
 	
 	session_start();
 	if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['rpassword'])) {
-		$email = $_POST['email'];
+		$email = trim($_POST['email']);
 		$password = $_POST['password'];
-		$name = $_POST['name'];
-		$surname = $_POST['surname'];
+		$name = trim($_POST['name']);
+		$surname = trim($_POST['surname']);
 		$rpassword = $_POST['rpassword'];
-		if (trim($email)=="" || trim($password)=="" || trim($name)=="" || trim($surname)=="" || trim($rpassword)=="") {
+		if ($email=="" || trim($password)=="" || $name=="" || $surname=="" || trim($rpassword)=="") {
 			fillDatesSession($name,$surname,$email,$password,$rpassword);
 			$_SESSION['empty'] = "<div class='alert alert-danger'>fill all the fields</div>";
 			header("Location: signInController.php");
@@ -40,8 +40,7 @@
 				$lu->db->close();
 				$from = "davidebernardini91@gmail.com";
     			$subject = "registration mendel";
-    			$message = "Welcome Mendel, Now to proceed with the activation of the account, click on the following 
-    						<a href='activeAccountController.php?id=".$idlast."&code=".$code."'>link</a>";
+    			$message = "Welcome Mendel, Now to proceed with the activation of the account, use the following code that will be asked:  ".$code;
    				 // send mail
    				$fatto = mail($email,$subject,$message,"From:".$from."\n");
 				if ($fatto==FALSE) {
@@ -51,8 +50,8 @@
 				
 				//$_SESSION['welcome'] = "<div class='alert alert-success'>Welcome ".$user->name.", You can now proceed with the login</div>";
 				
-				$_SESSION['active'] = true;
-				header("Location: messageLoginController.php");
+
+				header("Location: insertCodeController.php?id=".$idlast);
 			}
 		}
 	}

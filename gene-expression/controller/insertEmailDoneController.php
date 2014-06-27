@@ -4,8 +4,8 @@ include('../logic/logicUser.php');
 	
 	session_start();
 	if (isset($_POST['email'])) {
-		if ($_POST['email']!="") {
-			$email = $_POST['email'];
+		if (trim($_POST['email'])!="") {
+			$email = trim($_POST['email']);
 			$lu = new LogicUser();
 			$user = $lu->retrieveUserByEmail($email);
 			if (isset($user) && $user!=NULL) {

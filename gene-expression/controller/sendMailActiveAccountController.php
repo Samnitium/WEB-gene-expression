@@ -15,14 +15,11 @@
 				$lu->updateCodeUser($code,$user->id);
 				$from = "davidebernardini91@gmail.com";
     			$subject = "registration mendel";
-    			$message = "Welcome Mendel, Now to proceed with the activation of the account, click on the following 
-    						<a href='activeAccountController.php?id=".$user->id."&code=".$code."'>link</a>";
+    			$message = "Welcome Mendel, Now to proceed with the activation of the account, use the following code that will be asked:  ".$code;
    				 // send mail
    				$fatto = mail($_GET['email'],$subject,$message,"From:".$from."\n");
-				session_start();
 				//$_SESSION['welcome'] = "<div class='alert alert-success'>Welcome ".$user->name.", You can now proceed with the login</div>";
-				$_SESSION['active'] = true;
-				header("Location: messageLoginController.php");
+				header("Location: insertCodeController.php?id=".$user->id);
 			}
 		} else {
 			$lu->db->close();
