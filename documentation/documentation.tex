@@ -80,7 +80,7 @@ The portal is used by two types of users:
 bla,bla,bla
 
 
-\chapter{Implementation}
+
 \chapter{Technologies}
 WEB-gene expression is developed as a web platform following the guide of the client-server architecture. The platform was built using JavaScript and jQuery to manage the client-side and the html page, and php and MySQL to manage the server-side. This chapter provides a description of these technologies and an explanation about how these technologies were used.
 
@@ -116,7 +116,7 @@ With regards to WEB-gene-expression, php is the language used to develop the ser
 In WEB-gene-expression, the server side has the task to manage the client requests by connecting the system to the database and providing the response data. \\
 The database guarantees the data persistence while the server side organizes the application logic for managing of the operations with the data.\\
 
-\subsubsection{The PHP language}
+\subsubsection{The PHP language}\label{php}
 
 The programming language used to develop the server side of WEB-gene-expression is PHP. 
 
@@ -124,7 +124,7 @@ The programming language used to develop the server side of WEB-gene-expression 
 
 
 Therefore, the main features of PHP meet WEB-gene-expression requirements for the implementation of the server side. The code is organized in classes following the principles of \emph{High Cohesion} and \emph{Low Coupling} described in "Applicare UML e i pattern" \footcite{Craig Larman, Luca Cabibbo} . \\
-The \emph{Low Coupling} pattern describes how to keep a low dependency among objects in order to guarantee a better usability of the codeand a lower impact of the code changes.\\
+The \emph{Low Coupling} pattern describes how to keep a low dependency among objects in order to guarantee a better usability of the code and a lower impact of the code changes.\\
 The \emph{High Cohesion} pattern describes how to assign a specific, focused and comprehensible responsibility to each object in order to provide maintainability of the code.\\
 
 \subsubsection{XAMPP}
@@ -169,5 +169,40 @@ JavaScript allows the developer to program in a flexible way because it is a scr
 \subparagraph{jQuery}
  WEB-gene-expression is a platform that provides the user an intuitive research experience. Therefore, it adopts technologies that allow a simple and familiar interaction between the user and the application.\\
 jQuery\footnote{http://jquery.com/} is a JavaScript library that allows the implementation of several interactive functionalities. jQuery handles interaction events, such as mouse-clicks and text highlighting. It manages asynchronous HTTP requests to exchange data between the browser and the server. These requests allow the dynamic update of the web page, and the user does not need to reload the page. During the development of the client-side of WEB-gene-expression, the choice of jQuery allowed not only to manage asynchronous requests, but also to organize the user interface. \\
+
+\chapter{Implementation}
+This chapter discusses the implementation details of WEB-gene-expression platform. In order to generate an ordered code, the entire project is divided in different package. In this way, a better usability of the code is guarantee. Furthermore, this development approach provides the maintainability of the project.
+
+\section{MVC pattern} \label{mvc}
+
+The development of WEB-gene-expression is based on the most important software architectural pattern: Model-view-controller. The MVC patterns is adopted for implementing web application in major programming languages.\\
+This pattern is used to separate application's tasks.
+
+
+  \paragraph{Model} The Model component implements the application core. It is responsible to manage data and the operations relative to them. Therefore, the Model defines the logic part of the application.
+  \paragraph{View} The View component is responsible to show the data that model contains. It is responsible to manage the user interface. Through the View component, indeed, the user can interact with the system sending inputs. The system response is elaborated by the View that shows the output with a comfortable and comprehensible visualization for the user.
+  \paragraph{Controller} The Controller allows the interaction between Model and View component and keeps them separate. It manage data flow into model object and update the view whenever data change \footnote{http://www.tutorialspoint.com/design\_pattern/mvc\_pattern.htm}.  
+
+\
+\\Following the Model-View-Controller pattern guidelines, the WEG-gene-expression code is divided as described above.
+
+\section{Packages}
+
+Each operation provided by the WEB-gene-expression platform is implemented in a classes and his concerns are divided in \emph{Controller, Logic and View} packages. 
+The main implemented operation are to manage the user login, user sign in, choose operations, insert and delete experiments, enable view permission, show the analysis of an experiment, modify user profile.
+
+\paragraph{Controller} This package stores the classes that implement the Controller component of the web application  are stored. Controller Packages implements the server side of the application, so the programming language used is PHP as described in \ref{php}.
+
+\paragraph{Logic} The classes representing the model component of the project are stored in the Logic Package. The Model component is a part of the application server-side and the language used is PHP.
+
+\paragraph{View} This package stores the classes that implement the View component of the web application  are stored. The View component implement the client side of the application. View-classes are HTML pages with embedded JavaScript and jQuery.
+
+\paragraph{Util} This package contains two PHP classes to manage the interactions between Logic component and database. These classes are indispensable to establish a connection and exchange data with the database.
+
+\paragraph{Template} The Template package store a cls\_fast\_template.php class. It is a PHP extension for managing templates and performing variable interpolation\footnote{http://fasttemplate.grafxsoftware.com/docs/default/\_cls\_fast\_template\_php.html}.
+Using cls\_fast\_template.php class, the web-pages of WEB-gene-expression can be modeled dynamically by fitting their content on the user.
+
+\paragraph{Bootstrap} This package contains the tools to manage the user interface and the data visualization. In order to make the user experience not only comprehensible but also captivating, WEB-gene-expression platform employs Twitter Bootstrap\footnote{http://getbootstrap.com/}. The Bootstrap folder contains two subfolder: JavaScript (js) and CSS. The first one contains the classes to manage the users interaction and the second one contains the style sheets. 
+
 
 \end{document}
