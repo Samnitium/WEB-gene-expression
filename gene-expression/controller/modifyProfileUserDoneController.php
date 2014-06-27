@@ -10,7 +10,7 @@
 			$surname = $_POST['surname'];
 			if (trim($password)=="" || trim($name)=="" || trim($surname)=="") {
 				fillDatesSession($name,$surname,$password);
-				$_SESSION['error'] = "fill all the fields";
+				$_SESSION['error'] = "<div class='alert alert-danger'>Please, fill all the fields</div>";
 				header("Location: modifyProfileUserController.php");
 			
 			} else {
@@ -23,7 +23,7 @@
 				$lu->DTO->setValue('user',$user);
 				$lu->updateUser();
 				$lu->db->close();
-				$_SESSION['welcome'] = "Your dates has been update";
+				$_SESSION['welcome'] = "<div class='alert alert-success'>Your dates has been update</div>";
 				header("Location: profileUserController.php");
 			}
 		} else {

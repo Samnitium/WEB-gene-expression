@@ -9,7 +9,7 @@
 	if (isset($_SESSION['iduser']) &&  $_SESSION['type']=="superuser") {
 		$_SESSION['page_corrent'] = 'addAnalysisController.php';
 		if(!(isset($_POST['name']) && trim($_POST['name'])!="")) {
-			$_SESSION['empty'] = "fill the field of the experiment's name";
+			$_SESSION['empty'] = "<div class='alert alert-danger'>Please, enter the experiment's name </div>";
 			header("Location: insertExperimentController.php");
 		} else {
 			

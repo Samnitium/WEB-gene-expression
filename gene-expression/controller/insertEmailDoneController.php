@@ -15,20 +15,20 @@ include('../logic/logicUser.php');
    				 // send mail
    				$fatto = mail($email,$subject,$message,"From:".$from."\n");
 				if ($fatto==FALSE) {
-   					$_SESSION['error'] = "Your email entered doesn't correct or doesn't exist";
+   					$_SESSION['error'] = "<div class='alert alert-danger'>The email is not correct or doesn't exist</div>";
 					header('Location: insertEmailController.php');	
 				} else {
-					$_SESSION['welcome'] = "I was sent an email to receive your password";
+					$_SESSION['welcome'] = "<div class='alert alert-success'>In a few minutes you will receive an email with your password</div>";
 					header('Location: welcomeController.php');						
 				}
 				
 			} else {
-				$_SESSION['error'] = "Your email entered doesn't correct or doesn't exist";
+				$_SESSION['error'] = "<div class='alert alert-danger'>The email is not correct or doesn't exist</div>";
 				header('Location: insertEmailController.php');	
 			}
 			
 		} else {
-			$_SESSION['error'] = "You must fill the email's field";
+			$_SESSION['error'] = "<div class='alert alert-danger'>You must fill the email's field</div>";
 			header('Location: insertEmailController.php');	
 		}	
 	} else {

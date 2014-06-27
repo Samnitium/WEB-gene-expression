@@ -10,7 +10,7 @@
 		session_destroy();
 		$tlp = new FastTemplate("../view");
 		$tlp->define( array('messageLogin'=>"messageLogin.html"));
-		$tlp->assign('MESSAGE',"I was sent an email to activate your account");
+		$tlp->assign('MESSAGE',"<div class='alert alert-success'>I was sent an email to activate your account</div>");
 		$tlp->parse('STATE','messageLogin');
 		Header("Content-type: text/html");
 		$tlp->FastPrint();	

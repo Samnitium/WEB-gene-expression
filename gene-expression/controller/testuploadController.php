@@ -51,14 +51,14 @@
 					fclose($fp);
 		
         		} else {
-        			$tlp->assign('MESSAGE',"Sorry, there was an error loading the file");
+        			$tlp->assign('MESSAGE',"<div class='alert alert-danger'>Sorry, there was an error loading the file</div>");
         		}
     		} else {
-    			$_SESSION['error_upload'] = "You need to upload the file";
+    			$_SESSION['error_upload'] = "<div class='alert alert-danger'>You need to upload the file</div>";
 				header("Location: addAnalysisController.php");
     		}
 		} else {
-			$_SESSION['error_upload'] = "You need to upload the file";
+			$_SESSION['error_upload'] = "<div class='alert alert-danger'>You need to upload the file</div>";
 			header("Location: addAnalysisController.php");
 		}
 		
