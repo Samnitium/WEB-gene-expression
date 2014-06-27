@@ -4,14 +4,14 @@
 	
 	session_start();
 	if(isset($_POST['username']) && isset($_POST['password'])) {
-		if (ltrim($_POST['username'])=="" || ltrim($_POST['password'])=="") {
+		if (trim($_POST['username'])=="" || trim($_POST['password'])=="") {
 			$_SESSION['error'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>Please, fill all the fields</a></div>";
 			fillSession();
 			header("Location: welcomeController.php");	
 		} else {
 			$lu = new logicUser();
-			$user = $lu->retrieveUserByEmail($_POST['username']);
-			if (isset($user) && $user->password==$_POST['password']) {
+			$user = $lu->retrieveUserByEmail(trim($_POST['username']));
+			if (isset($user) && $user->password==($_POST['password'])) {
 				if ($lu->retrieveAccountById($user->id)=="N") {
 					$lu->db->close();
 					$_SESSION['error'] = "<div class='alert alert-danger'><a href='#' class='alert-link'>Your account has not been activated yet. Please, go to this <a href='sendMailActiveAccountController.php?email=".$_POST['username']."'>link</a></a></div>";

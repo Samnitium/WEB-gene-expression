@@ -6,8 +6,8 @@
 	if(isset($_SESSION['iduser'])) {
 		if(isset($_POST['password']) && isset($_POST['name']) && isset($_POST['surname'])) {
 			$password = $_POST['password'];
-			$name = $_POST['name'];
-			$surname = $_POST['surname'];
+			$name = trim($_POST['name']);
+			$surname = trim($_POST['surname']);
 			if (trim($password)=="" || trim($name)=="" || trim($surname)=="") {
 				fillDatesSession($name,$surname,$password);
 				$_SESSION['error'] = "<div class='alert alert-danger'>Please, fill all the fields</div>";

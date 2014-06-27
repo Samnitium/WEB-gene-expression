@@ -16,7 +16,7 @@
 			$le = new LogicExperiment();
 			if ($_SESSION['insert_experiment']==true) {
 				$experiment = new Experiment();
-				$experiment->name = $_POST['name'];
+				$experiment->name = trim($_POST['name']);
 				$experiment->date = date("Y-m-d", time());
 				$le->DTO->setValue('experiment',$experiment);
 				$le->insertExperiment();
