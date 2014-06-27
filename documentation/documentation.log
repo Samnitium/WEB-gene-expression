@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.10)  27 JUN 2014 17:27
+=======
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.7.23)  27 JUN 2014 17:37
+>>>>>>> c2c63155d1b71082f8be9d14ef8a6eada5694b37
 entering extended mode
 **documentation.tex
 (C:\xampp\htdocs\workspace\WEB-gene-expression\documentation\documentation.tex
@@ -335,6 +339,7 @@ LaTeX Font Info:    ... okay on input line 10.
 \makeMPintoPDFobject=\count95
 \everyMPtoPDFconversion=\toks18
 )
+<<<<<<< HEAD
 ! I can't write on file `documentation.pdf'.
 Please type another file name for output
 ! Emergency stop.
@@ -354,3 +359,176 @@ Here is how much of TeX's memory you used:
  841 hyphenation exceptions out of 8191
  27i,0n,19p,225b,68s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!
+=======
+\tf@toc=\write3
+\openout3 = `documentation.toc'.
+
+ [2
+
+] [3
+
+]
+Chapter 1.
+File: logoRomaTre.jpg Graphic file (type jpg)
+<use logoRomaTre.jpg>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
+ (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 43.
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--50
+
+ []
+
+File: logoRomaTre.jpg Graphic file (type jpg)
+<use logoRomaTre.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 52--59
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--59
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--59
+
+ []
+
+[4
+
+]
+File: logoRomaTre.jpg Graphic file (type jpg)
+ <use logoRomaTre.jpg> [5]
+Chapter 2.
+[6
+
+]
+Chapter 3.
+<figure/clientServer.png, id=36, 501.875pt x 217.81375pt>
+File: figure/clientServer.png Graphic file (type png)
+
+<use figure/clientServer.png> [7
+
+ <./figure/clientServer.png>]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.105 \\I
+         n WEB-gene-expression, the server side and the client side communic...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+
+Overfull \hbox (11.71844pt too wide) in paragraph at lines 121--122
+\T1/cmr/m/n/10 The pro-gram-ming lan-guage used to de-velop the server side of 
+WEB-gene-expression
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 \\"
+         PHP is a popular general-purpose scripting language that is especia...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 123.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 123.
+! Undefined control sequence.
+l.126 ... in "Applicare UML e i pattern" \footcite
+                                                  {Craig Larman, Luca Cabibb...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--129
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 146--151
+
+ []
+
+[9]
+Overfull \hbox (46.41669pt too wide) in paragraph at lines 155--156
+[]\T1/cmr/m/n/10 ANALYSIS($[]$, geneSym-bol, p_value, fold-Change, name, date, 
+id_experiment)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
+
+ []
+
+[10] [11]
+Chapter 4.
+
+Overfull \hbox (3.46011pt too wide) in paragraph at lines 178--180
+\T1/cmr/m/n/10 ware ar-chi-tec-tural pat-tern: Model-view-controller. The MVC p
+at-terns is adopted
+ []
+
+
+Overfull \hbox (11.59348pt too wide) in paragraph at lines 186--188
+\T1/cmr/m/n/10 Following the Model-View-Controller pat-tern guide-lines, the WE
+G-gene-expression
+ []
+
+[12
+
+] [13] (./documentation.aux) ) 
+Here is how much of TeX's memory you used:
+ 1705 strings out of 495061
+ 19297 string characters out of 1182621
+ 73088 words of memory out of 3000000
+ 4878 multiletter control sequences out of 15000+50000
+ 18397 words of font info for 37 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 25i,8n,19p,621b,245s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/chiara/.texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecrm0800.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0
+600.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk>
+ </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/ch
+iara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/chiara/.texm
+f-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/chiara/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/chiara/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecbx1200.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen
+/ec/ecbx2488.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti14
+40.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> 
+</home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/chi
+ara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on documentation.pdf (14 pages, 420847 bytes).
+PDF statistics:
+ 482 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
+>>>>>>> c2c63155d1b71082f8be9d14ef8a6eada5694b37
