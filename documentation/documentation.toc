@@ -7,4 +7,18 @@
 \contentsline {section}{\numberline {2.1}Aims}{6}
 \contentsline {section}{\numberline {2.2}Function and structure}{6}
 \contentsline {section}{\numberline {2.3}Tools}{6}
-\contentsline {part}{II\hspace {1em}Implementation}{7}
+\contentsline {chapter}{\numberline {3}Implementation}{7}
+\contentsline {chapter}{\numberline {4}Technologies}{8}
+\contentsline {section}{\numberline {4.1}Client-Server Architecture}{8}
+\contentsline {subsection}{\numberline {4.1.1}Communication Protocol}{9}
+\contentsline {subsection}{\numberline {4.1.2}Sever-Side}{9}
+\contentsline {subsubsection}{Server Tasks}{9}
+\contentsline {subsubsection}{The PHP language}{9}
+\contentsline {subsubsection}{XAMPP}{10}
+\contentsline {subsection}{\numberline {4.1.3}Database}{10}
+\contentsline {subsubsection}{MySQL}{10}
+\contentsline {subsubsection}{DataBase structure}{10}
+\contentsline {paragraph}{}{11}
+\contentsline {subsubsection}{JavaScript and jQuery}{11}
+\contentsline {paragraph}{JavaScript}{11}
+\contentsline {subparagraph}{jQuery}{11}

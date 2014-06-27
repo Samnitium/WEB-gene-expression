@@ -1,23 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.10)  26 JUN 2014 03:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.7.23)  27 JUN 2014 12:02
 entering extended mode
+ %&-line parsing enabled.
 **documentation.tex
-
-("C:\Users\Dario\Desktop\UniRomaTre\Informatica biomedica\documentation\documen
-tation.tex"
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+(./documentation.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -33,26 +24,26 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+(/usr/share/texmf-texlive/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -202,7 +193,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -233,7 +224,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -257,61 +248,51 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2008/07/08 v3.8m The Babel package
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
 
-*************************************
-* Local config file bblopts.cfg used
-*
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
-File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\english.ldf"
+(/usr/share/texmf-texlive/tex/generic/babel/english.ldf
 Language: english 2005/03/30 v3.3o English support from the babel system
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2008/07/08 v3.8m Babel common definitions
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
 \Gread@gobject=\count89
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-("C:\Users\Dario\Desktop\UniRomaTre\Informatica biomedica\documentation\documen
-tation.aux")
+(./documentation.aux)
+\openout1 = `documentation.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
@@ -324,7 +305,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count90
 \scratchdimen=\dimen106
@@ -335,31 +316,26 @@ LaTeX Font Info:    ... okay on input line 10.
 \MPscratchCnt=\count93
 \MPscratchDim=\dimen107
 \MPnumerator=\count94
-\makeMPintoPDFobject=\count95
 \everyMPtoPDFconversion=\toks18
 ) <logoRomaTre.jpg, id=1, 225.7233pt x 124.3044pt>
 File: logoRomaTre.jpg Graphic file (type jpg)
  <use logoRomaTre.jpg>
-Package pdftex.def Info: logoRomaTre.jpg used on input line 15.
-(pdftex.def)             Requested size: 225.72273pt x 124.30408pt.
-
 [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Dario/Desktop/Un
-iRomaTre/Informatica biomedica/documentation/logoRomaTre.jpg>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logoRomaTre.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 29--31
 
  []
 
-[1]
-("C:\Users\Dario\Desktop\UniRomaTre\Informatica biomedica\documentation\documen
-tation.toc"
+[1] (./documentation.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
 )
 \tf@toc=\write3
+\openout3 = `documentation.toc'.
+
  [2
 
 ] [3
@@ -368,10 +344,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Chapter 1.
 File: logoRomaTre.jpg Graphic file (type jpg)
 <use logoRomaTre.jpg>
-Package pdftex.def Info: logoRomaTre.jpg used on input line 39.
-(pdftex.def)             Requested size: 327.21117pt x 156.49916pt.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -383,9 +357,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--50
 
 File: logoRomaTre.jpg Graphic file (type jpg)
 <use logoRomaTre.jpg>
-Package pdftex.def Info: logoRomaTre.jpg used on input line 57.
-(pdftex.def)             Requested size: 170.71796pt x 341.4948pt.
-
 Underfull \hbox (badness 10000) in paragraph at lines 52--59
 
  []
@@ -404,40 +375,120 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--59
 
 ]
 File: logoRomaTre.jpg Graphic file (type jpg)
- <use logoRomaTre.jpg>
-Package pdftex.def Info: logoRomaTre.jpg used on input line 62.
-(pdftex.def)             Requested size: 170.71796pt x 85.3623pt.
- [5]
+ <use logoRomaTre.jpg> [5]
 Chapter 2.
 [6
 
-] [7
+]
+Chapter 3.
+[7
 
 ]
-("C:\Users\Dario\Desktop\UniRomaTre\Informatica biomedica\documentation\documen
-tation.aux") ) 
+Chapter 4.
+<figure/clientServer.png, id=39, 501.875pt x 217.81375pt>
+File: figure/clientServer.png Graphic file (type png)
+
+<use figure/clientServer.png> [8
+
+ <./figure/clientServer.png>]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.105 \\I
+         n WEB-gene-expression, the server side and the client side communic...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+
+Overfull \hbox (11.71844pt too wide) in paragraph at lines 121--122
+\T1/cmr/m/n/10 The pro-gram-ming lan-guage used to de-velop the server side of 
+WEB-gene-expression
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 \\"
+         PHP is a popular general-purpose scripting language that is especia...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 123.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 123.
+! Undefined control sequence.
+l.126 ... in "Applicare UML e i pattern" \footcite
+                                                  {Craig Larman, Luca Cabibb...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--129
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 146--151
+
+ []
+
+[10]
+Overfull \hbox (46.41669pt too wide) in paragraph at lines 155--156
+[]\T1/cmr/m/n/10 ANALYSIS($[]$, geneSym-bol, p_value, fold-Change, name, date, 
+id_experiment)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
+
+ []
+
+[11] [12] (./documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 1896 strings out of 493921
- 23001 string characters out of 3147282
- 74524 words of memory out of 3000000
- 5189 multiletter control sequences out of 15000+200000
- 14276 words of font info for 28 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 27i,6n,19p,225b,222s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1
-.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/cm-super/sfbx1728.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/cm-super/sfbx2074.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-cm-super/sfbx2488.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/
-sfrm1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1440.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti1000.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti1440.pfb>
-Output written on documentation.pdf (8 pages, 397393 bytes).
+ 1703 strings out of 495061
+ 19287 string characters out of 1182621
+ 73065 words of memory out of 3000000
+ 4876 multiletter control sequences out of 15000+50000
+ 18397 words of font info for 37 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 25i,8n,19p,621b,245s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/chiara/.texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/ecrm0800.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ec
+rm0600.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600
+pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home
+/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/chiara/.t
+exmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/chiara/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/chiara/.texmf-var/fonts/pk/lj
+four/jknappen/ec/ecbx1200.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknap
+pen/ec/ecbx2488.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ect
+i1440.600pk> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600p
+k> </home/chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/
+chiara/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on documentation.pdf (13 pages, 414033 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 471 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
