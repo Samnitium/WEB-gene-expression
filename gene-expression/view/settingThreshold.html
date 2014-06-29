@@ -1,0 +1,27 @@
+{STATE}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Setting Threshold</title>
+		
+	</head>
+	<body>
+		<p align="right"><a href="profileUserController.php"><font size="3dp">profile</font></a></p>
+		<p align="right"><a href="logoutController.php"><font size="3dp">logout</font></a></p>
+	    <p align="right"><a href="{HOME}"><font size="3dp">home</font></a></p>
+	
+  				<h1> "Set a threshold for the experiment lam display "{NAME_EXPERIMENT}"</h1><br><br>
+  			
+			{MESSAGE_ERROR} <br><br>
+			<form action="{ACTION}" method="post">
+				<fieldset>
+					<label><input type="number" name="p_value" value="0.0"  step="any" /></label><br>
+					<label><input type="number" name="fold_change" value="-400.0" step="any" /></label><br>
+					<label><input type="submit" name="submit" value="send" />send</label><br>
+				</fieldset>
+			</form>
+			
+				
+
+	</body>
+</html>

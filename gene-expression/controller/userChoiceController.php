@@ -11,7 +11,7 @@
 		$tlp = new FastTemplate("../view");
 		$tlp->define(array('experimentList' => "experimentList.html", 'experiment' => "experiment.html"));
 		$lu = new LogicUser();
-		$tlp->assign('ACTION',"showAnalysisList.php");
+		$tlp->assign('ACTION',"settingThresholdController.php");
 		$eLogic = new logicExperiment();
 		$user = $lu->retrieveUserById($_SESSION['iduser']);
 		$lu->db->close();
