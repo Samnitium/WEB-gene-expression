@@ -1,9 +1,9 @@
 {STATE}
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>What is the experiment to select?</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+	<head> 
+	<title> Modify Experiment</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
 		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
 		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
 		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
@@ -14,26 +14,37 @@
 		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
 		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
 		<div align="center">
-		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px;" >
+		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:10px;" >
   			<div class="page-header">
-  				<h1>Select experiment</h1>
+  				<h1>Modify experiment "{NAME_EXPERIMENT}"</h1>
 			</div>
 		</nav>
+		
+	{MESSAGE_ERROR}
 	
-		<form action="{ACTION}" method="post">
-			<div class="panel panel-success" style="width: 330px;">
+	<p>
+		<div class="panel panel-success" style="width: 330px;">
   				<div class="panel-heading">
-    				<h3 class="panel-title">Please, select the experiment: </h3>
+    				<h3 class="panel-title">You can update the experiment: </h3>
   				</div>
-				<select name="experiment">
-					{EXPERIMENT}
-				</select><br><br>
-			<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="send" style=" height:39px; width:200px; border-radius: 8px">show</button>
-			</div>
-		</form>
-		</div>
-		<div id ="footer" style="margin-top:90px;" align="center" >
+			<form action="{ACTION}" method="post"  enctype="multipart/form-data">
+				Name: <input type="text" name="name_experiment" value="{NAME_EXPERIMENT}"/>
+        	    <input type="hidden" name="action" value="upload" />
+            	<input type="file" name="user_file" />
+            	<br />
+            	<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="save" style=" height:39px; width:200px; border-radius: 8px">save</button>
+            	
+        	</form>
+        </div>
+       </div>
+		
+	</p>
+	<div id ="footer" style="margin-top:90px;" align="center" >
 				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
-		</div>
-	</body>
+	</div>
+
+	
+	
+
+</body>
 </html>

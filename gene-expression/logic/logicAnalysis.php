@@ -28,9 +28,8 @@
 			$this->db->insert('analysis',$list);
 		}
 		
-		function deleteAnalysisById() {
-			$this->analysis= $this->DTO->getValue('analysis');
-			$this->db->delete('analysis','id='.$this->analysis->id);
+		function deleteAnalysisById($idanalysis) {
+			$this->db->delete('analysis','id='.$idanalysis);
 		}
 		
 		function deleteAnalysisByIdExperiment($idexperiment) {
@@ -40,7 +39,16 @@
 		function retrieveAnalysisByIdExperiment($idexperiment) {
 			$this->db->execute("SELECT * FROM analysis WHERE id_experiment='".$idexperiment."'");
 			$result = $this->db->fetchrowset();
-			return $result;
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
 		}
 		
 		function retrieveAnalysisById($idanalysis) {
@@ -50,9 +58,6 @@
 				if (count($result)!=0) {
 				$analysis = new Analysis();
 				$analysis->id = $idanalysis;
-				$analysis->geneSymbol = $result['geneSymbol'];
-				$analysis->p_value = $result['p_value'];
-				$analysis->foldChange = $result['foldChange'];
 				$analysis->name = $result['name']; 
 				$analysis->date = $result['date'];
 				$analysis->id_experiment = $result['id_experiment'];
@@ -68,9 +73,6 @@
 		
 		function createList() {
 			$list = array();
-			$list['geneSymbol'] = $this->analysis->geneSymbol;
-			$list['p_value'] = $this->analysis->p_value;
-			$list['foldChange'] = $this->analysis->foldChange;
 			$list['name'] = $this->analysis->name;
 			$list['date'] = $this->analysis->date;
 			$list['id_experiment'] = $this->analysis->id_experiment;

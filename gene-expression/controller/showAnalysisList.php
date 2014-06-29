@@ -3,7 +3,8 @@
 	
 	include('../template/cls_fast_template.php');
 	include('../logic/logicAnalysis.php');
-	
+	include('../logic/logicAnalysisInstance.php');
+		
 	session_start();
 	if(isset($_SESSION['iduser'])) {
 		if (isset($_POST['experiment']) && $_POST['experiment']!="") {
@@ -16,8 +17,8 @@
 			if ($_SESSION['type']=='superuser') {
 				$tlp->assign('HOME',"superUserChoiceController.php");
 			} else $tlp->assign('HOME',"userChoiceController.php");
-			$la = new LogicAnalysis();
-			$analysisList = $la->retrieveAnalysisByIdExperiment($id_exp[0]); 
+			$lai = new LogicAnalysisInstance();
+			$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment($id_exp[0]); 
 			if (isset($analysisList) && count($analysisList)!=0) {
 				foreach ($analysisList as $an) {	
 					$tlp -> assign(array('GENE_SYMBOL'=>"<a href='showGene.php?gene_symbol=".$an['geneSymbol']."'>".$an['geneSymbol']."</a>", 'P_VALUE'=>$an['p_value'], 'FOLD_CHANGE'=>$an['foldChange'], 'NAME'=>$an['name'], 'DATE'=>$an['date']));
@@ -29,7 +30,7 @@
 			}
 		
 		 
-			$la->db->close();
+			$lai->db->close();
 	
 			$tlp->parse('STATE',"analysisList");
 			Header("Content-type: text/html");

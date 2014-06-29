@@ -20,7 +20,7 @@
 	
 		$_SESSION['name'] = "";
 		$_SESSION['empty'] = "";	
-		$_SESSION['insert_experiment']=true;
+		$_SESSION['insert_experiment']="Y";
 		$tlp->parse('STATE','insertExperiment');
 	
 		Header("Content-type: text/html");

@@ -3,6 +3,7 @@
 	include_once ('../template/cls_fast_template.php');
 	include('../logic/logicAnalysis.php');
 	include('../logic/logicGene.php');
+	include('../logic/logicAnalysisInstance.php');
 	
 	session_start();
 	
@@ -16,36 +17,50 @@
             		move_uploaded_file($file['tmp_name'], '../file/'.$file['name']);
 					$lg = new LogicGene();
 					$la = new LogicAnalysis();
+					$lai = new LogicAnalysisInstance();
 					$tr = "";
 					$tlp->assign('MESSAGE',"Your file has been uploaded. ");
 					$fp = fopen('../file/'.$file['name'],'r');
+					$arrayIdAnalysis = array();
 					if (!feof($fp)) {
 						$str = fgets($fp);
+						$ex = explode("\t", $str);
+						$i = 9;
+						while($i<=29) {
+							$analysis = new Analysis();
+							$analysis->name = $ex[$i];
+							$analysis->date = date("Y-m-d", time());
+							$analysis->id_experiment = $_SESSION['idexperiment'];
+							$la->DTO->setValue('analysis',$analysis);
+							$la->insertAnalysis();
+							$idana = $la->db->insertedid();  
+							array_push($arrayIdAnalysis,$idana);
+							$i = $i + 4;	
+						}
+						$la->db->close();
 					}
 					while(!feof($fp)) {
 						$str = fgets($fp);
-						$ex = explode(",", $str);
-						$analysis = new Analysis();
-						$analysis->geneSymbol = $ex[1];
-						$analysis->p_value = doubleval($ex[2]);
-						$analysis->foldChange = doubleval($ex[3]); 
-						$analysis->name = $ex[5];
-						$analysis->date = $ex[6];
-						$analysis->id_experiment = $_SESSION['idexperiment'];
-						
-						$la->DTO->setValue('analysis',$analysis);
-						$la->insertAnalysis();
-						if (($lg->retrieveGeneByGeneSymbol($ex[1]))==NULL) {
+						$ex = explode("\t", $str);
+						$i=0;
+						$indexPvalue = 6;
+						$indexFoldChange = 8;
+						for($i;$i<count($arrayIdAnalysis);++$i) {
+							fillAnalysisInstance($arrayIdAnalysis[$i],$ex[$indexPvalue],$ex[$indexFoldChange],$ex[2],$lai);
+							$indexPvalue = $indexPvalue + 4;
+							$indexFoldChange = $indexFoldChange + 4;	
+						}
+						if (($lg->retrieveGeneByGeneSymbol($ex[2]))==NULL) {
 							$gene = new Gene();
-							$gene->geneAssignment  = $ex[0];
-							$gene->geneSymbol = $ex[1];
-							$gene->refSeq = $ex[4];
+							$gene->geneAssignment  = str_replace("'","",$ex[1]);
+							$gene->geneSymbol = $ex[2];
+							$gene->refSeq = $ex[3];
 							$lg->DTO->setValue('gene',$gene);
 							$lg->insertGene();		
 						}
 						
 					}
-					$la->db->close();
+					$lai->db->close();
 					$lg->db->close();
 					$_SESSION['idexperiment'] = "";
 					fclose($fp);
@@ -73,6 +88,16 @@
 		header("Location: pageUnauthorized.php");
 	}
 	
+	
+	function fillAnalysisInstance($idana,$pvalue,$foldChange,$geneSymbol,$lai) {
+		$analysisInstance = new AnalysisInstance();
+		$analysisInstance->id_analysis = $idana;
+		$analysisInstance->geneSymbol = $geneSymbol;
+		$analysisInstance->p_value = doubleval($pvalue);
+		$analysisInstance->foldChange = doubleval($foldChange);
+		$lai->DTO->setValue('analysisInstance',$analysisInstance);
+		$lai->insertAnalysisInstance();
+	}	
 
 
 

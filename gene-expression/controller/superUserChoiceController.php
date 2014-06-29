@@ -9,7 +9,7 @@
 		$_SESSION['page_corrent'] = 'superUserChoiceController.php';
 		$tlp = new FastTemplate("../view");
 		$tlp->define(array('operationList'=>"operationChoiceList.html"));
-		$tlp->assign(array('INSERT'=>"insertExperimentController.php", 'DELETE'=>"experimentsToDeleteController.php", 'PERMISSION'=>"selectUserController.php", 'SHOW'=>"userChoiceController.php"));
+		$tlp->assign(array('INSERT'=>"insertExperimentController.php", 'DELETE'=>"experimentsToDeleteController.php", 'MODIFY'=>"experimentsToModifyController.php", 'PERMISSION'=>"selectUserController.php", 'SHOW'=>"userChoiceController.php"));
 		
 		$tlp->parse('STATE',"operationList");
 	

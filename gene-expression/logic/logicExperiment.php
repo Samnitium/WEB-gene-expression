@@ -31,6 +31,13 @@
 			$this->db->delete('experiment','id='.$idexp);
 		}
 		
+		
+		function updateNameExperiment($idexperiment, $name) {
+			$this->db->execute("UPDATE experiment SET name='".$name."' WHERE id='".$idexperiment."'");
+			
+		}
+		
+		
 		function retrieveExperimentById($idexperiment) {
 			$this->db->execute("SELECT * FROM experiment WHERE id='".$idexperiment."'");
 			$result = $this->db->fetchrow();
