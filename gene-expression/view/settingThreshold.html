@@ -3,23 +3,53 @@
 <html>
 	<head>
 		<title>Setting Threshold</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 		
 	</head>
 	<body>
-		<p align="right"><a href="profileUserController.php"><font size="3dp">profile</font></a></p>
-		<p align="right"><a href="logoutController.php"><font size="3dp">logout</font></a></p>
-	    <p align="right"><a href="{HOME}"><font size="3dp">home</font></a></p>
-	
-  				<h1> "Set a threshold for the experiment lam display "{NAME_EXPERIMENT}"</h1><br><br>
+		
+		<div style="text-align:right; margin-right:20px; "> <a href="profileUserController.php"><font size="3dp">profile</font></a></div>
+		<div style="text-align:right; margin-right:20px; "> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		<div style="text-align:right; margin-right:20px; "> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		<div align="center">
+		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:0px;" >
+  			<div class="page-header">
+  				<h1>Set p_value and fold change threshold for the experiment {NAME_EXPERIMENT}</h1>
+			</div>
+		</nav>
   			
 			{MESSAGE_ERROR} <br><br>
 			<form action="{ACTION}" method="post">
-				<fieldset>
-					<label><input type="number" name="p_value" value="0.0"  step="any" /></label><br>
-					<label><input type="number" name="fold_change" value="-400.0" step="any" /></label><br>
-					<label><input type="submit" name="submit" value="send" />send</label><br>
-				</fieldset>
+				
+				<div class="panel panel-success" style="width: 330px; margin-top:-20px;">
+  				<div class="panel-heading">
+    				<h3 class="panel-title">Please, define your preferences: </h3>
+  				</div>
+	
+			<div class="row">
+ 			<div class="input-group" style=" width: 300px;border-radius: 8px;">
+ 				<span class="input-group-addon" style=" width: 101px;">p_value</span>
+  				<input type="number" class="form-control" name="p_value" placeholder="0.0" value="0.0" step="any" >
+			</div><p>
+			<div class="input-group" style=" width: 300px;border-radius: 8px;">
+ 				<span class="input-group-addon" style=" width: 100px;">fold_change</span>
+  				<input type="number" class="form-control" name="fold_change" placeholder="-400" value="-400" step="any" >
+			</div><p>
+			
+      		<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="send" style=" height:39px; width:200px; border-radius: 8px">send</button>
+      		
+		</div><!-- /.row -->
+				
+					
 			</form>
+			</div>
+		<div id ="footer" style="margin-top:40px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+		</div>
 			
 				
 
