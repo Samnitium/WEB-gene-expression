@@ -19,7 +19,6 @@
 					$la = new LogicAnalysis();
 					$lai = new LogicAnalysisInstance();
 					$tr = "";
-					$tlp->assign('MESSAGE',"Your file has been uploaded. ");
 					$fp = fopen('../file/'.$file['name'],'r');
 					$arrayIdAnalysis = array();
 					if (!feof($fp)) {
@@ -28,6 +27,8 @@
 						$i = 9;
 						while($i<=29) {
 							$analysis = new Analysis();
+							$ex[$i] = str_replace("Fold-Change(","", $ex[$i]);
+							$ex[$i] = str_replace(") (Description)","", $ex[$i]);							
 							$analysis->name = $ex[$i];
 							$analysis->date = date("Y-m-d", time());
 							$analysis->id_experiment = $_SESSION['idexperiment'];
@@ -62,6 +63,7 @@
 					}
 					$lai->db->close();
 					$lg->db->close();
+					$tlp->assign('MESSAGE',"Your file has been uploaded. ");
 					$_SESSION['idexperiment'] = "";
 					fclose($fp);
 		
