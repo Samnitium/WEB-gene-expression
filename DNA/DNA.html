@@ -47,7 +47,7 @@
     renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-	/*	INIZIO CATENA DI DNA		*/
+	//_________________________________________________________________________________________________________________
 	
 	/*
 	COLORI:
@@ -58,6 +58,7 @@
 	Citosina	->		0x0000ff	(Blu)
 	Guanina		->		0x00ff00	(Verde)
 	*/
+	
 	function generaBase(B, S){
 		var base = new THREE.Object3D();
 		base.position.set(0,0,0);
@@ -91,6 +92,8 @@
 		var cylinder = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
 		cylinder.rotation.z = Math.PI/2;
 		cylinder.position.set(3.9,0,0);
+		cylinder.material.opacity = 1;
+		cylinder.material.transparent = true;
 		sphere.add(cylinder);
 		
 		if(S==="mirror")
@@ -99,15 +102,19 @@
 		return base;
 	}
 	
-	//genero il primo normale e speculare
-	//baseNormal = generaBase("Uracile", "no");
-	//baseMirror = generaBase("Uracile", "mirror");
 	var i;
 	//genero i rispettivi array di basi azotate
 	opNormal = new Array();
 	opMirror = new Array();
-	opNormal[0] = generaBase("Uracile", "no");
-	opMirror[0] = generaBase("Uracile", "mirror");
+	opRna = new Array();
+	opNormal[0] = generaBase("Adenina", "no");
+	opMirror[0] = generaBase("Timina", "mirror");
+	opRna[0] = generaBase("Uracile", "mirror");
+	opRna[0].position.x = -20;
+	//rendo invisibile il primo elemento dell' RNA
+	opRna[0].children[0].material.opacity = 0;
+	opRna[0].children[0].children[0].material.opacity = 0;
+	
 	for (i=1;i<70;i++){
 		//numero random tra 1 e 4, il caso 5 è per l'uracile
 		rnd = Math.floor((Math.random() * 4) + 1);
@@ -116,43 +123,68 @@
 			case 1:
 				opNormal[i] = generaBase("Adenina", "no");
 				opMirror[i] = generaBase("Timina", "no");
+				opRna[i] = generaBase("Uracile", "no");
 				break;
 			case 2:
 				opNormal[i] = generaBase("Timina", "no");
 				opMirror[i] = generaBase("Adenina", "no");
+				opRna[i] = generaBase("Adenina", "no");
 				break;
 			case 3:
 				opNormal[i] = generaBase("Citosina", "no");
 				opMirror[i] = generaBase("Guanina", "no");
+				opRna[i] = generaBase("Guanina", "no");
 				break;
 			case 4:
 				opNormal[i] = generaBase("Guanina", "no");
 				opMirror[i] = generaBase("Citosina", "no");
+				opRna[i] = generaBase("Citosina", "no");
 				break;
 			case 5:
 				opNormal[i] = generaBase("Uracile", "no");
 				opMirror[i] = generaBase("Adenina", "no");
+				opRna[i] = generaBase("Adenina", "no");
 				break;
 		}
-		//ruoto le basi..
+		//rendo invisibile la sfera e il cilindro dell' RNA
+		opRna[i].children[0].material.opacity = 0;
+		opRna[i].children[0].children[0].material.opacity = 0;
+		//posiziono le basi..
 		opNormal[i].rotation.y = Math.PI/16;
 		opNormal[i].position.set(0,1.2,0);
 		opMirror[i].rotation.y = Math.PI/16;
 		opMirror[i].position.set(0,1.2,0);
+		opRna[i].position.set(0,1.2,0);
 		//..e le aggiungo alle rispettive eliche
 		opNormal[i-1].add(opNormal[i]);
 		opMirror[i-1].add(opMirror[i]);
+		opRna[i-1].add(opRna[i]);
 		
 	}
 	
-	//unisco la struttura
+	//unisco la struttura del DNA
 	var dna = new THREE.Object3D();
 	dna.add(opNormal[0]);
 	dna.add(opMirror[0]);
 	dna.position.y = -50;
+	dna.position.x = 10;
 	scene.add(dna);
-	  
-	/*	FINE CATENA DI DNA		*/
+	
+	//unisco la struttura dell' RNA
+	var rna = new THREE.Object3D();
+	rna.add(opRna[0]);
+	rna.position.y = -50;
+	scene.add(rna);
+	
+	//_________________________________________________________________________________________________________________
+	
+	//CREAZIONE POLIMERASI
+	var polimerasiGeometry = new THREE.SphereGeometry(7,24,24);
+	var polimerasi = new createMesh(polimerasiGeometry,"violet.jpg");
+	polimerasi.position.set(-10,-60,0);
+	polimerasi.material.opacity = 0;
+	polimerasi.material.transparent = true;
+	scene.add(polimerasi);
 
     // position and point the camera to the center of the scene
     camera.position.set(-60,60,60);
@@ -190,39 +222,87 @@
 	
 	//define animations
     var animator = null;
-    var duration = 16; // sec
+    var duration = 100; // sec
     var loopAnimation = false;
 	var i;
+	var j;
 
     function initAnimator() {
       animator = new KF.KeyFrameAnimator();
 	  for( i=69 ; i>0 ; i-- ){
-      animator.init({ 
-        interps:
-          [
-            { 
-              keys:[0, .5, 1], 
-              values:[
-                { y : Math.PI/16 },
-				{ y : Math.PI/32 },
-                { y : 0 },
-              ],
-              target: opNormal[i].rotation
-            },
-            { 
-              keys:[0, .5, 1], 
-              values:[
-                { y : Math.PI/16 },
-				{ y : Math.PI/32 },
-                { y : 0 },
-              ],
-              target: opMirror[i].rotation
-            },
-          ],
-        loop: loopAnimation,
-        duration: duration * 1000,
-        easing: TWEEN.Easing.Bounce.Out
-      });
+		for( j=49 ; j>20 ; j-- ){
+			animator.init({ 
+				interps:
+				[
+					{ 
+					keys:[0, .08, .16], 
+					values:[
+						{ y : Math.PI/16 },
+						{ y : Math.PI/32 },
+						{ y : 0 },
+					],
+					target: opNormal[i].rotation
+					},
+					{ 
+					keys:[0, .08, .16], 
+					values:[
+						{ y : Math.PI/16 },
+						{ y : Math.PI/32 },
+						{ y : 0 },
+					],
+					target: opMirror[i].rotation
+					},
+					//APERTURA DNA (i/70) - Math.sin((i*Math.PI)/70)
+					{ 
+					keys:[.16, .32], 
+					values:[
+						{ x : 0 },
+						{ x : ((i-35)/70) },
+					],
+					target: opNormal[i].position
+					},
+					//APPARIZIONE DELL' ENZIMA POLIMERASI
+					{ 
+					keys:[.32, .66, 1], 
+					values:[
+						{ opacity : 0 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: polimerasi.material
+					},
+					{ 
+					keys:[.32, 1], 
+					values:[
+						{ y : -60 },
+						{ y : 40 },
+					],
+					target: polimerasi.position
+					},
+					//APPARIZIONE DELL' RNA
+					{ 
+					keys:[.32, .66,  1], 
+					values:[
+						{ opacity : 0 },
+						{ opacity : .25 },
+						{ opacity : 1 },
+					],
+					target: opRna[j].children[0].material
+					},
+					{ 
+					keys:[.32, 1],
+					values:[
+						{ opacity : 0 },
+						{ opacity : 1 },
+					],
+					target: opRna[j].children[0].children[0].material
+					},
+				],
+				loop: loopAnimation,
+				duration: duration * 1000,
+				easing: TWEEN.Easing.Bounce.Out
+			});
+		}
 	  }
     }
 
@@ -231,6 +311,14 @@
 	// call the render function
     render();
     animator.start();
+	
+	function createMesh(geom, imageFile) {
+		var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
+		var mat = new THREE.MeshPhongMaterial();
+		mat.map = texture;
+		var mesh = new THREE.Mesh(geom, mat);
+		return mesh;
+    }
 
     function render() {
       stats.update();
