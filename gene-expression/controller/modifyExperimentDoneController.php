@@ -44,6 +44,8 @@
 							$i = 9;
 							while($i<=29) {
 								$analysis = new Analysis();
+								$ex[$i] = str_replace("Fold-Change(","", $ex[$i]);
+								$ex[$i] = str_replace(") (Description)","", $ex[$i]);
 								$analysis->name = $ex[$i];
 								$analysis->date = date("Y-m-d", time());
 								$analysis->id_experiment = $_GET['idexperiment'];
