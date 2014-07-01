@@ -167,7 +167,6 @@
 	dna.add(opNormal[0]);
 	dna.add(opMirror[0]);
 	dna.position.y = -50;
-	dna.position.x = 10;
 	scene.add(dna);
 	
 	//unisco la struttura dell' RNA
@@ -177,14 +176,6 @@
 	scene.add(rna);
 	
 	//_________________________________________________________________________________________________________________
-	
-	//CREAZIONE POLIMERASI
-	var polimerasiGeometry = new THREE.SphereGeometry(7,24,24);
-	var polimerasi = new createMesh(polimerasiGeometry,"violet.jpg");
-	polimerasi.position.set(-10,-60,0);
-	polimerasi.material.opacity = 0;
-	polimerasi.material.transparent = true;
-	scene.add(polimerasi);
 
     // position and point the camera to the center of the scene
     camera.position.set(-60,60,60);
@@ -222,87 +213,56 @@
 	
 	//define animations
     var animator = null;
-    var duration = 100; // sec
+    var duration = 24; // sec
     var loopAnimation = false;
 	var i;
-	var j;
 
     function initAnimator() {
       animator = new KF.KeyFrameAnimator();
 	  for( i=69 ; i>0 ; i-- ){
-		for( j=49 ; j>20 ; j-- ){
-			animator.init({ 
-				interps:
-				[
-					{ 
-					keys:[0, .08, .16], 
-					values:[
-						{ y : Math.PI/16 },
-						{ y : Math.PI/32 },
-						{ y : 0 },
-					],
-					target: opNormal[i].rotation
-					},
-					{ 
-					keys:[0, .08, .16], 
-					values:[
-						{ y : Math.PI/16 },
-						{ y : Math.PI/32 },
-						{ y : 0 },
-					],
-					target: opMirror[i].rotation
-					},
-					//APERTURA DNA (i/70) - Math.sin((i*Math.PI)/70)
-					{ 
-					keys:[.16, .32], 
-					values:[
-						{ x : 0 },
-						{ x : ((i-35)/70) },
-					],
-					target: opNormal[i].position
-					},
-					//APPARIZIONE DELL' ENZIMA POLIMERASI
-					{ 
-					keys:[.32, .66, 1], 
-					values:[
-						{ opacity : 0 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: polimerasi.material
-					},
-					{ 
-					keys:[.32, 1], 
-					values:[
-						{ y : -60 },
-						{ y : 40 },
-					],
-					target: polimerasi.position
-					},
-					//APPARIZIONE DELL' RNA
-					{ 
-					keys:[.32, .66,  1], 
-					values:[
-						{ opacity : 0 },
-						{ opacity : .25 },
-						{ opacity : 1 },
-					],
-					target: opRna[j].children[0].material
-					},
-					{ 
-					keys:[.32, 1],
-					values:[
-						{ opacity : 0 },
-						{ opacity : 1 },
-					],
-					target: opRna[j].children[0].children[0].material
-					},
-				],
-				loop: loopAnimation,
-				duration: duration * 1000,
-				easing: TWEEN.Easing.Bounce.Out
-			});
-		}
+      animator.init({ 
+        interps:
+          [
+            { 
+              keys:[0, .25, .5], 
+              values:[
+                { y : Math.PI/16 },
+				{ y : Math.PI/32 },
+                { y : 0 },
+              ],
+              target: opNormal[i].rotation
+            },
+            { 
+              keys:[0, .25, .5], 
+              values:[
+                { y : Math.PI/16 },
+				{ y : Math.PI/32 },
+                { y : 0 },
+              ],
+              target: opMirror[i].rotation
+            },
+			//APPARIZIONE DELL' RNA
+			{ 
+              keys:[.5, 1], 
+              values:[
+                { opacity : 0 },
+                { opacity : 1 },
+              ],
+              target: opRna[i].children[0].material
+            },
+			{ 
+              keys:[.5, 1],
+              values:[
+                { opacity : 0 },
+                { opacity : 1 },
+              ],
+              target: opRna[i].children[0].children[0].material
+            },
+          ],
+        loop: loopAnimation,
+        duration: duration * 1000,
+        easing: TWEEN.Easing.Bounce.Out
+      });
 	  }
     }
 
@@ -311,14 +271,6 @@
 	// call the render function
     render();
     animator.start();
-	
-	function createMesh(geom, imageFile) {
-		var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
-		var mat = new THREE.MeshPhongMaterial();
-		mat.map = texture;
-		var mesh = new THREE.Mesh(geom, mat);
-		return mesh;
-    }
 
     function render() {
       stats.update();
