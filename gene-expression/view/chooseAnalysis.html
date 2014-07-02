@@ -1,0 +1,24 @@
+{STATE}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>what are the analysis you want to delete?</title>
+		
+	</head>
+	<body>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="profileUserController.php"><font size="3dp">profile</font></a></div>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		
+  				<h1>Select the analysis you wish to remove for the experiment "{NAME_EXPERIMENT}"</h1><br><br>
+		
+	
+		<form action="{ACTION}" method="post">
+			
+					{ANALYSIS}
+				
+			<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="delete" style=" height:39px; width:200px; border-radius: 8px">delete</button>
+		</form>
+		
+	</body>
+</html>

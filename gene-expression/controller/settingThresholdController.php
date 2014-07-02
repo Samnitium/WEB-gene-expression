@@ -21,7 +21,7 @@
 			} else {
 				$tlp->assign('MESSAGE_ERROR',"");				
 			}
-		 	$tlp->assign('ACTION',"showAnalysisList.php?idexperiment=".$exp[0]);
+		 	$tlp->assign('ACTION',"showAnalysisOfExperiment.php?idexperiment=".$exp[0]);
 	
 			$tlp->parse('STATE',"threshold");
 			Header("Content-type: text/html");
