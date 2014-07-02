@@ -2,15 +2,18 @@
 
 	
 	include('../template/cls_fast_template.php');
+	include('../logic/LogicExperiment');
 	
 	session_start();
 	if(isset($_SESSION['iduser'])) {
-		if (isset($_POST['experiment']) && $_POST['experiment']!="") {
-			$exp = explode(", ", $_POST['experiment']);
+		if (isset($_GET['idexperiment']) && isset($_POST['analysis'])) {
+			$le = new LogicExperiment();
+			$experiment = $le->retrieveExperimentById($_GET['idexperiment']);
+			$le->db->close();
 			$_SESSION['page_corrent'] = "settingThresholdController.php";
 			$tlp = new FastTemplate("../view");
 			$tlp->define(array('threshold' => "settingThreshold.html"));
-		    $tlp->assign('NAME_EXPERIMENT',$exp[1]);
+		    $tlp->assign('NAME_EXPERIMENT',$experiment->name);
 			if ($_SESSION['type']=='superuser') {
 				$tlp->assign('HOME',"superUserChoiceController.php");
 			} else $tlp->assign('HOME',"userChoiceController.php");
@@ -21,7 +24,7 @@
 			} else {
 				$tlp->assign('MESSAGE_ERROR',"");				
 			}
-		 	$tlp->assign('ACTION',"showAnalysisList.php?idexperiment=".$exp[0]);
+		 	$tlp->assign('ACTION',"showAnalysisList.php?idexperiment=".$experiment->id."&analysis=".$_POST['analysis']);
 	
 			$tlp->parse('STATE',"threshold");
 			Header("Content-type: text/html");
