@@ -3,22 +3,38 @@
 <html>
 	<head>
 		<title>what are the analysis you want to delete?</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
+		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
 		
 	</head>
+	<style>
+	  
+	</style>
 	<body>
 		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="profileUserController.php"><font size="3dp">profile</font></a></div>
-		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
-		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
-		
-  				<h1>Select the analysis you wish to remove for the experiment "{NAME_EXPERIMENT}"</h1><br><br>
+	<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+	<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+	<div align="center">
+	<nav class="navbar navbar-inverse" style=" background-color:#01DF74; width:900px; margin-top:0px;" >
+  			<div class="page-header" >
+  				<h1>Select the analysis you wish to remove for the experiment "{NAME_EXPERIMENT}"</h1>
+			</div>
+		</nav>
 		
 	
-		<form action="{ACTION}" method="post">
-			
+		<form action="{ACTION}" method="post" style="margin-top:50px;">
+			<div class="row">
 					{ANALYSIS}
-				
+			</div>
 			<br><button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="delete" style=" height:39px; width:200px; border-radius: 8px">delete</button>
 		</form>
 		
+	</div>
+	<div id ="footer" style="margin-top:90px;" align="center" >
+				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
+	</div>
 	</body>
 </html>
