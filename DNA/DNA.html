@@ -109,8 +109,8 @@
 	opRna = new Array();
 	opNormal[0] = generaBase("Adenina", "no");
 	opMirror[0] = generaBase("Timina", "mirror");
-	opRna[0] = generaBase("Uracile", "mirror");
-	opRna[0].position.x = -20;
+	opRna[0] = generaBase("Uracile", "no");
+	opRna[0].position.x = -11;
 	//rendo invisibile il primo elemento dell' RNA
 	opRna[0].children[0].material.opacity = 0;
 	opRna[0].children[0].children[0].material.opacity = 0;
@@ -179,10 +179,14 @@
 	//_________________________________________________________________________________________________________________
 	
 	//CREAZIONE POLIMERASI
+	/*
 	var polimerasiGeometry = new THREE.SphereGeometry(7,24,24);
-	var polimerasiMaterial = new THREE.MeshBasicMaterial({color: 0xff00ff});
-	var polimerasi = new createMesh(polimerasiGeometry,polimerasiMaterial);
-	polimerasi.position.set(-8,-60,0);
+	var polimerasi = new createMesh(polimerasiGeometry,"geo.jpg");
+	*/
+	var polimerasiGeometry = new THREE.TorusKnotGeometry( 3	, 1, 256, 32, 8, 3, 2 );
+	var polimerasiMaterial = new THREE.MeshPhongMaterial({color: 0x440044});
+	var polimerasi = new THREE.Mesh(polimerasiGeometry,polimerasiMaterial);
+	polimerasi.position.set(-13,-60,0);
 	polimerasi.material.opacity = 0;
 	polimerasi.material.transparent = true;
 	scene.add(polimerasi);
@@ -223,7 +227,7 @@
 	
 	//define animations
     var animator = null;
-    var duration = 100; // sec
+    var duration = 40; // sec
     var loopAnimation = false;
 	var i;
 	var j;
@@ -231,7 +235,7 @@
     function initAnimator() {
       animator = new KF.KeyFrameAnimator();
 	  for( i=69 ; i>0 ; i-- ){
-		for( j=49 ; j>20 ; j-- ){
+		for( j=49 ; j>19 ; j-- ){
 			animator.init({ 
 				interps:
 				[
@@ -256,15 +260,25 @@
 					},
 					//APERTURA DNA
 					{ 
-					keys:[.16, .32], 
+					keys:[.16, .24], 
 					values:[
 						{ x : 0 },
 						{ x : 0.5*((i-35)/70) },
 					],
 					target: opNormal[i].position
 					},
+					//ruoto le basi normali corrispondenti all' RNA
 					{ 
-					keys:[.16, .32], 
+					keys:[.16 + (0.08/30)*(j-20), .24 + (0.08/30)*(j-20)], 
+					values:[
+						{ y : 0 },
+						{ y : Math.PI },
+					],
+					target: opNormal[j].children[0].rotation
+					},
+					//________________________________________________
+					{ 
+					keys:[.16, .24], 
 					values:[
 						{ x : 0 },
 						{ x : 0.5*((i-35)/70) },
@@ -273,10 +287,9 @@
 					},
 					//APPARIZIONE DELL' ENZIMA POLIMERASI
 					{ 
-					keys:[.32, .40, .50, .60, .68], 
+					keys:[.24, .32, .60, .68], 
 					values:[
 						{ opacity : 0 },
-						{ opacity : 1 },
 						{ opacity : 1 },
 						{ opacity : 1 },
 						{ opacity : 0 },
@@ -284,7 +297,7 @@
 					target: polimerasi.material
 					},
 					{ 
-					keys:[.32, .68], 
+					keys:[.24, .68], 
 					values:[
 						{ y : -60 },
 						{ y : 40 },
@@ -293,16 +306,15 @@
 					},
 					//APPARIZIONE DELL' RNA
 					{ 
-					keys:[.32, .50,  .68], 
+					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)], 
 					values:[
 						{ opacity : 0 },
-						{ opacity : .25 },
 						{ opacity : 1 },
 					],
 					target: opRna[j].children[0].material
 					},
 					{ 
-					keys:[.32, .68],
+					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)], 
 					values:[
 						{ opacity : 0 },
 						{ opacity : 1 },
@@ -311,7 +323,7 @@
 					},
 					//CHIUSURA DNA
 					{ 
-					keys:[.68, .84], 
+					keys:[.68, .76], 
 					values:[
 						{ x : 0.5*((i-35)/70) },
 						{ x : 0 },
@@ -319,16 +331,24 @@
 					target: opNormal[i].position
 					},
 					{ 
-					keys:[.68, .84], 
+					keys:[.68, .76], 
 					values:[
 						{ x : 0.5*((i-35)/70) },
 						{ x : 0 },
 					],
 					target: opMirror[i].position
 					},
+					{ 
+					keys:[.68 + (0.04/30)*(j-20), .72 + (0.04/30)*(j-20)], 
+					values:[
+						{ y : Math.PI },
+						{ y : 0 },
+					],
+					target: opNormal[j].children[0].rotation
+					},
 					//DOPPIA ELICA
 					{ 
-					keys:[.84, .92, 1], 
+					keys:[.76, .88, 1], 
 					values:[
 						{ y : 0 },
 						{ y : Math.PI/32 },
@@ -337,7 +357,7 @@
 					target: opNormal[i].rotation
 					},
 					{ 
-					keys:[.84, .92, 1],  
+					keys:[.76, .88, 1],   
 					values:[
 						{ y : 0 },
 						{ y : Math.PI/32 },
