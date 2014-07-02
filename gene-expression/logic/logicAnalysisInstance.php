@@ -33,6 +33,8 @@
 		}
 		
 		
+		
+		
 		function retrieveAnalysisInstanceByIdExperimentThreshold($idExperiment,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
@@ -82,6 +84,300 @@
 			return $list;
 			
 		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		
+		function retrieveAnalysisInstanceByIdExperiment_Up_All($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+
+		
+		function retrieveAnalysisInstanceByIdExperiment_Up_Up($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange>='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Up_Down($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Down_All($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		
+		function retrieveAnalysisInstanceByIdExperiment_Down_Up($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange>='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Down_Down($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_All_Down($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_All_Up($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange>='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_All_Range($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Up_Range($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Down_Range($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Range_All($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Range_Up($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange>='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Range_Down($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange<='".$foldchange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_Range_Range($idExperiment,$pvalue,$foldchange) {
+			$this->db->execute("SELECT *
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange<='".$foldchange."' and foldChange>='-".$foldChange."'");
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
+		
+		
 		
 }
 

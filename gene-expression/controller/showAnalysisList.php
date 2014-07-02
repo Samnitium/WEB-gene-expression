@@ -8,14 +8,15 @@
 		
 	session_start();
 	if(isset($_SESSION['iduser'])) {
-		if (isset($_POST['p_value']) && isset($_POST['fold_change']) && isset($_GET['idexperiment'])) {
+		if (isset($_POST['numberPvalue']) && isset($_POST['numberFoldChange'])) {
 			
-			if($_POST['p_value']=="" || $_POST['fold_change']=="") {
+			
+			/*if($_POST['p_value']=="" || $_POST['fold_change']=="") {
 				$_SESSION['error'] = "you must enter a threshold in both fields";	
 				header("Location: settingThresholdController.php");
-			}
-			$pvalue = $_POST['p_value'];
-			$foldchange = $_POST['fold_change'];
+			}*/
+			$pvalue = $_POST['numberPvalue'];
+			$foldchange = $_POST['numberFoldChange'];
 			$_SESSION['page_corrent'] = "showAnalysisList.php";
 			$le = new LogicExperiment();
 			$experiment = $le->retrieveExperimentById($_GET['idexperiment']);
@@ -28,7 +29,39 @@
 					$tlp->assign('HOME',"superUserChoiceController.php");
 				} else $tlp->assign('HOME',"userChoiceController.php");
 				$lai = new LogicAnalysisInstance();
-				$analysisList = $lai->retrieveAnalysisInstanceByIdExperimentThreshold($_GET['idexperiment'],$pvalue,$foldchange); 
+				if ($pvalue=="" && $foldchange=="") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All($_GET['idexperiment'],$pvalue,$foldchange);					
+				} else if ($_POST['thresholdPvalue']=='up' && $foldchange=="") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Up_All($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='down' && $foldchange=="") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Down_All($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='range' && $foldchange=="") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Range_All($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($pvalue=="" && $_POST['thresholdFoldChange']=="up") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Up($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($pvalue=="" && $_POST['thresholdFoldChange']=="down") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Down($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($pvalue=="" && $_POST['thresholdFoldChange']=="range") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Range($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='up' && $_POST['thresholdFoldChange']=='up') {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Up_Up($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='up' && $_POST['thresholdFoldChange']=='down') {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Up_Down($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='up' && $_POST['thresholdFoldChange']=='range') {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Up_Range($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='down' && $_POST['thresholdFoldChange']=="up") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Down_Up($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='down' && $_POST['thresholdFoldChange']=="range") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Down_Range($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='down' && $_POST['thresholdFoldChange']=="down") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Down_Down($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='range' && $_POST['thresholdFoldChange']=="range") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Range_Range($_GET['idexperiment'],$pvalue,$foldchange);
+				} else if ($_POST['thresholdPvalue']=='range' && $_POST['thresholdFoldChange']=="up") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Range_Up($_GET['idexperiment'],$pvalue,$foldchange);
+				}  else if ($_POST['thresholdPvalue']=='range' && $_POST['thresholdFoldChange']=="down") {
+					$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_Range_Down($_GET['idexperiment'],$pvalue,$foldchange);
+				} 
 				if (isset($analysisList) && count($analysisList)!=0) {
 					foreach ($analysisList as $an) {	
 						$tlp -> assign(array('GENE_SYMBOL'=>"<a href='showGene.php?gene_symbol=".$an['geneSymbol']."'>".$an['geneSymbol']."</a>", 'P_VALUE'=>$an['p_value'], 'FOLD_CHANGE'=>$an['foldChange'], 'NAME'=>$an['name'], 'DATE'=>$an['date']));
