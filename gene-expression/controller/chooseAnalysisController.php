@@ -8,14 +8,36 @@
 	
 	session_start();
 	$tlp = new FastTemplate("../view");
-	if (isset($_SESSION['iduser']) && $_SESSION['type']=="superuser") {
-		if (isset($_GET['id'])) {
+	if (isset($_SESSION['iduser'])) {
+		if (isset($_GET['operation']) && ((isset($_GET['id']) || isset($_POST['experiment'])))) {
 			$_SESSION['page_corrent'] = 'chooseAnalysisController.php';
 			$tlp->define( array('chooseAnalysis'=>"chooseAnalysis.html", 'row'=>"rowAnalysisToDelete.html"));
-			$tlp->assign('HOME',"superUserChoiceController.php");
-			$tlp->assign('ACTION',"deleteAnalysisController.php");
+			if ($_SESSION['type']=="superuser") {
+				$tlp->assign('HOME',"superUserChoiceController.php");
+			} else {
+				$tlp->assign('HOME',"userChoiceController.php");
+			}
+			
+			if ($_GET['operation']=='delete') {
+				$tlp->assign('OPERATION',"delete");
+			} else if ($_GET['operation']=='view') {
+				$tlp->assign('OPERATION',"view");
+			}
 			$le = new LogicExperiment();
-			$experiment = $le->retrieveExperimentById($_GET['id']);
+			if (isset($_GET['id']) &&  $_SESSION['type']=="superuser") {
+				$tlp->assign('ACTION',"deleteAnalysisController.php");
+				$experiment = $le->retrieveExperimentById($_GET['id']);
+			} else if (isset($_POST['experiment'])) {
+				if (trim($_POST['experiment'])!="") {
+					$ex = explode(", ", $_POST['experiment']);
+					$experiment = $le->retrieveExperimentById($ex[0]);
+					$tlp->assign('ACTION',"settingThresholdController.php?idexperiment=".$ex[0]);
+				} else {
+					header("Location: userChoiceController.php");
+				}
+			} else {
+				header("Location: userChoiceController.php");
+			}  
 			$le->db->close();
 			if ($experiment!=NULL) {
 				$tlp->assign('NAME_EXPERIMENT',$experiment->name);
@@ -33,7 +55,7 @@
 				}
 		
 			} else {
-				header("Location: experimentsToDeleteController.php");
+				header("Location: userChoiceController.php");
 			}
 		
 	
@@ -43,7 +65,7 @@
 			Header("Content-type: text/html");
 			$tlp->FastPrint();
 		} else {
-				header("Location: experimentsToDeleteController.php");
+				header("Location: userChoiceController.php");
 		}
 	}
 	else {

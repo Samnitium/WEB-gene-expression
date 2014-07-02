@@ -15,7 +15,7 @@
 		if (isset($experiments) && count($experiments)!=0) {
 			foreach ($experiments as $exp) {	
 					$tlp -> assign(array('NAME'=>$exp['name'], 'DATE'=> $exp['date'], 'LINK'=>"<a href='deleteExperimentController.php?id=".$exp['id']."'>Delete</a>", 
-										 'LINK_ANALYSIS'=>"<a href='chooseAnalysisController.php?id=".$exp['id']."'>Delete analysis</a>"));
+										 'LINK_ANALYSIS'=>"<a href='chooseAnalysisController.php?id=".$exp['id']."&operation=delete'>Delete analysis</a>"));
 					$tlp->parse('EXPERIMENT',".experiment");
 			}
 		} else {
