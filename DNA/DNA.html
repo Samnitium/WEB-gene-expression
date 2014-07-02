@@ -167,7 +167,7 @@
 	dna.add(opNormal[0]);
 	dna.add(opMirror[0]);
 	dna.position.y = -50;
-	dna.position.x = 10;
+	dna.position.x = 8;
 	scene.add(dna);
 	
 	//unisco la struttura dell' RNA
@@ -180,8 +180,9 @@
 	
 	//CREAZIONE POLIMERASI
 	var polimerasiGeometry = new THREE.SphereGeometry(7,24,24);
-	var polimerasi = new createMesh(polimerasiGeometry,"violet.jpg");
-	polimerasi.position.set(-10,-60,0);
+	var polimerasiMaterial = new THREE.MeshBasicMaterial({color: 0xff00ff});
+	var polimerasi = new createMesh(polimerasiGeometry,polimerasiMaterial);
+	polimerasi.position.set(-8,-60,0);
 	polimerasi.material.opacity = 0;
 	polimerasi.material.transparent = true;
 	scene.add(polimerasi);
@@ -234,6 +235,7 @@
 			animator.init({ 
 				interps:
 				[
+					//SROTOLAMENTO DNA
 					{ 
 					keys:[0, .08, .16], 
 					values:[
@@ -252,27 +254,37 @@
 					],
 					target: opMirror[i].rotation
 					},
-					//APERTURA DNA (i/70) - Math.sin((i*Math.PI)/70)
+					//APERTURA DNA
 					{ 
 					keys:[.16, .32], 
 					values:[
 						{ x : 0 },
-						{ x : ((i-35)/70) },
+						{ x : 0.5*((i-35)/70) },
 					],
 					target: opNormal[i].position
 					},
+					{ 
+					keys:[.16, .32], 
+					values:[
+						{ x : 0 },
+						{ x : 0.5*((i-35)/70) },
+					],
+					target: opMirror[i].position
+					},
 					//APPARIZIONE DELL' ENZIMA POLIMERASI
 					{ 
-					keys:[.32, .66, 1], 
+					keys:[.32, .40, .50, .60, .68], 
 					values:[
 						{ opacity : 0 },
+						{ opacity : 1 },
+						{ opacity : 1 },
 						{ opacity : 1 },
 						{ opacity : 0 },
 					],
 					target: polimerasi.material
 					},
 					{ 
-					keys:[.32, 1], 
+					keys:[.32, .68], 
 					values:[
 						{ y : -60 },
 						{ y : 40 },
@@ -281,7 +293,7 @@
 					},
 					//APPARIZIONE DELL' RNA
 					{ 
-					keys:[.32, .66,  1], 
+					keys:[.32, .50,  .68], 
 					values:[
 						{ opacity : 0 },
 						{ opacity : .25 },
@@ -290,17 +302,53 @@
 					target: opRna[j].children[0].material
 					},
 					{ 
-					keys:[.32, 1],
+					keys:[.32, .68],
 					values:[
 						{ opacity : 0 },
 						{ opacity : 1 },
 					],
 					target: opRna[j].children[0].children[0].material
 					},
+					//CHIUSURA DNA
+					{ 
+					keys:[.68, .84], 
+					values:[
+						{ x : 0.5*((i-35)/70) },
+						{ x : 0 },
+					],
+					target: opNormal[i].position
+					},
+					{ 
+					keys:[.68, .84], 
+					values:[
+						{ x : 0.5*((i-35)/70) },
+						{ x : 0 },
+					],
+					target: opMirror[i].position
+					},
+					//DOPPIA ELICA
+					{ 
+					keys:[.84, .92, 1], 
+					values:[
+						{ y : 0 },
+						{ y : Math.PI/32 },
+						{ y : Math.PI/16 },
+					],
+					target: opNormal[i].rotation
+					},
+					{ 
+					keys:[.84, .92, 1],  
+					values:[
+						{ y : 0 },
+						{ y : Math.PI/32 },
+						{ y : Math.PI/16 },
+					],
+					target: opMirror[i].rotation
+					},
 				],
 				loop: loopAnimation,
 				duration: duration * 1000,
-				easing: TWEEN.Easing.Bounce.Out
+				//easing: TWEEN.Easing.Bounce.Out
 			});
 		}
 	  }
