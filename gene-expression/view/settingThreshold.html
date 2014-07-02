@@ -15,17 +15,31 @@
 		<div style="text-align:right; margin-right:20px; "> <a href="profileUserController.php"><font size="3dp">profile</font></a></div>
 		<div style="text-align:right; margin-right:20px; "> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
 		<div style="text-align:right; margin-right:20px; "> <a href="{HOME}"><font size="3dp">home</font></a></div>
-  				<h1>Set p_value and fold change threshold for the experiment {NAME_EXPERIMENT} in one of these three types of filters</h1><br><br>
-			
+  				
+  		<div align="center">
+	<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px; margin-top:0px;" >
+  			<div class="page-header">
+  				<h1>Set thresholds for the experiment {NAME_EXPERIMENT} <br><small> you can select one of these three types of p-value and fold-change filters</small></h1>
+			</div>
+		</nav>
+  				
   			
 			{MESSAGE_ERROR} <br><br>
-			<p align="center">
+			
+  			
+			
 			<form action="{ACTION}" method="post">
-				<fieldset>
-					<b>P-value:</b><br>
-					<label>
+				<div class="row">
+ 				</fieldset>
+ 				<div class="panel panel-success" style="width: 330px; margin-top:-30px;">
+  					<div class="panel-heading">
+    					<h3 class="panel-title">Choose the p-value regulation type: </h3>
+  					</div>
+					<div class="input-group">
+						<label>
 						 <input name="thresholdPvalue" type="radio" value="up" checked="checked">up </input>	 
 					</label><br>
+					</div>
 					<label>
 						 <input name="thresholdPvalue" type="radio" value="down" >down</input>	 
 					</label><br>
@@ -33,11 +47,15 @@
 						 <input name="thresholdPvalue" type="radio" value="range" >range</input>	 
 					</label><br>
 					<label>
-						 <input name="numberPvalue" type="number" placeholder="any" step="any" />	 
+						<input type="number" class="form-control" placeholder="any" name="numberPvalue" step="any" style=" width: 100px;border-radius: 8px;">
 					</label>
+				</div>
 				</fieldset><br><br>
 				<fieldset>
-					<b>Fold change:</b><br>
+					<div class="panel panel-success" style="width: 330px; margin-top:-40px;">
+  						<div class="panel-heading">
+    						<h3 class="panel-title">Choose the Fold-change regulation type: </h3>
+  						</div>
 					<label>
 						 <input name="thresholdFoldChange" type="radio" value="up" checked="checked">up </input>	 
 					</label><br>
@@ -48,12 +66,16 @@
 						 <input name="thresholdFoldChange" type="radio" value="range" >range</input>	 
 					</label><br>
 					<label>
-						 <input name="numberFoldChange" type="number" placeholder="any" step="any"/>	 
+						<input type="number" class="form-control" placeholder="any" name="numberFoldChange" step="any" style=" width: 100px;border-radius: 8px;"> 
 					</label>
+					
 				</fieldset><br><br>
-				<label><input type="submit" name="submit" value="send" /></label>
+				<button class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="send" style=" height:39px; width:200px; border-radius: 8px; margin-top:-40px ">Send</button>
+				
 			</form><br><br>
-		</p>			
+			</div>
+		</div>
+		</div>		
 	
 	</body>
 </html>
