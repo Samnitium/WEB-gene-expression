@@ -16,11 +16,14 @@
 		$experiments = $eLogic->retrieveAll();
 		if (isset($experiments) && count($experiments)!=0) {
 			foreach ($experiments as $exp) {
-				$tlp -> assign(array('ID'=>$exp['id'], 'NAME'=>$exp['name'], 'DATE'=> $exp['date']));
+				$tlp -> assign(array('ID'=>$exp['id'].",", 'NAME'=>$exp['name'].",", 'DATE'=> $exp['date']));
 				$tlp->parse('EXPERIMENT',".experiment");
 			}
 			
-		} 
+		} else {
+			$tlp -> assign(array('ID'=>"", 'NAME'=>"", 'DATE'=>""));
+			$tlp->parse('EXPERIMENT',".experiment");
+		}
 			
 		$eLogic->db->close();
 		$tlp->parse('STATE',"experimentList");

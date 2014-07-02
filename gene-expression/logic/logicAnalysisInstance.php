@@ -85,10 +85,10 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$ida,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis");
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$ida."'");
 			$result = $this->db->fetchrowset();
 			if ($result) {
 				if (count($result)!=0) {

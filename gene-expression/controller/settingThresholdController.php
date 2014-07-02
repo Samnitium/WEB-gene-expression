@@ -2,7 +2,7 @@
 
 	
 	include('../template/cls_fast_template.php');
-	include('../logic/LogicExperiment');
+	include('../logic/LogicExperiment.php');
 	
 	session_start();
 	if(isset($_SESSION['iduser'])) {
@@ -24,7 +24,14 @@
 			} else {
 				$tlp->assign('MESSAGE_ERROR',"");				
 			}
-		 	$tlp->assign('ACTION',"showAnalysisList.php?idexperiment=".$experiment->id."&analysis=".$_POST['analysis']);
+			/*$array= array();
+			foreach($_POST['analysis'] as $el) {
+				$el = str_replace(", ","-", $el);
+				array_push($array,$el);	
+			}*/
+			$serAnalysis =  serialize($_POST['analysis']);
+			$_SESSION['analysis'] = $serAnalysis;
+		 	$tlp->assign('ACTION',"showAnalysisList.php?idexperiment=".$experiment->id);
 	
 			$tlp->parse('STATE',"threshold");
 			Header("Content-type: text/html");
