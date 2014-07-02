@@ -22,6 +22,8 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
   <script src="assets/libs/TrackballControls.js"></script>
+  <script type="text/javascript" src="assets/fonts/helvetiker_regular.typeface.js"></script> 
+  <script type="text/javascript" src="assets/fonts/helvetiker_bold.typeface.js"></script> 
   <script src="../DNA/assets/libs/TrackballControls.js"></script>
   <script src="../DNA/assets/libs/tween.min.js"></script>
   <script src="../DNA/assets/libs/keyframe.js"></script>
@@ -46,7 +48,7 @@
 
     renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
     renderer.setSize(window.innerWidth, window.innerHeight);
-
+	
 	//_________________________________________________________________________________________________________________
 	
 	/*
@@ -176,8 +178,6 @@
 	rna.position.y = -50;
 	scene.add(rna);
 	
-	//_________________________________________________________________________________________________________________
-	
 	//CREAZIONE POLIMERASI
 	/*
 	var polimerasiGeometry = new THREE.SphereGeometry(7,24,24);
@@ -190,6 +190,40 @@
 	polimerasi.material.opacity = 0;
 	polimerasi.material.transparent = true;
 	scene.add(polimerasi);
+	
+	//_____________________________________CREAZIONE TESTO_____________________________________
+	
+	var options = {
+            size: 1,
+            height: 0,
+            weight: "normal",
+            font: "helvetiker",
+            curveSegments: 2,
+            steps: 3
+          };
+	
+	text1 = createMesh(new THREE.TextGeometry("Credits:", options));
+	text1.rotation.y = -Math.PI/4;
+	text1.position.set(-45,50,50);
+    scene.add(text1);
+	
+	text2 = createMesh(new THREE.TextGeometry("- Chiara Bartalotta", options));
+	text2.position.y = -3;
+	text1.add(text2);
+	text3 = createMesh(new THREE.TextGeometry("- Dario Santilli", options));
+	text3.position.y = -2;
+	text2.add(text3);
+	text4 = createMesh(new THREE.TextGeometry("- Davide Bernardini", options));
+	text4.position.y = -2;
+	text3.add(text4);
+	
+	function createMesh(geom) {
+        var meshMaterial = new THREE.MeshPhongMaterial({specular: 0xffffff, color: 0xffffff, shininess: 100, metal: true});
+        var plane = THREE.SceneUtils.createMultiMaterialObject(geom, [meshMaterial]);
+        return plane;
+		}
+	
+	//__________________________________FINE CREAZIONE TESTO___________________________________
 
     // position and point the camera to the center of the scene
     camera.position.set(-60,60,60);
