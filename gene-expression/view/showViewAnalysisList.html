@@ -21,11 +21,26 @@
 		</nav>
 		<div class="panel panel-default">
   			<div class="panel-heading"> {NAME_EXPERIMENT} </div>
- 				 <table class="table">
+ 				 <table class="table" border="1">
+ 				 <tr><td></td>{ROW_NAME_ANALYSIS}</tr>
+ 				 <tr><th>Gene</th>{ROW_NAME_PVALUE_FOLDCHANGE}</tr>
+ 				 {ROW}
+ 				 	<!--<tr>{NAME_ANALYSIS_ROW}</tr>
+ 				 	<tr>{PVALUE_FOLDCHANGE}</tr>
    					<tr><th>Gene symbol</th><th>P value</th><th>Fold change</th><th>Name</th><th>Date</th></tr>
-						{ROW}
+					<tr>{ROW}</tr>-->
   				</table>
 		</div>
+		<span>
+			<p align="left">
+			{HREF_PREVIOUS}
+			</p>
+			<p align="right">
+			{HREF_FOLLOWING}
+			</p>
+		</span>
+		
+	
 		</div>
 		<div id ="footer" style="margin-top:10px;" align="center" >
 				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">

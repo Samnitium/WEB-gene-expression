@@ -85,11 +85,29 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$ida,$pvalue,$foldchange) {
-			$this->db->execute("SELECT *
+		function retrieveAllGeneByIdExperiment($idExperiment) {
+			$this->db->execute("SELECT geneSymbol
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$ida."'");
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis
+								GROUP BY geneSymbol");
 			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+		}
+		
+		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
+			$this->db->execute("SELECT p_value, foldChange
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -104,11 +122,11 @@
 		}
 		
 		
-		function retrieveAnalysisInstanceByIdExperiment_Up_All($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Up_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -123,11 +141,11 @@
 		}
 
 		
-		function retrieveAnalysisInstanceByIdExperiment_Up_Up($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Up_Up($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange>='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange>='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -141,11 +159,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Up_Down($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Up_Down($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -159,11 +177,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Down_All($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Down_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -178,11 +196,11 @@
 		}
 		
 		
-		function retrieveAnalysisInstanceByIdExperiment_Down_Up($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Down_Up($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange>='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange>='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -196,11 +214,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Down_Down($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Down_Down($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -214,11 +232,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_All_Down($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_All_Down($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -232,11 +250,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_All_Up($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_All_Up($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange>='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange>='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -250,11 +268,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_All_Range($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_All_Range($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -268,11 +286,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Up_Range($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Up_Range($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value>='".$pvalue."' and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -286,11 +304,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Down_Range($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Down_Range($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange>='-".$foldchange."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -304,11 +322,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Range_All($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Range_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -322,11 +340,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Range_Up($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Range_Up($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange>='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange>='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -340,11 +358,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Range_Down($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Range_Down($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange<='".$foldchange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
@@ -358,11 +376,11 @@
 			
 		}
 		
-		function retrieveAnalysisInstanceByIdExperiment_Range_Range($idExperiment,$pvalue,$foldchange) {
+		function retrieveAnalysisInstanceByIdExperiment_Range_Range($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange<='".$foldchange."' and foldChange>='-".$foldChange."'");
-			$result = $this->db->fetchrowset();
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and p_value>='-".$pvalue."' and foldChange<='".$foldchange."' and foldChange>='-".$foldChange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {
 				
