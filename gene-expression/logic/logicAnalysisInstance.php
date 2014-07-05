@@ -103,6 +103,25 @@
 			}
 		}
 		
+		function retrieveAllGeneByIdExperimentOrderAnalysis($idExperiment,$order, $idanalysis) {
+			$this->db->execute("SELECT geneSymbol
+								FROM analysis, analysis_instance
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$idanalysis."'
+								GROUP BY geneSymbol
+								ORDER BY ".$order);
+			$result = $this->db->fetchrowset();
+			if ($result) {
+				if (count($result)!=0) {
+				
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+		}
+		
 		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT p_value, foldChange
 								FROM analysis, analysis_instance

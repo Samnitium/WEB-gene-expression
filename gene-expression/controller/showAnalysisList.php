@@ -42,7 +42,11 @@
 				} else $tlp->assign('HOME',"userChoiceController.php");
 				if (count($serAnalysis)!=0) {
 					$lai = new LogicAnalysisInstance();
-					$listGene =  $lai->retrieveAllGeneByIdExperiment($experiment->id);
+					if (isset($_GET['order']) && isset($_GET['idanalysis']) && $_GET['order']!="" && $_GET['idanalysis']!="") {
+						$listGene =  $lai->retrieveAllGeneByIdExperimentOrderAnalysis($experiment->id,$_GET['order'], $_GET['idanalysis']);
+					} else {
+						$listGene =  $lai->retrieveAllGeneByIdExperiment($experiment->id);
+					}
 					if ($listGene!=NULL) {
 						if (isset($_GET['number']) && $_GET['number']!="") {
 							$i = $_GET['number'];
@@ -56,7 +60,7 @@
 							$gene = $listGene[$i];
 							$rowInstance = "";
 							if ($gene['geneSymbol']!="") {
-								$rowInstance = $rowInstance."<td><a href='showGene.php?gene_symbol=".$gene['geneSymbol']."'>".$gene['geneSymbol']."</a></td>";
+								$rowInstance = $rowInstance."<td><a href='showGene.php?gene_symbol=".$gene['geneSymbol']."' target='_blank' >".$gene['geneSymbol']."</a></td>";
 							} else {
 								$rowInstance = $rowInstance."<td>NA</td>";
 							}
@@ -65,6 +69,9 @@
 								if($stamp_analysis) {
 									$tlp->assign('NAME_ANALYSIS',$ex[1]);
 									$tlp->parse('ROW_NAME_ANALYSIS','.nameAnalysis');
+									$link_pvalue = "showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=p_value&idanalysis=".$ex[0];
+									$link_foldchange = "showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=foldChange&idanalysis=".$ex[0];
+									$tlp->assign(array('LINK_PVALUE'=>$link_pvalue, 'LINK_FOLDCHANGE'=>$link_foldchange));
 									$tlp->parse('ROW_NAME_PVALUE_FOLDCHANGE', '.namePvalueFoldChange');
 								}
 								if ($pvalue=="" && $foldchange=="") {
@@ -118,12 +125,22 @@
 							
 						}
 						if ($i<count($listGene)) {
-							$tlp->assign('HREF_FOLLOWING',"<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&number=".$i."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."'>Following</a>");
+							if (isset($_GET['order']) && isset($_GET['idanalysis']) && $_GET['order']!="" && $_GET['idanalysis']!="") {
+								$tlp->assign('HREF_FOLLOWING',"<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&number=".$i."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=".$_GET['order']."&idanalysis=".$_GET['idanalysis']."'>Following</a>");
+							
+							} else {
+								$tlp->assign('HREF_FOLLOWING',"<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&number=".$i."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."'>Following</a>");
+							}
 						} else {
 							$tlp->assign('HREF_FOLLOWING',"");
 						}
 						if($i>300) {
-							$tlp->assign('HREF_PREVIOUS',"<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&number=".$num."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."'>Previous</a>");
+							if (isset($_GET['order']) && isset($_GET['idanalysis']) && $_GET['order']!="" && $_GET['idanalysis']!="") {
+								$tlp->assign('HREF_PREVIOUS',"<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&number=".$num."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=".$_GET['order']."&idanalysis=".$_GET['idanalysis']."'>Previous</a>");
+							
+							} else {
+								$tlp->assign('HREF_PREVIOUS',"<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&number=".$num."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."'>Previous</a>");
+							}
 						} else {
 							$tlp->assign('HREF_PREVIOUS',"");
 						}
