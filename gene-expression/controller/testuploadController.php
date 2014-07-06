@@ -95,6 +95,7 @@
 		$analysisInstance = new AnalysisInstance();
 		$analysisInstance->id_analysis = $idana;
 		$analysisInstance->geneSymbol = $geneSymbol;
+		$analysisInstance->p_value_string = $pvalue;
 		$analysisInstance->p_value = doubleval($pvalue);
 		$analysisInstance->foldChange = doubleval($foldChange);
 		$lai->DTO->setValue('analysisInstance',$analysisInstance);

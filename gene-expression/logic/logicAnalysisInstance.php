@@ -79,6 +79,7 @@
 			$list = array();
 			$list['id_analysis'] = $this->analysisInstance->id_analysis;
 			$list['geneSymbol'] =  $this->analysisInstance->geneSymbol;
+			$list['p_value_string'] =  $this->analysisInstance->p_value_string;			
 			$list['p_value'] =  $this->analysisInstance->p_value;
 			$list['foldChange'] =  $this->analysisInstance->foldChange;
 			return $list;
@@ -123,7 +124,7 @@
 		}
 		
 		function retrieveAnalysisInstanceByIdExperiment_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
-			$this->db->execute("SELECT p_value, foldChange
+			$this->db->execute("SELECT p_value, foldChange, p_value_string
 								FROM analysis, analysis_instance
 								WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
 			$result = $this->db->fetchrow();

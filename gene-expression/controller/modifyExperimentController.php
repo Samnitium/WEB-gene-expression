@@ -8,7 +8,7 @@
 	$tlp = new FastTemplate("../view");
 	if (isset($_SESSION['iduser']) &&  $_SESSION['type']=="superuser") {
 		$_SESSION['page_corrent'] = 'modifyExperimentController.php';
-		if(isset($_POST['experiment']) || (isset($_SESSION['experiment']) && $_SESSION['experiment']!=NULL)) {
+		if((isset($_POST['experiment']) && trim($_POST['experiment'])!="") || (isset($_SESSION['experiment']) && $_SESSION['experiment']!=NULL && trim($_SESSION['experiment'])!="")) {
 			if (isset($_POST['experiment'])) {
 				 $_SESSION['experiment'] = $_POST['experiment']; 
 			} else {

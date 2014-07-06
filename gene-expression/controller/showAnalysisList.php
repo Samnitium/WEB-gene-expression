@@ -110,7 +110,7 @@
 								
 									
 								if ($analysisList!=NULL) {
-									$rowInstance = $rowInstance."<td>".$analysisList['p_value']."</td><td>".$analysisList['foldChange']."</td>";
+									$rowInstance = $rowInstance."<td>".$analysisList['p_value_string']."</td><td>".$analysisList['foldChange']."</td>";
 																
 								} else {
 									$rowInstance = $rowInstance."<td></td><td></td>";
