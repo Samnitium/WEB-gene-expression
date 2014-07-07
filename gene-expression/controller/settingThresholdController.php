@@ -2,7 +2,7 @@
 
 	
 	include('../template/cls_fast_template.php');
-	include('../logic/LogicExperiment.php');
+	include('../logic/logicExperiment.php');
 	
 	session_start();
 	if(isset($_SESSION['iduser'])) {

@@ -8,32 +8,54 @@
 		<link href="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/CSS/bootstrap.css" rel="stylesheet" media="screen"/>
 		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.js"></script>
 		<script src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/js/bootstrap.min.js"></script>
+		<script src='http://code.jquery.com/jquery-latest.min.js' type='text/javascript'></script>
 		<!--<script type="text/javascript">
 		
 		function myPopupGene() {
 			window.open("{POP-UP_GENE}", "myWindow","status = 1, height = 300, width = 300, resizable = 0" );
 		}
 		</script>-->
+		<script>
+		$(window).scroll(function(){
+			if($(window).scrollLeft()>50) {
+				$('.abs').css({
+					"margin-right": 20 - $(window).scrollLeft()
+				});
+			
+				$('.center').css({
+					"margin-left": $('.table').width()/6
+				});
+				$('.nameSearch').css({
+					"margin-left": + $('.table').width()/6
+				});
+			}
+		});
+		
+	</script>
+
+	
 	</head>
 	<body>
-		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="profileUserController.php"><font size="3dp">profile</font></a></div>
-		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
-		<div style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
+		<div class="abs" style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="profileUserController.php"><font size="3dp">profile</font></a></div>
+		<div class="abs" style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="logoutController.php"><font size="3dp">logout</font></a></div>
+		<div class="abs" style="text-align:right; margin-right:20px; margin-top:2px;"> <a href="{HOME}"><font size="3dp">home</font></a></div>
 		<div align="center">
-		<nav class="navbar navbar-inverse" style="background-color:#01DF74; width:900px;" >
+		<nav class="navbar navbar-inverse center" style="background-color:#01DF74; width:900px;" >
   			<div class="page-header">
   				<h1>Experiment analysis list</h1>
 			</div>
 		</nav>
-		<div class="panel panel-default">
-  			<div class="panel-heading"> {NAME_EXPERIMENT} </div>
-  				<p align="right">
+		
+  			<div class="panel-title nameSearch"> {NAME_EXPERIMENT} </div>
+  				<div class="panel-body">
+  				<p>
   					{MESSAGE_ERROR_SEARCH}
-  					<form action="{ACTION_SEARCH}" method="post">
+  					<form class="nameSearch" action="{ACTION_SEARCH}" method="post">
   						<input type="text" name="name_genesymbol" placeholder="gene symbol" />
   						<input type="submit" name="submit" value="search" />
   					</form>
   				</p>
+  				
  				 <table class="table" border="1">
  				 <tr><td></td>{ROW_NAME_ANALYSIS}</tr>
  				 <tr><th>Gene</th>{ROW_NAME_PVALUE_FOLDCHANGE}</tr>
@@ -43,7 +65,8 @@
    					<tr><th>Gene symbol</th><th>P value</th><th>Fold change</th><th>Name</th><th>Date</th></tr>
 					<tr>{ROW}</tr>-->
   				</table>
-		</div>
+  				</div>
+		
 		<span>
 			<p align="left">
 			{HREF_PREVIOUS}
@@ -58,7 +81,6 @@
 		<div id ="footer" style="margin-top:10px;" align="center" >
 				<img src="http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/footer.jpg">
 		</div>
-		
 
 	</body>
 </html>
