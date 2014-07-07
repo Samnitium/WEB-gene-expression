@@ -27,6 +27,13 @@
 		</nav>
 		<div class="panel panel-default">
   			<div class="panel-heading"> {NAME_EXPERIMENT} </div>
+  				<p align="right">
+  					{MESSAGE_ERROR_SEARCH}
+  					<form action="{ACTION_SEARCH}" method="post">
+  						<input type="text" name="name_genesymbol" placeholder="gene symbol" />
+  						<input type="submit" name="submit" value="search" />
+  					</form>
+  				</p>
  				 <table class="table" border="1">
  				 <tr><td></td>{ROW_NAME_ANALYSIS}</tr>
  				 <tr><th>Gene</th>{ROW_NAME_PVALUE_FOLDCHANGE}</tr>

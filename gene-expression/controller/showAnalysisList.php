@@ -10,7 +10,7 @@
 	if(isset($_SESSION['iduser'])) {
 		if ((isset($_POST['numberPvalue']) || isset($_GET['numberPvalue'])) && (isset($_POST['numberFoldChange']) || isset($_GET['numberFoldChange'])) &&
 		     isset($_GET['idexperiment']) && isset($_SESSION['analysis']) && (isset($_POST['thresholdPvalue']) || isset($_GET['thresholdPvalue'])) &&
-			 (isset($_POST['numberFoldChange']) || isset($_GET['numberFoldChange']))) {
+			 (isset($_POST['thresholdFoldChange']) || isset($_GET['thresholdFoldChange']))) {
 			$serAnalysis = unserialize($_SESSION['analysis']);
 			
 			/*if($_POST['p_value']=="" || $_POST['fold_change']=="") {
@@ -29,11 +29,11 @@
 			}
 			$pvalue = $_POST['numberPvalue'];
 			$foldchange = $_POST['numberFoldChange'];
-			$_SESSION['page_corrent'] = "showAnalysisList.php";
 			$le = new LogicExperiment();
 			$experiment = $le->retrieveExperimentById($_GET['idexperiment']);
 			$le->db->close();
 			if ($experiment!=NULL) {
+				$_SESSION['page_corrent'] = "showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange'];
 				$tlp = new FastTemplate("../view");
 				$tlp->define(array('analysisList' => "showViewAnalysisList.html", 'rowComplex'=>"rowComplexAnalysis.html", 'nameAnalysis'=>"nameAnalysisRow.html", 'namePvalueFoldChange'=>"namePvalueFoldChangeRow.html"));
 		    	$tlp->assign('NAME_EXPERIMENT',$experiment->name);
@@ -47,6 +47,7 @@
 					} else {
 						$listGene =  $lai->retrieveAllGeneByIdExperiment($experiment->id);
 					}
+					$_SESSION['listGene'] = serialize($listGene);
 					if ($listGene!=NULL) {
 						if (isset($_GET['number']) && $_GET['number']!="") {
 							$i = $_GET['number'];
@@ -152,6 +153,14 @@
 					}
 					
 				} 
+				
+				if (isset($_SESSION['message_search'])) {
+					$tlp->assign('MESSAGE_ERROR_SEARCH',$_SESSION['message_search']);
+					$_SESSION['message_search'] = NULL;
+				} else {
+					$tlp->assign('MESSAGE_ERROR_SEARCH',"");
+				}
+				$tlp->assign('ACTION_SEARCH',"showInstanceGeneSoughtController.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']);
 				$lai->db->close();
 				$tlp->parse('STATE',"analysisList");
 				Header("Content-type: text/html");
