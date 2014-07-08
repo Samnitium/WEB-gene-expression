@@ -14,12 +14,12 @@
     		if(isset($_FILES['user_file']) && isset($_SESSION['idexperiment']) && $_SESSION['idexperiment']!="") {
         		$file = $_FILES['user_file'];
         		if($file['error'] == UPLOAD_ERR_OK and is_uploaded_file($file['tmp_name'])) {
-            		move_uploaded_file($file['tmp_name'], '../file/'.$file['name']);
+            		move_uploaded_file($file['tmp_name'], '../file/file_'.$_SESSION['idexperiment']);
 					$lg = new LogicGene();
 					$la = new LogicAnalysis();
 					$lai = new LogicAnalysisInstance();
 					$tr = "";
-					$fp = fopen('../file/'.$file['name'],'r');
+					$fp = fopen('../file/file_'.$_SESSION['idexperiment'],'r');
 					$arrayIdAnalysis = array();
 					if (!feof($fp)) {
 						$str = fgets($fp);

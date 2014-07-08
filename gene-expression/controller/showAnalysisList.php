@@ -70,8 +70,8 @@
 								if($stamp_analysis) {
 									$tlp->assign('NAME_ANALYSIS',$ex[1]);
 									$tlp->parse('ROW_NAME_ANALYSIS','.nameAnalysis');
-									$link_pvalue = "showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=p_value&idanalysis=".$ex[0];
-									$link_foldchange = "showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=foldChange&idanalysis=".$ex[0];
+									$link_pvalue = "<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=p_value&idanalysis=".$ex[0]."'>order</a>";
+									$link_foldchange = "<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=foldChange&idanalysis=".$ex[0]."'>order</a>";
 									$tlp->assign(array('LINK_PVALUE'=>$link_pvalue, 'LINK_FOLDCHANGE'=>$link_foldchange));
 									$tlp->parse('ROW_NAME_PVALUE_FOLDCHANGE', '.namePvalueFoldChange');
 								}
@@ -86,7 +86,7 @@
 								} else if ($pvalue=="" && $_POST['thresholdFoldChange']=="up") {
 									$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Up($_GET['idexperiment'],$ex[0],$gene['geneSymbol'],$pvalue,$foldchange);
 								} else if ($pvalue=="" && $_POST['thresholdFoldChange']=="down") {
-								$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Down($_GET['idexperiment'],$ex[0],$gene['geneSymbol'],$pvalue,$foldchange);
+									$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Down($_GET['idexperiment'],$ex[0],$gene['geneSymbol'],$pvalue,$foldchange);
 								} else if ($pvalue=="" && $_POST['thresholdFoldChange']=="range") {
 									$analysisList = $lai->retrieveAnalysisInstanceByIdExperiment_All_Range($_GET['idexperiment'],$ex[0],$gene['geneSymbol'],$pvalue,$foldchange);
 								} else if ($_POST['thresholdPvalue']=='up' && $_POST['thresholdFoldChange']=='up') {

@@ -58,6 +58,7 @@
 				return NULL;
 			}
 		}
+		
 			
 		function retrieveViewPermissionByIdExperiment($idExperiment) {
 			$this->db->execute("SELECT * FROM viewpermission WHERE id_experiment='".$idExperiment."'");
@@ -72,7 +73,21 @@
 				return NULL;
 			}
 			
+		}
+		
+		function verifyPermissionEnable($iduser, $idexperiment) {
+			$this->db->execute("SELECT * FROM viewpermission WHERE id_experiment='".$idexperiment."' and id_user='".$iduser."'");
+			$result = $this->db->fetchrow();
+			if ($result) {
+				if (count($result)!=0) {
+				return $result;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
 			}
+		}
 		
 		function createList() {
 			$list = array();

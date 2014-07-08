@@ -21,6 +21,15 @@
 			foreach ($analysisList as $an) {
 				$lai->deleteAnalysisInstanceByIdAnalysis($an['id']);
 			}
+			$filename = '../file/file_'.$_GET['id'];
+			if (file_exists($filename)) {
+    			unlink($filename);
+			} 
+			$filename = '../file/file_'.$_GET['id'].'.txt';
+			if (file_exists($filename)) {
+    			unlink($filename);
+			} 
+			
 			$la->db->close();
 			$eLogic->db->close();
 			$vp->db->close();

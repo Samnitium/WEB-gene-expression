@@ -30,13 +30,13 @@
     			if(isset($_FILES['user_file'])) {
         			$file = $_FILES['user_file'];
         			if($file['error'] == UPLOAD_ERR_OK and is_uploaded_file($file['tmp_name'])) {
-            			move_uploaded_file($file['tmp_name'], '../file/'.$file['name']);
+            			move_uploaded_file($file['tmp_name'], '../file/file_'.$_GET['idexperiment']);
 						$lg = new LogicGene();
 						$la = new LogicAnalysis();
 						$lai = new LogicAnalysisInstance();
 						$tr = "";
 						$tlp->assign('MESSAGE',"Your file has been uploaded and the name of experiment is update. ");
-						$fp = fopen('../file/'.$file['name'],'r');
+						$fp = fopen('../file/file_'.$_GET['idexperiment'],'r');
 						$arrayIdAnalysis = array();
 						if (!feof($fp)) {
 							$str = fgets($fp);
@@ -114,6 +114,7 @@
 		$analysisInstance = new AnalysisInstance();
 		$analysisInstance->id_analysis = $idana;
 		$analysisInstance->geneSymbol = $geneSymbol;
+		$analysisInstance->p_value_string = $pvalue;
 		$analysisInstance->p_value = doubleval($pvalue);
 		$analysisInstance->foldChange = doubleval($foldChange);
 		$lai->DTO->setValue('analysisInstance',$analysisInstance);

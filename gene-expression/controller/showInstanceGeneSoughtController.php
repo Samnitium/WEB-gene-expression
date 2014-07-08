@@ -8,7 +8,7 @@
 		
 	session_start();
 	if(isset($_SESSION['iduser'])) {
-		if (isset($_POST['name_genesymbol']) && isset($_GET['idexperiment']) && isset($_SESSION['analysis']) && isset($_GET['numberPvalue']) &&
+		if (isset($_POST['name_genesymbol'])  && isset($_GET['idexperiment']) && isset($_SESSION['analysis']) && isset($_GET['numberPvalue']) &&
 			isset($_GET['numberFoldChange']) && isset($_GET['thresholdPvalue']) && isset($_GET['thresholdFoldChange']) && isset($_SESSION['listGene'])) {
 			$le = new logicExperiment();
 			$experiment = $le->retrieveExperimentById($_GET['idexperiment']);
