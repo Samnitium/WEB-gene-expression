@@ -57,6 +57,7 @@
 							$i = 0;
 							$max = 300;
 						}
+						$tlp->assign('LINK_DOWNLOAD',"createDownloadFileController.php?idexperiment=".$experiment->id);
 						while ($i<count($listGene) && $i<$max) {
 							$gene = $listGene[$i];
 							$rowInstance = "";

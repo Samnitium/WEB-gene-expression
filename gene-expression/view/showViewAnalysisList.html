@@ -45,16 +45,22 @@
   				<h1>Experiment analysis list</h1>
 			</div>
 		</nav>
-		
+			
   			<div class="panel-title nameSearch"> {NAME_EXPERIMENT} </div>
   				<div class="panel-body">
-  				<p>
-  					{MESSAGE_ERROR_SEARCH}
-  					<form class="nameSearch" action="{ACTION_SEARCH}" method="post">
-  						<input type="text" name="name_genesymbol" placeholder="gene symbol" />
-  						<input type="submit" name="submit" value="search" />
-  					</form>
-  				</p>
+  					
+  				<span>
+  					<p align="left">
+  						<a href="{LINK_DOWNLOAD}">Download</a>
+  					</p>
+  					<p>
+  						{MESSAGE_ERROR_SEARCH}
+  						<form class="nameSearch" action="{ACTION_SEARCH}" method="post">
+  							<input type="text" name="name_genesymbol" placeholder="gene symbol" />
+  							<input type="submit" name="submit" value="search" />
+  						</form>
+  					</p>
+  				</span>
   				
  				 <table class="table" border="1">
  				 <tr><td></td>{ROW_NAME_ANALYSIS}</tr>

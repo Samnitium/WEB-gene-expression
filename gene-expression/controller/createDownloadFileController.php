@@ -14,7 +14,7 @@
 			$enable = $lv->verifyPermissionEnable($_SESSION['iduser'], $_GET['idexperiment']);
 			$lv->db->close();
 			$le->db->close();
-			if ($experiment!=NULL && $enable!=NULL) {
+			if ($experiment!=NULL && ($enable!=NULL || $_SESSION['type']=='superuser')) {
 				 $fileLocation = "../file/file_".$_GET['idexperiment'].".txt";
 				 $file = fopen($fileLocation,"w");
 				 $content ="";
