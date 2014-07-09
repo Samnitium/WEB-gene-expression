@@ -49,6 +49,12 @@
     renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
     renderer.setSize(window.innerWidth, window.innerHeight);
 	
+	var planeGeometry = new THREE.PlaneGeometry(270, 180);
+	var wallpaper = new createTexture(planeGeometry,"clouds2.jpg");
+	wallpaper.position.set(20,-25,0);
+	wallpaper.rotation.set(0,-Math.PI/4,0);
+	scene.add(wallpaper);
+	
 	//_________________________________________________________________________________________________________________
 	
 	/*
@@ -296,7 +302,7 @@
 
     // add spotlight for the shadows
     var spotLight = new THREE.SpotLight( 0xffffff );
-    spotLight.position.set(0,50,200);
+    spotLight.position.set(-130,80,130);
     scene.add(spotLight);
 
     // add axis helper
@@ -489,15 +495,13 @@
     render();
     animator.start();
 	
-	/*
-	function createMesh(geom, imageFile) {
+	function createTexture(geom, imageFile) {
 		var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
 		var mat = new THREE.MeshPhongMaterial();
 		mat.map = texture;
 		var mesh = new THREE.Mesh(geom, mat);
 		return mesh;
     }
-	*/
 
     function render() {
       stats.update();
