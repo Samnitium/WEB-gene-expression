@@ -44,7 +44,7 @@
     var renderer = new THREE.WebGLRenderer();
 
     // create trackball controls
-    var trackballControls = new THREE.TrackballControls(camera);
+    //var trackballControls = new THREE.TrackballControls(camera);
 
     renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -193,29 +193,80 @@
 	
 	//_____________________________________CREAZIONE TESTO_____________________________________
 	
-	var options = {
-            size: 1,
-            height: 0,
+	var options1 = {
+            size: 1.1,
+            height: .11,
             weight: "normal",
             font: "helvetiker",
-            curveSegments: 2,
+            curveSegments: 4,
+            steps: 3
+          };
+		  
+	var options2 = {
+            size: .9,
+            height: .09,
+            weight: "normal",
+            font: "helvetiker",
+            curveSegments: 4,
             steps: 3
           };
 	
-	text1 = createMesh(new THREE.TextGeometry("Credits:", options));
-	text1.rotation.y = -Math.PI/4;
-	text1.position.set(-45,50,50);
-    scene.add(text1);
+	text = new THREE.Object3D();
+	text.position.set(-45,50,50);
+	scene.add(text);
 	
-	text2 = createMesh(new THREE.TextGeometry("- Chiara Bartalotta", options));
+	text1 = createMesh(new THREE.TextGeometry("Credits", options1));
+	text.rotation.y = -Math.PI/4;
+    text.add(text1);
+	
+	text2 = createMesh(new THREE.TextGeometry("Web Services Platform", options1));
 	text2.position.y = -3;
 	text1.add(text2);
-	text3 = createMesh(new THREE.TextGeometry("- Dario Santilli", options));
+	text3 = createMesh(new THREE.TextGeometry("for Gene Expression", options2));
 	text3.position.y = -2;
 	text2.add(text3);
-	text4 = createMesh(new THREE.TextGeometry("- Davide Bernardini", options));
-	text4.position.y = -2;
+	
+	text4 = createMesh(new THREE.TextGeometry("Front-end/Back-end Programmer", options1));
+	text4.position.y = -3;
 	text3.add(text4);
+	text5 = createMesh(new THREE.TextGeometry("Chiara Bartalotta", options2));
+	text5.position.y = -2;
+	text4.add(text5);
+	
+	text6 = createMesh(new THREE.TextGeometry("Front-end/Database Programmer", options1));
+	text6.position.y = -3;
+	text5.add(text6);
+	text7 = createMesh(new THREE.TextGeometry("Dario Santilli", options2));
+	text7.position.y = -2;
+	text6.add(text7);
+	
+	text8 = createMesh(new THREE.TextGeometry("Database/Back-end Programmer", options1));
+	text8.position.y = -3;
+	text7.add(text8);
+	text9 = createMesh(new THREE.TextGeometry("Davide Bernardini", options2));
+	text9.position.y = -2;
+	text8.add(text9);
+	
+	text10 = createMesh(new THREE.TextGeometry("Development Director", options1));
+	text10.position.y = -3;
+	text9.add(text10);
+	text11 = createMesh(new THREE.TextGeometry("Tommaso Mazza", options2));
+	text11.position.y = -2;
+	text10.add(text11);
+	
+	text12 = createMesh(new THREE.TextGeometry("Business Manager", options1));
+	text12.position.y = -3;
+	text11.add(text12);
+	text13 = createMesh(new THREE.TextGeometry("CSS Mendel", options2));
+	text13.position.y = -2;
+	text12.add(text13);
+	
+	text14 = createMesh(new THREE.TextGeometry("Special Thanks to", options1));
+	text14.position.y = -3;
+	text13.add(text14);
+	text15 = createMesh(new THREE.TextGeometry("Alberto Paoluzzi", options2));
+	text15.position.y = -2;
+	text14.add(text15);
 	
 	function createMesh(geom) {
         var meshMaterial = new THREE.MeshPhongMaterial({specular: 0xffffff, color: 0xffffff, shininess: 100, metal: true});
@@ -226,7 +277,7 @@
 	//__________________________________FINE CREAZIONE TESTO___________________________________
 
     // position and point the camera to the center of the scene
-    camera.position.set(-60,60,60);
+    camera.position.set(-65,40,65);
     camera.up = new THREE.Vector3(0,1,0);
     camera.lookAt(scene.position);
 
@@ -240,28 +291,32 @@
     scene.add(spotLight);
 
     // add axis helper
-    var axisHelper = new THREE.AxisHelper(3);
+    /*
+	var axisHelper = new THREE.AxisHelper(3);
     scene.add(axisHelper);
+	*/
 
     // add the output of the renderer to the html element
     $('body').append(renderer.domElement);
 
     var controls = new function () {
-      this.showAxisHelper = true;
+      //this.showAxisHelper = true;
     };
 
     var gui = new dat.GUI();
-    var axisControl = gui.add(controls, 'showAxisHelper');
+    //var axisControl = gui.add(controls, 'showAxisHelper');
 
     render();
-
+	
+	/*
     axisControl.onChange(function (value) {
       axisHelper.visible = value;
     });
+	*/
 	
 	//define animations
     var animator = null;
-    var duration = 40; // sec
+    var duration = 60; // sec
     var loopAnimation = false;
 	var i;
 	var j;
@@ -399,6 +454,15 @@
 					],
 					target: opMirror[i].rotation
 					},
+					//TESTO SCORREVOLE
+					{ 
+					keys:[0, 1],   
+					values:[
+						{ y : 10 },
+						{ y : 75 },
+					],
+					target: text.position
+					},
 				],
 				loop: loopAnimation,
 				duration: duration * 1000,
@@ -424,7 +488,7 @@
 
     function render() {
       stats.update();
-      trackballControls.update();
+      //trackballControls.update();
       KF.update();
 
       // render using requestAnimationFrame
