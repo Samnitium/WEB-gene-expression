@@ -7,6 +7,8 @@
 	$tlp->define( array('login'=>"login.html"));
 	
 	
+	
+	
 	if (isset($_SESSION['error'])) {
 		$tlp->assign('MESSAGE_ERROR',$_SESSION ['error']);
 	} else $tlp->assign('MESSAGE_ERROR',""); 
@@ -31,7 +33,15 @@
 	
 	if(!(isset($_SESSION['iduser']))) {
 		session_destroy();	
+	} else {
+		if ($_SESSION['type']=='superuser') {
+			header('Location: superUserChoiceController.php');
+		} else {
+			header('Location: userChoiceController.php');			
+		}
 	}
+	
+	
 	
 	$tlp->parse('STATE','login');
 	Header("Content-type: text/html");

@@ -200,7 +200,7 @@
 		function retrieveAnalysisInstanceByIdExperiment_Down_All($idExperiment,$ida,$genesymbol,$pvalue,$foldchange) {
 			$this->db->execute("SELECT *
 								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and foldChange<='".$foldchange."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
+								WHERE id_experiment='".$idExperiment."' and id=id_analysis and p_value<='".$pvalue."' and id_analysis='".$ida."' and geneSymbol='".$genesymbol."'");
 			$result = $this->db->fetchrow();
 			if ($result) {
 				if (count($result)!=0) {

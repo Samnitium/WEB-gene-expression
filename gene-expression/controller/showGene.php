@@ -24,14 +24,15 @@
 				foreach($supex as $sup) {
 					$ex = explode("//", $sup);
 					foreach($ex as $el) {
-						if (strpos($el, 'NM_') !== false) {
+						/*if (strpos($el, 'NM_') !== false) {
 							$tlp->assign('GENE_ASSIGNMENT_ELEMENT',"<a href=''>".$el."</a>");
 						} else if(strpos($el, 'ENST') !== false) {
 							$tlp->assign('GENE_ASSIGNMENT_ELEMENT',"<a href=''>".$el."</a>");
 						} else {
 							$tlp->assign('GENE_ASSIGNMENT_ELEMENT',$el);
-						}
-							$tlp->parse('GENE_ASSIGNMENT',".elementGene");
+						}*/
+						$tlp->assign('GENE_ASSIGNMENT_ELEMENT',$el);
+						$tlp->parse('GENE_ASSIGNMENT',".elementGene");
 					}	
 				}
 			} else {

@@ -6,7 +6,7 @@
 	
 	session_start();
 	if(isset($_SESSION['iduser'])) {
-		if (isset($_GET['idexperiment']) && isset($_POST['analysis'])) {
+		if (isset($_GET['idexperiment']) && isset($_POST['analysis']) && (!(count($_POST['analysis'])==1 && trim($_POST['analysis'][0])==""))) {
 			$le = new LogicExperiment();
 			$experiment = $le->retrieveExperimentById($_GET['idexperiment']);
 			$le->db->close();
