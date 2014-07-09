@@ -23,7 +23,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
   <script src="assets/libs/TrackballControls.js"></script>
   <script type="text/javascript" src="assets/fonts/helvetiker_regular.typeface.js"></script> 
-  <script type="text/javascript" src="assets/fonts/helvetiker_bold.typeface.js"></script> 
+  <script type="text/javascript" src="assets/fonts/helvetiker_bold.typeface.js"></script>
   <script src="../DNA/assets/libs/TrackballControls.js"></script>
   <script src="../DNA/assets/libs/tween.min.js"></script>
   <script src="../DNA/assets/libs/keyframe.js"></script>
@@ -276,6 +276,15 @@
 	
 	//__________________________________FINE CREAZIONE TESTO___________________________________
 
+	var mp3snd = "Canone_in_D_maggiore.mp3";
+	var oggsnd = "Canone_in_D_maggiore.ogg";
+
+	document.write('<audio autoplay="autoplay">');
+	document.write('<source src="'+mp3snd+'" type="audio/mpeg">');
+	document.write('<source src="'+oggsnd+'" type="audio/ogg">');
+	document.write('<bgsound src="'+mp3snd+'" loop="1">');
+	document.write('</audio>');
+	
     // position and point the camera to the center of the scene
     camera.position.set(-65,40,65);
     camera.up = new THREE.Vector3(0,1,0);
@@ -299,11 +308,13 @@
     // add the output of the renderer to the html element
     $('body').append(renderer.domElement);
 
+	/*
     var controls = new function () {
-      //this.showAxisHelper = true;
+      this.showAxisHelper = true;
     };
+	*/
 
-    var gui = new dat.GUI();
+    //var gui = new dat.GUI();
     //var axisControl = gui.add(controls, 'showAxisHelper');
 
     render();
@@ -478,6 +489,7 @@
     render();
     animator.start();
 	
+	/*
 	function createMesh(geom, imageFile) {
 		var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
 		var mat = new THREE.MeshPhongMaterial();
@@ -485,6 +497,7 @@
 		var mesh = new THREE.Mesh(geom, mat);
 		return mesh;
     }
+	*/
 
     function render() {
       stats.update();
