@@ -1,35 +1,38 @@
 \select@language {english}
-\contentsline {part}{I\hspace {1em}Introduction}{3}
-\contentsline {chapter}{\numberline {1}Gene Expression}{4}
-\contentsline {section}{\numberline {1.1}prima sezione}{4}
-\contentsline {section}{\numberline {1.2}Talk About the Institute C.S.S. Mendel?}{4}
-\contentsline {chapter}{\numberline {2}Main features of the project}{6}
-\contentsline {section}{\numberline {2.1}Aims}{6}
-\contentsline {section}{\numberline {2.2}Function and structure}{6}
-\contentsline {section}{\numberline {2.3}Tools}{6}
-\contentsline {chapter}{\numberline {3}Technologies}{7}
-\contentsline {section}{\numberline {3.1}Client-Server Architecture}{7}
-\contentsline {subsection}{\numberline {3.1.1}Communication Protocol}{8}
-\contentsline {subsection}{\numberline {3.1.2}Sever-Side}{8}
-\contentsline {subsubsection}{Server Tasks}{8}
-\contentsline {subsubsection}{The PHP language}{8}
-\contentsline {subsubsection}{XAMPP}{9}
-\contentsline {subsection}{\numberline {3.1.3}Database}{9}
-\contentsline {subsubsection}{MySQL}{9}
-\contentsline {subsubsection}{DataBase structure}{9}
-\contentsline {paragraph}{}{10}
-\contentsline {subsubsection}{JavaScript and jQuery}{10}
-\contentsline {paragraph}{JavaScript}{10}
-\contentsline {subparagraph}{jQuery}{10}
-\contentsline {chapter}{\numberline {4}Implementation}{12}
-\contentsline {section}{\numberline {4.1}MVC pattern}{12}
-\contentsline {paragraph}{Model}{12}
-\contentsline {paragraph}{View}{12}
+\contentsline {chapter}{\numberline {1}Usage Case}{2}
+\contentsline {section}{\numberline {1.1}Super user services}{2}
+\contentsline {subsection}{\numberline {1.1.1}Insert}{3}
+\contentsline {subsection}{\numberline {1.1.2}Delete and Modify}{3}
+\contentsline {subsection}{\numberline {1.1.3}Add permission}{3}
+\contentsline {section}{\numberline {1.2}Common service}{3}
+\contentsline {subsection}{\numberline {1.2.1}Show}{3}
+\contentsline {chapter}{\numberline {2}Technologies}{6}
+\contentsline {section}{\numberline {2.1}Client-Server Architecture}{6}
+\contentsline {subsection}{\numberline {2.1.1}Communication Protocol}{7}
+\contentsline {subsection}{\numberline {2.1.2}Sever-Side}{7}
+\contentsline {subsubsection}{Server Tasks}{7}
+\contentsline {subsubsection}{The PHP language}{7}
+\contentsline {subsubsection}{XAMPP}{8}
+\contentsline {subsection}{\numberline {2.1.3}Database}{8}
+\contentsline {subsubsection}{MySQL}{8}
+\contentsline {subsubsection}{DataBase structure}{8}
+\contentsline {paragraph}{}{9}
+\contentsline {subsubsection}{JavaScript and jQuery}{9}
+\contentsline {paragraph}{JavaScript}{9}
+\contentsline {subparagraph}{jQuery}{9}
+\contentsline {chapter}{\numberline {3}Implementation}{11}
+\contentsline {section}{\numberline {3.1}MVC pattern}{11}
+\contentsline {paragraph}{Model}{11}
+\contentsline {paragraph}{View}{11}
+\contentsline {paragraph}{Controller}{11}
+\contentsline {section}{\numberline {3.2}Packages}{12}
 \contentsline {paragraph}{Controller}{12}
-\contentsline {section}{\numberline {4.2}Packages}{13}
-\contentsline {paragraph}{Controller}{13}
-\contentsline {paragraph}{Logic}{13}
-\contentsline {paragraph}{View}{13}
-\contentsline {paragraph}{Util}{13}
-\contentsline {paragraph}{Template}{13}
-\contentsline {paragraph}{Bootstrap}{13}
+\contentsline {paragraph}{Logic}{12}
+\contentsline {paragraph}{View}{12}
+\contentsline {paragraph}{Util}{12}
+\contentsline {paragraph}{Template}{12}
+\contentsline {paragraph}{Bootstrap}{12}
+\contentsline {chapter}{\numberline {4}Gene Expression}{13}
+\contentsline {section}{\numberline {4.1}Regulation}{13}
+\contentsline {section}{\numberline {4.2}Measure}{13}
+\contentsline {paragraph}{DNA microarray}{13}

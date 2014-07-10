@@ -16,7 +16,7 @@
 \vspace*{\stretch{6}}
 {\LARGE \bf Web Services Platform for the visualization of gene expression data\par}
 \vspace{0.5cm}
-{\Large Comparison between experiments and differential analysis\par} 
+{\Large Comparison between differential analysis\par} 
 \vspace{2cm}
 di\\
 {\Large \em Chiara Bartalotta, Dario Santilli, Davide Bernardini\par}
@@ -28,7 +28,7 @@ di\\
 \tableofcontents
 
 \chapter{Usage Case}
-WEB-gene expression is a platform for the visualization of gene expression data. The platform offers different services basing on the type of user. Indeed, the user is distinguished between \emph{normal user} and \emph{super user}.
+WEB-gene expression is a platform for the visualization of gene expression data. The platform offers different services basing on the type of user. Indeed, the users are distinguished between \emph{normal user} and \emph{super user}.
 \begin{itemize}
    \item \textit{super user}: super user can benefit of advanced services. he is responsible for the management of the experiments: he can insert a new experiment or delete and modify one of the instance previously stored. Furthermore, the super user is able to enable a normal user to visualize an experiment. 
    \item \textit{normal user}: after the login phase, the normal user can display only the experiments for which viewing is enabled.
@@ -92,7 +92,7 @@ As shown in figure \ref{table} , the first column of the table is the \emph{Gene
 \end{figure}
 
 The Figure \ref{tableHeader} shows that at any time the user can reorder the analyses based on the p-value or fold-change values by clicking on \emph{order}. By specifying the \emph{Gene code} in the \emph{search bar} , the user can visualize only the instance of the analyses relative to the specified gene.\\
-The system provides the user also the possibility to download a file with the experiment data. As shown in Figure \ref{tableHeader}, the \emph{download} option is below the search field. By clicking on it, the user can save all the table in a txt file.
+The system provides the user also the possibility to download a file with the experiment data. As shown in Figure \ref{tableHeader}, the \emph{download} option is below the search field. By clicking on it, the user can save all the table in a \emph{.txt} file.
 
 
 \begin{figure}[htb] 
@@ -105,11 +105,11 @@ The system provides the user also the possibility to download a file with the ex
 
 
 \chapter{Technologies}
-WEB-gene expression is developed as a web platform following the guide of the client-server architecture. The platform was built using JavaScript and jQuery to manage the client-side and the html page, and php and MySQL to manage the server-side. This chapter provides a description of these technologies and an explanation about how these technologies were used.
+WEB-gene expression is developed as a web platform following the guide of the client-server architecture. The platform was built using JavaScript and jQuery to manage the client-side and the html page, and PHP and MySQL to manage the server-side. This chapter provides a description of these technologies and an explanation about how these technologies were used.
 
 \section{Client-Server Architecture}
 
-The Client-Server Architecture is a structure adopted to develop software applications. The objective of the Client-Server model is to divide the tasks of the application between the server and the client. The work of the Client is to request a service to a server which provides functions in order to respond to the request of the Client.\\
+The Client-Server Architecture is a structure adopted to develop software applications. The aim of the Client-Server model is to divide the tasks of the application between server and client. The work of the Client is to request a service to a server which provides functions in order to respond to the request of the Client.\\
 The browser is an example of Client. The browser connects itself to a Server that provides the information required by the user. In this way, the browser displays the response allowing the user to interact with this information. The program that responds to the browser request is an example of Server. It is listening to client requests, and it is always ready to provide the response.\\
 The Figure \ref{clientServer} is a computer network diagram that shows the communication between clients and server by internet. In the figure, two clients are represented in order to indicate that the server receives the requests from multiple clients as described in section \ref{serverside}. 
 
@@ -123,9 +123,9 @@ The Figure \ref{clientServer} is a computer network diagram that shows the commu
 
 \subsection{Communication Protocol}
 
-The Client side and the Server Side exchange message between each other using a Communication Protocol. A communication protocol defines rules about the syntax, the semantic and the synchronization of communication in order to manage the message exchange among computer systems.  Each message has a defined format, and its objective is to provoke a specific response from the receiver.
+The Client side and the Server Side exchange message between each other using a Communication Protocol. A communication protocol defines rules about the syntax, the semantic and the synchronization of communication in order to manage the message exchange among computer systems.  Each message has a defined format, and its objective is to provoke a specific response from the receiver.\\
 
-\\In WEB-gene-expression, the server side and the client side communicate through the HTTP protocol (HyperText Transfer Protocol) that is based on TCP/IP (Transmission Control Protocol / Internet Protocol). This protocol allows the server side and the client side to exchange ordered byte sequences.
+In WEB-gene-expression, the server side and the client side communicate through the HTTP protocol (HyperText Transfer Protocol) that is based on TCP/IP (Transmission Control Protocol / Internet Protocol). This protocol allows the server side and the client side to exchange ordered byte sequences.
 \\In order to access the resource, the client side sends the server side a string of characters defined as URI (Uniform Resource Identifier). Each URI refers to a specific resource.
 
 \subsection{Sever-Side}\label{serverside}
@@ -141,12 +141,12 @@ The database guarantees the data persistence while the server side organizes the
 
 \subsubsection{The PHP language}\label{php}
 
-The programming language used to develop the server side of WEB-gene-expression is PHP. 
+The programming language used to develop the server side of WEB-gene-expression is PHP.\\
 
-\\"PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world." \footnote{www.php.net}
+"PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world." \footnote{www.php.net}
 
 
-Therefore, the main features of PHP meet WEB-gene-expression requirements for the implementation of the server side. The code is organized in classes following the principles of \emph{High Cohesion} and \emph{Low Coupling} described in "Applicare UML e i pattern" \footcite{Craig Larman, Luca Cabibbo} . \\
+Therefore, the main features of PHP meet WEB-gene-expression requirements for the implementation of the server side. The code is organized in classes following the principles of \emph{High Cohesion} and \emph{Low Coupling} described in "Applicare UML e i pattern" \cite{Craig Larman, Luca Cabibbo} . \\
 The \emph{Low Coupling} pattern describes how to keep a low dependency among objects in order to guarantee a better usability of the code and a lower impact of the code changes.\\
 The \emph{High Cohesion} pattern describes how to assign a specific, focused and comprehensible responsibility to each object in order to provide maintainability of the code.\\
 
@@ -157,7 +157,7 @@ XAMPP is used to develop the server-side of WEB-gene-expression and his distribu
 
 \subsection{Database}
 
-The database is responsible of information persistence. WEB-gene-application has to operate a large amount of data coming from the experiment about differential analysis of gene expression data. In order to store these data, SICS use \emph{MySQL} as database.
+The database is responsible of information persistence. WEB-gene-expression has to operate a large amount of data coming from the experiment about differential analysis of gene expression data. In order to store these data, SICS use \emph{MySQL} as database.
 
 \subsubsection{MySQL}
 
@@ -194,27 +194,27 @@ JavaScript allows the developer to program in a flexible way because it is a scr
 jQuery\footnote{http://jquery.com/} is a JavaScript library that allows the implementation of several interactive functionalities. jQuery handles interaction events, such as mouse-clicks and text highlighting. It manages asynchronous HTTP requests to exchange data between the browser and the server. These requests allow the dynamic update of the web page, and the user does not need to reload the page. During the development of the client-side of WEB-gene-expression, the choice of jQuery allowed not only to manage asynchronous requests, but also to organize the user interface. \\
 
 \chapter{Implementation}
-This chapter discusses the implementation details of WEB-gene-expression platform. In order to generate an ordered code, the entire project is divided in different package. In this way, a better usability of the code is guarantee. Furthermore, this development approach provides the maintainability of the project.
+This chapter discusses the implementation details of WEB-gene-expression platform. In order to generate an ordered code, the entire project is divided in different package. In this way, a better usability of the code is guaranteed. Furthermore, this development approach provides the maintainability of the project.
 
 \section{MVC pattern} \label{mvc}
 
-The development of WEB-gene-expression is based on the most important software architectural pattern: Model-view-controller. The MVC patterns is adopted for implementing web application in major programming languages.\\
+The development of WEB-gene-expression is based on the most important software architectural pattern: Model-view-controller. The MVC pattern is adopted for implementing web application in major programming languages.\\
 This pattern is used to separate application's tasks.
 
 
-  \paragraph{Model} The Model component implements the application core. It is responsible to manage data and the operations relative to them. Therefore, the Model defines the logic part of the application.
+  \paragraph{Model} The Model component implements the application core. It is responsible to manage data and the operations relative to them. Therefore, the Model defines the logical part of the application.
   \paragraph{View} The View component is responsible to show the data that model contains. It is responsible to manage the user interface. Through the View component, indeed, the user can interact with the system sending inputs. The system response is elaborated by the View that shows the output with a comfortable and comprehensible visualization for the user.
   \paragraph{Controller} The Controller allows the interaction between Model and View component and keeps them separate. It manage data flow into model object and update the view whenever data change \footnote{http://www.tutorialspoint.com/design\_pattern/mvc\_pattern.htm}.  
 
 \
-\\Following the Model-View-Controller pattern guidelines, the WEG-gene-expression code is divided as described above.
+\\Following the Model-View-Controller pattern guidelines, the WEB-gene-expression code is divided as described above.
 
 \section{Packages}
 
 Each operation provided by the WEB-gene-expression platform is implemented in a classes and his concerns are divided in \emph{Controller, Logic and View} packages. 
 The main implemented operation are to manage the user login, user sign in, choose operations, insert and delete experiments, enable view permission, show the analysis of an experiment, modify user profile.
 
-\paragraph{Controller} This package stores the classes that implement the Controller component of the web application  are stored. Controller Packages implements the server side of the application, so the programming language used is PHP as described in \ref{php}.
+\paragraph{Controller} This package stores the classes that implement the Controller component of the web application stored. Controller Packages implements the server side of the application, so the programming language used is PHP as described in \ref{php}.
 
 \paragraph{Logic} The classes representing the model component of the project are stored in the Logic Package. The Model component is a part of the application server-side and the language used is PHP.
 
@@ -227,5 +227,15 @@ Using cls\_fast\_template.php class, the web-pages of WEB-gene-expression can be
 
 \paragraph{Bootstrap} This package contains the tools to manage the user interface and the data visualization. In order to make the user experience not only comprehensible but also captivating, WEB-gene-expression platform employs Twitter Bootstrap\footnote{http://getbootstrap.com/}. The Bootstrap folder contains two subfolder: JavaScript (js) and CSS. The first one contains the classes to manage the users interaction and the second one contains the style sheets. 
 
+\chapter{Gene Expression}
 
+\section{Regulation}
+Gene expression is tightly regulated by the cell. All steps of gene expression may be modulated, from the step of transcription of DNA to RNA, up to the post-translational modifications of the protein produced.\\
+The regulation of gene expression is essential for the cell, because it allows its to control their internal and external functions.
+\section{Measure}
+The expression of many genes is regulated at the base of the transcription, for example through the action of miRNA or siRNA, small RNA molecules can lead to the degradation of the transcript (high concentrations of mRNA are not always related to high concentrations of protein).\\
+Anyhow, the amount of mRNA is a matter of considerable interest in the measurement of gene expression.
+\paragraph{DNA microarray}
+There are various methodologies that allow for the screening of very large overall transcript of a cell. The method used by the CSS MENDEL institute is the one about DNA microarrays:\\
+ through the use of supports that contain thousands of DNA probes complementary to the transcripts of the cell, this method is capable of providing simultaneous analysis of thousands of different mRNAs.
 \end{document}
