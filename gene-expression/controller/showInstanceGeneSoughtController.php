@@ -101,7 +101,8 @@
 					$tlp->assign('INSTANCE_ROW',$rowInstance);
 					$tlp->parse('ROW',".rowComplex");
 		
-				}
+				}  
+				
 				$tlp->assign('LINK_SETTING_THRESHOLD',"settingThresholdController.php?idexperiment=".$experiment->id);
 				$tlp->assign('LINK_DOWNLOAD',"createDownloadFileController.php?idexperiment=".$experiment->id);
 				$tlp->assign('ACTION_SEARCH',"showInstanceGeneSoughtController.php?idexperiment=".$experiment->id."&numberPvalue=".$_GET['numberPvalue']."&numberFoldChange=".$_GET['numberFoldChange']."&thresholdPvalue=".$_GET['thresholdPvalue']."&thresholdFoldChange=".$_GET['thresholdFoldChange']);
