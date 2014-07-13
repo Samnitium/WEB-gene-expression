@@ -161,6 +161,7 @@
 				} else {
 					$tlp->assign('MESSAGE_ERROR_SEARCH',"");
 				}
+				$tlp->assign('LINK_SETTING_THRESHOLD',"settingThresholdController.php?idexperiment=".$experiment->id);
 				$tlp->assign('ACTION_SEARCH',"showInstanceGeneSoughtController.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']);
 				$lai->db->close();
 				$tlp->parse('STATE',"analysisList");

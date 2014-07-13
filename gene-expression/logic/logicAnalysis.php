@@ -71,6 +71,26 @@
 			
 		}
 		
+		function retrieveAnalysisByIdExperimentAndIdAnalysis($idexperiment, $idanalysis) {
+			$this->db->execute("SELECT * FROM analysis WHERE id='".$idanalysis."' and id_experiment='".$idexperiment."'");
+			$result = $this->db->fetchrow();
+			if ($result) {
+				if (count($result)!=0) {
+				$analysis = new Analysis();
+				$analysis->id = $idanalysis;
+				$analysis->name = $result['name']; 
+				$analysis->date = $result['date'];
+				$analysis->id_experiment = $result['id_experiment'];
+				return $analysis;
+				} else {
+					return NULL;
+				}
+			} else {
+				return NULL;
+			}
+			
+		}
+		
 		function createList() {
 			$list = array();
 			$list['name'] = $this->analysis->name;
