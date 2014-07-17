@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
- <head> 
-  <title>DNA</title> 
+ <head>
+  <title>DNA</title>
   <style>
+    body #background{
+		content : "";
+    	display: block;
+		position: absolute;
+		top: 0;
+    	left: 0;
+		background-image: url("http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/genome.jpg");
+		filter:alpha(opacity=50);
+    	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+    	opacity:.50;
+    	width: 100%;
+    	height: 100%;
+    }
+    
     body {
-      margin: 0;
-      overflow: hidden;
+    	margin: 0px;
+        overflow: hidden;
     }
 
     #stats {  /* Align stats top-left */
@@ -13,21 +27,28 @@
       left: 0px;
       top: 0px;
     }
-  </style> 
+  </style>
   </head>
   <body>
+  	<div id="background"> </div>
   <!-- JavaScript libraries -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
   <script src="assets/libs/TrackballControls.js"></script>
-  <script type="text/javascript" src="assets/fonts/helvetiker_regular.typeface.js"></script> 
+  <script type="text/javascript" src="assets/fonts/helvetiker_regular.typeface.js"></script>
   <script type="text/javascript" src="assets/fonts/helvetiker_bold.typeface.js"></script>
   <script src="../DNA/assets/libs/TrackballControls.js"></script>
   <script src="../DNA/assets/libs/tween.min.js"></script>
   <script src="../DNA/assets/libs/keyframe.js"></script>
-  <!-- Javascript code that runs our Three.js examples --> 
+  <audio autoplay="autoplay">
+  <source src="Canone_in_D_maggiore.mp3" type="audio/mpeg">
+  <source src="Canone_in_D_maggiore.ogg" type="audio/ogg">
+ <bgsound src="Canone_in_D_maggiore.mp3" loop="1">
+ </audio>
+  
+  <!-- Javascript code that runs our Three.js examples -->
   <script>
   // once everything is loaded, we run our Three.js stuff.
   $(function () {
@@ -44,41 +65,43 @@
     var renderer = new THREE.WebGLRenderer();
 
     // create trackball controls
-    //var trackballControls = new THREE.TrackballControls(camera);
+    var trackballControls = new THREE.TrackballControls(camera);
 
     renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
+    /*var texture = THREE.ImageUtils.loadTexture("assets/textures/general/clouds2.jpg");
+    renderer.setTexture( texture, 10);*/
     renderer.setSize(window.innerWidth, window.innerHeight);
-	
+
 	var planeGeometry = new THREE.PlaneGeometry(270, 180);
 	var wallpaper = new createTexture(planeGeometry,"clouds2.jpg");
 	wallpaper.position.set(20,-25,0);
 	wallpaper.rotation.set(0,-Math.PI/4,0);
-	scene.add(wallpaper);
-	
+	//scene.add(wallpaper);
+
 	//_________________________________________________________________________________________________________________
-	
+
 	/*
 	COLORI:
-	
+
 	Adenina		->		0xffff00	(Giallo)
 	Timina		->		0xff0000	(Rosso)		/		Uracile		->		0xff8000	(Arancione)
 
 	Citosina	->		0x0000ff	(Blu)
 	Guanina		->		0x00ff00	(Verde)
 	*/
-	
+
 	function generaBase(B, S){
 		var base = new THREE.Object3D();
 		base.position.set(0,0,0);
-	
+
 		var sphereGeometry = new THREE.SphereGeometry(1,24,24);
-		var sphereMaterial = new THREE.MeshPhongMaterial({color: 0x000000});
+		var sphereMaterial = new THREE.MeshPhongMaterial({color: 0x00FFFF});
 		var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
 		sphere.position.x = -6.9;
 		sphere.material.opacity = .9;
 		sphere.material.transparent = true;
 		base.add(sphere);
-	  
+
 		var cylinderGeometry = new THREE.CylinderGeometry( .2, .2, 6, 32 );
 		switch (B){
 			case "Adenina":
@@ -103,26 +126,28 @@
 		cylinder.material.opacity = 1;
 		cylinder.material.transparent = true;
 		sphere.add(cylinder);
-		
+
 		if(S==="mirror")
 			base.rotation.y = Math.PI;
-		
+
 		return base;
 	}
-	
+
 	var i;
 	//genero i rispettivi array di basi azotate
 	opNormal = new Array();
 	opMirror = new Array();
 	opRna = new Array();
+	
 	opNormal[0] = generaBase("Adenina", "no");
 	opMirror[0] = generaBase("Timina", "mirror");
 	opRna[0] = generaBase("Uracile", "no");
 	opRna[0].position.x = -11;
+
 	//rendo invisibile il primo elemento dell' RNA
 	opRna[0].children[0].material.opacity = 0;
 	opRna[0].children[0].children[0].material.opacity = 0;
-	
+
 	for (i=1;i<70;i++){
 		//numero random tra 1 e 4, il caso 5 è per l'uracile
 		rnd = Math.floor((Math.random() * 4) + 1);
@@ -167,9 +192,9 @@
 		opNormal[i-1].add(opNormal[i]);
 		opMirror[i-1].add(opMirror[i]);
 		opRna[i-1].add(opRna[i]);
-		
+
 	}
-	
+
 	//unisco la struttura del DNA
 	var dna = new THREE.Object3D();
 	dna.add(opNormal[0]);
@@ -177,13 +202,13 @@
 	dna.position.y = -50;
 	dna.position.x = 8;
 	scene.add(dna);
-	
+
 	//unisco la struttura dell' RNA
 	var rna = new THREE.Object3D();
 	rna.add(opRna[0]);
 	rna.position.y = -50;
 	scene.add(rna);
-	
+
 	//CREAZIONE POLIMERASI
 	/*
 	var polimerasiGeometry = new THREE.SphereGeometry(7,24,24);
@@ -196,9 +221,9 @@
 	polimerasi.material.opacity = 0;
 	polimerasi.material.transparent = true;
 	scene.add(polimerasi);
-	
+
 	//_____________________________________CREAZIONE TESTO_____________________________________
-	
+
 	var options1 = {
             size: 1.1,
             height: .11,
@@ -207,7 +232,7 @@
             curveSegments: 4,
             steps: 3
           };
-		  
+
 	var options2 = {
             size: .9,
             height: .09,
@@ -216,81 +241,84 @@
             curveSegments: 4,
             steps: 3
           };
-	
+
 	text = new THREE.Object3D();
 	text.position.set(-45,50,50);
 	scene.add(text);
-	
+
 	text1 = createMesh(new THREE.TextGeometry("Credits", options1));
 	text.rotation.y = -Math.PI/4;
     text.add(text1);
-	
+
 	text2 = createMesh(new THREE.TextGeometry("Web Services Platform", options1));
 	text2.position.y = -3;
 	text1.add(text2);
 	text3 = createMesh(new THREE.TextGeometry("for Gene Expression", options1));
 	text3.position.y = -2;
 	text2.add(text3);
-	
+
 	text4 = createMesh(new THREE.TextGeometry("Front-end/Back-end Programmer", options1));
 	text4.position.y = -3;
 	text3.add(text4);
 	text5 = createMesh(new THREE.TextGeometry("Chiara Bartalotta", options2));
 	text5.position.y = -2;
 	text4.add(text5);
-	
+
 	text6 = createMesh(new THREE.TextGeometry("Front-end/Database Programmer", options1));
 	text6.position.y = -3;
 	text5.add(text6);
 	text7 = createMesh(new THREE.TextGeometry("Dario Santilli", options2));
 	text7.position.y = -2;
 	text6.add(text7);
-	
+
 	text8 = createMesh(new THREE.TextGeometry("Database/Back-end Programmer", options1));
 	text8.position.y = -3;
 	text7.add(text8);
 	text9 = createMesh(new THREE.TextGeometry("Davide Bernardini", options2));
 	text9.position.y = -2;
 	text8.add(text9);
-	
+
 	text10 = createMesh(new THREE.TextGeometry("Development Director", options1));
 	text10.position.y = -3;
 	text9.add(text10);
 	text11 = createMesh(new THREE.TextGeometry("Tommaso Mazza", options2));
 	text11.position.y = -2;
 	text10.add(text11);
-	
+
 	text12 = createMesh(new THREE.TextGeometry("Business Manager", options1));
 	text12.position.y = -3;
 	text11.add(text12);
 	text13 = createMesh(new THREE.TextGeometry("CSS Mendel", options2));
 	text13.position.y = -2;
 	text12.add(text13);
-	
+
 	text14 = createMesh(new THREE.TextGeometry("Special Thanks to", options1));
 	text14.position.y = -3;
 	text13.add(text14);
 	text15 = createMesh(new THREE.TextGeometry("Alberto Paoluzzi", options2));
 	text15.position.y = -2;
 	text14.add(text15);
-	
+
 	function createMesh(geom) {
-        var meshMaterial = new THREE.MeshPhongMaterial({specular: 0xffffff, color: 0xffffff, shininess: 100, metal: true});
+        var meshMaterial = new THREE.MeshPhongMaterial({specular: 0xffffff, color: 0x5D8AA8, shininess: 100, metal: true});
         var plane = THREE.SceneUtils.createMultiMaterialObject(geom, [meshMaterial]);
         return plane;
 		}
-	
+
 	//__________________________________FINE CREAZIONE TESTO___________________________________
 
 	var mp3snd = "Canone_in_D_maggiore.mp3";
 	var oggsnd = "Canone_in_D_maggiore.ogg";
 
-	document.write('<audio autoplay="autoplay">');
-	document.write('<source src="'+mp3snd+'" type="audio/mpeg">');
-	document.write('<source src="'+oggsnd+'" type="audio/ogg">');
-	document.write('<bgsound src="'+mp3snd+'" loop="1">');
-	document.write('</audio>');
 	
+	
+	
+	function initPosition() {
+		opRna[0].position.x = -11;
+		rna.position.y = -50;
+	}
+	
+
     // position and point the camera to the center of the scene
     camera.position.set(-65,40,65);
     camera.up = new THREE.Vector3(0,1,0);
@@ -323,14 +351,13 @@
     //var gui = new dat.GUI();
     //var axisControl = gui.add(controls, 'showAxisHelper');
 
-    render();
-	
+
 	/*
     axisControl.onChange(function (value) {
       axisHelper.visible = value;
     });
 	*/
-	
+
 	//define animations
     var animator = null;
     var duration = 60; // sec
@@ -339,15 +366,16 @@
 	var j;
 
     function initAnimator() {
+      //initPosition();
       animator = new KF.KeyFrameAnimator();
 	  for( i=69 ; i>0 ; i-- ){
 		for( j=49 ; j>19 ; j-- ){
-			animator.init({ 
+			animator.init({
 				interps:
 				[
 					//SROTOLAMENTO DNA
-					{ 
-					keys:[0, .08, .16], 
+					{
+					keys:[0, .08, .16],
 					values:[
 						{ y : Math.PI/16 },
 						{ y : Math.PI/32 },
@@ -355,8 +383,8 @@
 					],
 					target: opNormal[i].rotation
 					},
-					{ 
-					keys:[0, .08, .16], 
+					{
+					keys:[0, .08, .16],
 					values:[
 						{ y : Math.PI/16 },
 						{ y : Math.PI/32 },
@@ -365,8 +393,8 @@
 					target: opMirror[i].rotation
 					},
 					//APERTURA DNA
-					{ 
-					keys:[.16, .24], 
+					{
+					keys:[.16, .24],
 					values:[
 						{ x : 0 },
 						{ x : 0.5*((i-35)/70) },
@@ -374,8 +402,8 @@
 					target: opNormal[i].position
 					},
 					//ruoto le basi normali corrispondenti all' RNA
-					{ 
-					keys:[.16 + (0.08/30)*(j-20), .24 + (0.08/30)*(j-20)], 
+					{
+					keys:[.16 + (0.08/30)*(j-20), .24 + (0.08/30)*(j-20)],
 					values:[
 						{ y : 0 },
 						{ y : Math.PI },
@@ -383,8 +411,8 @@
 					target: opNormal[j].children[0].rotation
 					},
 					//________________________________________________
-					{ 
-					keys:[.16, .24], 
+					{
+					keys:[.16, .24],
 					values:[
 						{ x : 0 },
 						{ x : 0.5*((i-35)/70) },
@@ -392,8 +420,8 @@
 					target: opMirror[i].position
 					},
 					//APPARIZIONE DELL' ENZIMA POLIMERASI
-					{ 
-					keys:[.24, .32, .60, .68], 
+					{
+					keys:[.24, .32, .60, .68],
 					values:[
 						{ opacity : 0 },
 						{ opacity : 1 },
@@ -402,8 +430,8 @@
 					],
 					target: polimerasi.material
 					},
-					{ 
-					keys:[.24, .68], 
+					{
+					keys:[.24, .68],
 					values:[
 						{ y : -60 },
 						{ y : 40 },
@@ -411,16 +439,32 @@
 					target: polimerasi.position
 					},
 					//APPARIZIONE DELL' RNA
-					{ 
-					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)], 
+					{
+					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)],
+					values:[
+						{ x : opRna[j].children[0].position.x },
+						{ x : opRna[j].children[0].position.x },
+					],
+					target: opRna[j].children[0].position
+					},
+					{
+					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)],
+					values:[
+						{ z : opRna[j].children[0].position.z },
+						{ z : opRna[j].children[0].position.z },
+					],
+					target: opRna[j].children[0].position
+					},
+					{
+					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)],
 					values:[
 						{ opacity : 0 },
 						{ opacity : 1 },
 					],
 					target: opRna[j].children[0].material
 					},
-					{ 
-					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)], 
+					{
+					keys:[.38 + (0.16/30)*(j-20), .54 + (0.16/30)*(j-20)],
 					values:[
 						{ opacity : 0 },
 						{ opacity : 1 },
@@ -428,24 +472,24 @@
 					target: opRna[j].children[0].children[0].material
 					},
 					//CHIUSURA DNA
-					{ 
-					keys:[.68, .76], 
+					{
+					keys:[.68, .76],
 					values:[
 						{ x : 0.5*((i-35)/70) },
 						{ x : 0 },
 					],
 					target: opNormal[i].position
 					},
-					{ 
-					keys:[.68, .76], 
+					{
+					keys:[.68, .76],
 					values:[
 						{ x : 0.5*((i-35)/70) },
 						{ x : 0 },
 					],
 					target: opMirror[i].position
 					},
-					{ 
-					keys:[.68 + (0.04/30)*(j-20), .72 + (0.04/30)*(j-20)], 
+					{
+					keys:[.68 + (0.04/30)*(j-20), .72 + (0.04/30)*(j-20)],
 					values:[
 						{ y : Math.PI },
 						{ y : 0 },
@@ -453,8 +497,8 @@
 					target: opNormal[j].children[0].rotation
 					},
 					//DOPPIA ELICA
-					{ 
-					keys:[.76, .88, 1], 
+					{
+					keys:[.76, .88, 1],
 					values:[
 						{ y : 0 },
 						{ y : Math.PI/32 },
@@ -462,8 +506,8 @@
 					],
 					target: opNormal[i].rotation
 					},
-					{ 
-					keys:[.76, .88, 1],   
+					{
+					keys:[.76, .88, 1],
 					values:[
 						{ y : 0 },
 						{ y : Math.PI/32 },
@@ -471,12 +515,56 @@
 					],
 					target: opMirror[i].rotation
 					},
+					
+					//SPARIZIONE RNA
+					{
+					keys:[.70, .90, 1],
+					values:[
+						{ z : opRna[j].children[0].position.z},
+						{ z : -40 },
+						{ z : -50 },
+						
+					],
+					target: opRna[j].children[0].position
+					},
+					{
+					keys:[.70, .90, 1],
+					values:[
+						{ x : opRna[j].children[0].position.x },
+						{ x : -40 },
+						{ x : -50 },						
+					],
+					target: opRna[j].children[0].position
+					},
+					{
+					keys:[.7, .73, 0.76,0.95],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 0.8 },
+						{ opacity : 0.5},
+						{ opacity : 0},
+					],
+					target: opRna[j].children[0].material
+					},
+					{
+					keys:[.7, .73, 0.76,0.95],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 0.8 },
+						{ opacity : 0.5},
+						{ opacity : 0},	
+					],
+					target: opRna[j].children[0].children[0].material
+					},
+					
+					
+					
 					//TESTO SCORREVOLE
-					{ 
-					keys:[0, 1],   
+					{
+					keys:[0, 1],
 					values:[
 						{ y : 10 },
-						{ y : 75 },
+						{ y : 78 },
 					],
 					target: text.position
 					},
@@ -490,11 +578,11 @@
     }
 
     initAnimator();
-	
+
 	// call the render function
-    render();
+    
     animator.start();
-	
+
 	function createTexture(geom, imageFile) {
 		var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
 		var mat = new THREE.MeshPhongMaterial();
@@ -503,9 +591,28 @@
 		return mesh;
     }
 
+
+    var controls = new function() {
+    	this.startAnimation = function() {
+    		initPosition();
+    		animator.start();
+    	}
+    	this.trackballControls = false;
+    };
+	
+	
+	var gui = new dat.GUI();
+	gui.add(controls,'startAnimation');
+	gui.add(controls,'trackballControls');	
+	
+
+
+
     function render() {
       stats.update();
-      //trackballControls.update();
+      if (controls.trackballControls) {
+	  	trackballControls.update();
+	 }
       KF.update();
 
       // render using requestAnimationFrame
@@ -519,8 +626,10 @@
       $('body').append(stats.domElement);
       return stats;
     }
-	  
+    
+    render();
+
   });
-  </script>  
+  </script>
  </body>
 </html>
