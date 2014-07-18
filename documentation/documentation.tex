@@ -6,6 +6,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.95}
+\lstset{language=PHP,tabsize=2,backgroundcolor=\color{light-gray}}
 
 \begin{document}
 
@@ -215,12 +219,83 @@ Each operation provided by the WEB-gene-expression platform is implemented in a 
 The main implemented operation are to manage the user login, user sign in, choose operations, insert and delete experiments, enable view permission, show the analysis of an experiment, modify user profile.
 
 \paragraph{Controller} This package stores the classes that implement the Controller component of the web application stored. Controller Packages implements the server side of the application, so the programming language used is PHP as described in \ref{php}.
+\begin{lstlisting}[title={example of logoutController.php},frame=trBL]
+include_once ('../template/cls_fast_template.php');
+	
+	session_start();
+	$tlp = new FastTemplate("../view");
+	if(isset($_SESSION['iduser'])) {
+		$tlp->define( array('logout'=>"logout.html"));
+		$tlp->assign("ACTION","logoutDoneController.php");
+		$tlp->parse('STATE','logout');
+	
+		Header("Content-type: text/html");
+		$tlp->FastPrint();
+	}
+	else {
+		header("Location: pageUnauthorized.php");
+	}
+\end{lstlisting}
+
+
 
 \paragraph{Logic} The classes representing the model component of the project are stored in the Logic Package. The Model component is a part of the application server-side and the language used is PHP.
+\begin{lstlisting}[title={Fragment of logicUser.php},frame=trBL]	
+class LogicUser extends Logic {
+	var $user;
+		function __construct() {
+			parent::__construct();
+			$this->user = null;	
+		}
+		public function __get($value) {
+			return $this->$value;
+		}
+		public function __set($name,$value) {
+			$this->$name = $value;
+		}	
+		...
+\end{lstlisting}
 
 \paragraph{View} This package stores the classes that implement the View component of the web application  are stored. The View component implement the client side of the application. View-classes are HTML pages with embedded JavaScript and jQuery.
+\begin{lstlisting}[title={login.html's body.},frame=trBL]	
+<div align="center">
+	<nav class="navbar navbar-inverse"
+	style="background-color:#01DF74; width:900px;
+	margin-top:0px;" >
+  		<div class="page-header">
+  			<h1>Registation Successfully</h1>
+		</div>
+	</nav>
+	{MESSAGE}<br><br>
+</div>
+<div id="footer" style="margin-top:300px;"align="center">
+	<img src="http://localhost/workspace/WEB-gene-expression
+	/gene-expression/bootstrap/img/footer.jpg">
+</div>
+\end{lstlisting}
 
 \paragraph{Util} This package contains two PHP classes to manage the interactions between Logic component and database. These classes are indispensable to establish a connection and exchange data with the database.
+\begin{lstlisting}[title={DTO.php class.},frame=trBL]	
+class DTO {
+
+	var $DTO;
+	function __construct() {
+		$this->DTO = array();
+	}
+	public function getValue($name) {
+		if (isset($this->DTO[$name])) {
+			return $this->DTO[$name];
+		}
+		else return "";
+	}
+	public function setValue($name, $value) {
+		$this->DTO[$name] =$value;
+	}
+	public function remove($name) {
+		$this->DTO[$name] = null;
+	}
+}
+\end{lstlisting}
 
 \paragraph{Template} The Template package store a cls\_fast\_template.php class. It is a PHP extension for managing templates and performing variable interpolation\footnote{http://fasttemplate.grafxsoftware.com/docs/default/\_cls\_fast\_template\_php.html}.
 Using cls\_fast\_template.php class, the web-pages of WEB-gene-expression can be modeled dynamically by fitting their content on the user.
