@@ -9,10 +9,9 @@
 		position: absolute;
 		top: 0;
     	left: 0;
-		background-image: url("http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/genome.jpg");
-		filter:alpha(opacity=50);
-    	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
-    	opacity:.50;
+		background-image: url("assets/textures/general/genome.jpg");
+		
+    	opacity:0.5;
     	width: 100%;
     	height: 100%;
     }
@@ -45,8 +44,8 @@
   <audio autoplay="autoplay">
   <source src="Canone_in_D_maggiore.mp3" type="audio/mpeg">
   <source src="Canone_in_D_maggiore.ogg" type="audio/ogg">
- <bgsound src="Canone_in_D_maggiore.mp3" loop="1">
- </audio>
+  <bgsound src="Canone_in_D_maggiore.mp3" loop="1">
+  </audio>
   
   <!-- Javascript code that runs our Three.js examples -->
   <script>
@@ -342,22 +341,7 @@
     // add the output of the renderer to the html element
     $('body').append(renderer.domElement);
 
-	/*
-    var controls = new function () {
-      this.showAxisHelper = true;
-    };
-	*/
-
-    //var gui = new dat.GUI();
-    //var axisControl = gui.add(controls, 'showAxisHelper');
-
-
-	/*
-    axisControl.onChange(function (value) {
-      axisHelper.visible = value;
-    });
-	*/
-
+	
 	//define animations
     var animator = null;
     var duration = 60; // sec
