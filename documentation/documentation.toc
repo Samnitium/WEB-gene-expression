@@ -33,6 +33,6 @@
 \contentsline {paragraph}{Template}{14}
 \contentsline {paragraph}{Bootstrap}{14}
 \contentsline {chapter}{\numberline {4}Gene Expression}{15}
-\contentsline {paragraph}{Regulation}{15}
-\contentsline {paragraph}{Measure}{15}
-\contentsline {section}{\numberline {4.1}DNA microarray}{15}
+\contentsline {paragraph}{Regulation}{16}
+\contentsline {paragraph}{Measure}{16}
+\contentsline {section}{\numberline {4.1}DNA microarray}{16}
