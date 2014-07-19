@@ -3,19 +3,20 @@
  <head>
   <title>DNA</title>
   <style>
-    body #background{
+  	body #background{
 		content : "";
     	display: block;
 		position: absolute;
 		top: 0;
     	left: 0;
 		background-image: url("assets/textures/general/genome.jpg");
-		
-    	opacity:0.5;
+
+    	opacity:0.1;
     	width: 100%;
     	height: 100%;
     }
-    
+
+
     body {
     	margin: 0px;
         overflow: hidden;
@@ -46,7 +47,7 @@
   <source src="Canone_in_D_maggiore.ogg" type="audio/ogg">
   <bgsound src="Canone_in_D_maggiore.mp3" loop="1">
   </audio>
-  
+
   <!-- Javascript code that runs our Three.js examples -->
   <script>
   // once everything is loaded, we run our Three.js stuff.
@@ -57,25 +58,47 @@
     // create a scene, that will hold all our elements such as objects, cameras and lights.
     var scene = new THREE.Scene();
 
+
     // create a camera, which defines where we're looking at.
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+	 // position and point the camera to the center of the scene
+    camera.position.set(-65,40,65);
+    camera.up = new THREE.Vector3(0,1,0);
+    camera.lookAt(scene.position);
+
+
 
     // create a render and set the size
     var renderer = new THREE.WebGLRenderer();
+	renderer.setClearColor(new THREE.Color(0xABCDEF, 1.0));
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+
 
     // create trackball controls
     var trackballControls = new THREE.TrackballControls(camera);
 
-    renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
-    /*var texture = THREE.ImageUtils.loadTexture("assets/textures/general/clouds2.jpg");
-    renderer.setTexture( texture, 10);*/
-    renderer.setSize(window.innerWidth, window.innerHeight);
 
-	var planeGeometry = new THREE.PlaneGeometry(270, 180);
-	var wallpaper = new createTexture(planeGeometry,"clouds2.jpg");
+
+	var planeGeometry = new THREE.PlaneGeometry(300, 180);
+	var wallpaper = new createTexture(planeGeometry,"clouds2.jpg","clouds2_bump.jpg");
 	wallpaper.position.set(20,-25,0);
 	wallpaper.rotation.set(0,-Math.PI/4,0);
-	//scene.add(wallpaper);
+	wallpaper.side = THREE.DoubleSide;
+	scene.add(wallpaper);
+	 /*Create your background scene
+     var backgroundScene = new THREE.Scene();
+     var backgroundCamera = new THREE.Camera();
+     backgroundScene.add(backgroundCamera );
+     backgroundScene.add(wallpaper);
+     backgroundCamera.position.set(-65,40,65);
+     backgroundCamera.up = new THREE.Vector3(0,1,0);
+     backgroundCamera.lookAt(backgroundScene.position);*/
+
+
+
+
 
 	//_________________________________________________________________________________________________________________
 
@@ -137,7 +160,7 @@
 	opNormal = new Array();
 	opMirror = new Array();
 	opRna = new Array();
-	
+
 	opNormal[0] = generaBase("Adenina", "no");
 	opMirror[0] = generaBase("Timina", "mirror");
 	opRna[0] = generaBase("Uracile", "no");
@@ -299,8 +322,10 @@
 	text14.add(text15);
 
 	function createMesh(geom) {
-        var meshMaterial = new THREE.MeshPhongMaterial({specular: 0xffffff, color: 0x5D8AA8, shininess: 100, metal: true});
+        var meshMaterial = new THREE.MeshPhongMaterial({specular: 0xffffff, color: 0x4682B4, shininess: 100, metal: true, transparent : true});
         var plane = THREE.SceneUtils.createMultiMaterialObject(geom, [meshMaterial]);
+        var plane = new THREE.Mesh(geom,meshMaterial);
+
         return plane;
 		}
 
@@ -309,19 +334,16 @@
 	var mp3snd = "Canone_in_D_maggiore.mp3";
 	var oggsnd = "Canone_in_D_maggiore.ogg";
 
-	
-	
-	
+
+
+
 	function initPosition() {
 		opRna[0].position.x = -11;
 		rna.position.y = -50;
 	}
-	
 
-    // position and point the camera to the center of the scene
-    camera.position.set(-65,40,65);
-    camera.up = new THREE.Vector3(0,1,0);
-    camera.lookAt(scene.position);
+
+
 
     // add subtle ambient lighting
     var ambientLight = new THREE.AmbientLight(0x0c0c0c);
@@ -332,16 +354,10 @@
     spotLight.position.set(-130,80,130);
     scene.add(spotLight);
 
-    // add axis helper
-    /*
-	var axisHelper = new THREE.AxisHelper(3);
-    scene.add(axisHelper);
-	*/
 
-    // add the output of the renderer to the html element
     $('body').append(renderer.domElement);
 
-	
+
 	//define animations
     var animator = null;
     var duration = 60; // sec
@@ -499,7 +515,7 @@
 					],
 					target: opMirror[i].rotation
 					},
-					
+
 					//SPARIZIONE RNA
 					{
 					keys:[.70, .90, 1],
@@ -507,7 +523,7 @@
 						{ z : opRna[j].children[0].position.z},
 						{ z : -40 },
 						{ z : -50 },
-						
+
 					],
 					target: opRna[j].children[0].position
 					},
@@ -516,7 +532,7 @@
 					values:[
 						{ x : opRna[j].children[0].position.x },
 						{ x : -40 },
-						{ x : -50 },						
+						{ x : -50 },
 					],
 					target: opRna[j].children[0].position
 					},
@@ -536,13 +552,13 @@
 						{ opacity : 1 },
 						{ opacity : 0.8 },
 						{ opacity : 0.5},
-						{ opacity : 0},	
+						{ opacity : 0},
 					],
 					target: opRna[j].children[0].children[0].material
 					},
-					
-					
-					
+
+
+
 					//TESTO SCORREVOLE
 					{
 					keys:[0, 1],
@@ -552,6 +568,161 @@
 					],
 					target: text.position
 					},
+					
+					
+					//TRASPARENZA OGGETTO
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					{
+					keys:[0, 0.99,1],
+					values:[
+						{ opacity : 1 },
+						{ opacity : 1 },
+						{ opacity : 0 },
+					],
+					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
+							      
+					},
+					
+					
 				],
 				loop: loopAnimation,
 				duration: duration * 1000,
@@ -564,13 +735,18 @@
     initAnimator();
 
 	// call the render function
-    
+
     animator.start();
 
-	function createTexture(geom, imageFile) {
+	function createTexture(geom, imageFile, bump) {
 		var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
 		var mat = new THREE.MeshPhongMaterial();
 		mat.map = texture;
+		if (bump) {
+    		var bump = THREE.ImageUtils.loadTexture("assets/textures/general/" + bump);
+       		mat.bumpMap = bump;
+        	mat.bumpScale = 0.5;
+    	}
 		var mesh = new THREE.Mesh(geom, mat);
 		return mesh;
     }
@@ -582,13 +758,20 @@
     		animator.start();
     	}
     	this.trackballControls = false;
+    	this.showWallpaper = true;
     };
-	
-	
+
+
 	var gui = new dat.GUI();
 	gui.add(controls,'startAnimation');
-	gui.add(controls,'trackballControls');	
-	
+	gui.add(controls,'trackballControls');
+	gui.add(controls,'showWallpaper').onChange(function(value) {
+		if(value) {
+			scene.add(wallpaper);
+		} else {
+			scene.remove(wallpaper);
+		}
+	});
 
 
 
@@ -610,7 +793,7 @@
       $('body').append(stats.domElement);
       return stats;
     }
-    
+
     render();
 
   });
