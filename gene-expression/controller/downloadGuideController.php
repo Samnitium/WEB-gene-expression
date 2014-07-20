@@ -3,7 +3,7 @@
 		
 	session_start();
 	if(isset($_SESSION['iduser'])) {
-		$fileLocation = "../../documentation/documentation.toc";
+		$fileLocation = "../../documentation/documentation.pdf";
 		
 		header("Cache-Control: public");
 	  	header("Content-Description: File Transfer");
