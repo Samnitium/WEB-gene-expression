@@ -254,12 +254,19 @@
 	text13.position.y = -2;
 	text12.add(text13);
 
-	text14 = createMesh(new THREE.TextGeometry("Special Thanks to", options1));
+	text14 = createMesh(new THREE.TextGeometry("Music", options1));
 	text14.position.y = -3;
 	text13.add(text14);
-	text15 = createMesh(new THREE.TextGeometry("Alberto Paoluzzi", options2));
+	text15 = createMesh(new THREE.TextGeometry("Canon in D major (Johann Pachelbel)", options2));
 	text15.position.y = -2;
 	text14.add(text15);
+	
+	text16 = createMesh(new THREE.TextGeometry("Special Thanks to", options1));
+	text16.position.y = -3;
+	text15.add(text16);
+	text17 = createMesh(new THREE.TextGeometry("Alberto Paoluzzi", options2));
+	text17.position.y = -2;
+	text16.add(text17);
 
 	
 
@@ -268,16 +275,10 @@
 	var mp3snd = "Canone_in_D_maggiore.mp3";
 	var oggsnd = "Canone_in_D_maggiore.ogg";
 
-
-
-
 	function initPosition() {
 		opRna[0].position.x = -11;
 		rna.position.y = -50;
 	}
-
-
-
 
     // add subtle ambient lighting
     var ambientLight = new THREE.AmbientLight(0x0c0c0c);
@@ -288,9 +289,7 @@
     spotLight.position.set(-130,80,130);
     scene.add(spotLight);
 
-
     $('body').append(renderer.domElement);
-
 
 	//define animations
     var animator = null;
@@ -449,7 +448,6 @@
 					],
 					target: opMirror[i].rotation
 					},
-
 					//SPARIZIONE RNA
 					{
 					keys:[.70, .90, 1],
@@ -490,172 +488,15 @@
 					],
 					target: opRna[j].children[0].children[0].material
 					},
-
-
-
 					//TESTO SCORREVOLE
 					{
 					keys:[0, 1],
 					values:[
-						{ y : 10 },
-						{ y : 78 },
+						{ y : 8 },
+						{ y : 83 },
 					],
 					target: text.position
 					},
-					
-					
-					//TRASPARENZA OGGETTO
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					{
-					keys:[0, 0.99,1],
-					values:[
-						{ opacity : 1 },
-						{ opacity : 1 },
-						{ opacity : 0 },
-					],
-					target: text.children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].material
-							      
-					},
-					
 					
 				],
 				loop: loopAnimation,
@@ -679,6 +520,7 @@
     	}
     	this.trackballControls = false;
     	this.showWallpaper = true;
+		this.showText = true;
     };
 
 
@@ -690,6 +532,13 @@
 			scene.add(wallpaper);
 		} else {
 			scene.remove(wallpaper);
+		}
+	});
+	gui.add(controls,'showText').onChange(function(value) {
+		if(value) {
+			scene.add(text);
+		} else {
+			scene.remove(text);
 		}
 	});
 
