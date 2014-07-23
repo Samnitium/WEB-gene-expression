@@ -105,11 +105,22 @@
 		}
 		
 		function retrieveAllGeneByIdExperimentOrderAnalysis($idExperiment,$order, $idanalysis) {
-			$this->db->execute("SELECT geneSymbol
-								FROM analysis, analysis_instance
-								WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$idanalysis."'
-								GROUP BY geneSymbol
-								ORDER BY ".$order);
+			if (strpos($order, "up")) {
+				$order = str_replace("_up","", $order);
+				$this->db->execute("SELECT geneSymbol
+									FROM analysis, analysis_instance
+									WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$idanalysis."'
+									GROUP BY geneSymbol
+									ORDER BY ".$order);
+			} else {
+				$order = str_replace("_down","", $order);
+				$this->db->execute("SELECT geneSymbol
+									FROM analysis, analysis_instance
+									WHERE id_experiment='".$idExperiment."' and id=id_analysis and id_analysis='".$idanalysis."'
+									GROUP BY geneSymbol
+									ORDER BY ".$order." DESC");	
+				
+			}
 			$result = $this->db->fetchrowset();
 			if ($result) {
 				if (count($result)!=0) {

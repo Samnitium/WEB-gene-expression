@@ -71,8 +71,10 @@
 								if($stamp_analysis) {
 									$tlp->assign('NAME_ANALYSIS',$ex[1]);
 									$tlp->parse('ROW_NAME_ANALYSIS','.nameAnalysis');
-									$link_pvalue = "<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=p_value&idanalysis=".$ex[0]."'>order</a>";
-									$link_foldchange = "<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=foldChange&idanalysis=".$ex[0]."'>order</a>";
+									$link_pvalue = "<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=p_value_up&idanalysis=".$ex[0]."'>order up</a>";
+									$link_pvalue .= " or <a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=p_value_down&idanalysis=".$ex[0]."'>order down</a>";
+									$link_foldchange = "<a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=foldChange_up&idanalysis=".$ex[0]."'>order up</a>";
+									$link_foldchange .= " or <a href='showAnalysisList.php?idexperiment=".$experiment->id."&numberPvalue=".$_POST['numberPvalue']."&numberFoldChange=".$_POST['numberFoldChange']."&thresholdPvalue=".$_POST['thresholdPvalue']."&thresholdFoldChange=".$_POST['thresholdFoldChange']."&order=foldChange_down&idanalysis=".$ex[0]."'>order down</a>";
 									$tlp->assign(array('LINK_PVALUE'=>$link_pvalue, 'LINK_FOLDCHANGE'=>$link_foldchange));
 									$tlp->parse('ROW_NAME_PVALUE_FOLDCHANGE', '.namePvalueFoldChange');
 								}
