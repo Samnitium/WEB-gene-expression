@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.10)  24 JUL 2014 18:46
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.10)  24 JUL 2014 21:54
 entering extended mode
 **Presentazione.tex
 
@@ -1223,7 +1223,7 @@ Overfull \hbox (10.61076pt too wide) has occurred while \output is active
 
 [17
 
-] <traduzione.jpg, id=480, 406.51875pt x 316.18124pt>
+] <traduzione.jpg, id=481, 406.51875pt x 316.18124pt>
 File: traduzione.jpg Graphic file (type jpg)
  <use traduzione.jpg>
 Package pdftex.def Info: traduzione.jpg used on input line 149.
@@ -1246,36 +1246,52 @@ Overfull \hbox (10.61076pt too wide) has occurred while \output is active
 
  <C:/xampp/htdocs/workspace/WEB-gene-expression/presentazione finale/traduzione
 .jpg>]
+File: blank.jpg Graphic file (type jpg)
+ <use blank.jpg>
+Package pdftex.def Info: blank.jpg used on input line 157.
+(pdftex.def)             Requested size: 364.19536pt x 364.20041pt.
+File: logoRomaTre.jpg Graphic file (type jpg)
+ <use logoRomaTre.jpg>
+Package pdftex.def Info: logoRomaTre.jpg used on input line 157.
+(pdftex.def)             Requested size: 40.15234pt x 22.13397pt.
+
+Overfull \hbox (10.61076pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[19
+
+]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 152.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 152.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 160.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 160.
 
 ("C:\xampp\htdocs\workspace\WEB-gene-expression\presentazione finale\Presentazi
 one.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 152.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 152.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 160.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 160.
 Package rerunfilecheck Info: File `Presentazione.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 152.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 160.
  ) 
 Here is how much of TeX's memory you used:
- 15710 strings out of 493921
- 295649 string characters out of 3147282
+ 15727 strings out of 493921
+ 295992 string characters out of 3147282
  369328 words of memory out of 3000000
- 18573 multiletter control sequences out of 15000+200000
+ 18588 multiletter control sequences out of 15000+200000
  32875 words of font info for 40 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 49i,17n,55p,423b,635s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,17n,61p,423b,635s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}<C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/lm/lmss10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/lm/lmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lm
 ss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/lm/lmsso10.pfb>
-Output written on Presentazione.pdf (18 pages, 635477 bytes).
+Output written on Presentazione.pdf (19 pages, 642484 bytes).
 PDF statistics:
- 535 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
+ 565 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
  108 words of extra memory for PDF output out of 10000 (max. 10000000)
 
