@@ -9,13 +9,16 @@
 	session_start();
 	if(isset($_SESSION['iduser']) && $_SESSION['type']=='superuser') {
 		if (isset($_GET['user'])) {
+			$lu = new LogicUser();
+			$user = $lu->retrieveUserByEmail($_GET['user']);
+			if ($user==NULL) {
+				header("Location: selectUserController.php");
+			}
 			$_SESSION['page_corrent'] = "enablePermissionsController.php?user=".$_GET['user'];
 			$tlp = new FastTemplate("../view");
 			$tlp->define(array('experimentList' => "enablePermissionList.html", 'experiment' => "experimentPermission.html"));
-			$lu = new LogicUser();
 			$lvp = new LogicViewPermission();
 			$le = new LogicExperiment();
-			$user = $lu->retrieveUserByEmail($_GET['user']);
 			$experiments_id = $lvp->retrievePermissionDisableByIdUser($user->id);
 			$lu->db->close();
 			$tlp->assign('HOME',"superUserChoiceController.php");
