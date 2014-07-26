@@ -11,7 +11,7 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 	NOTE IMPORTANTE: Queste sono un esempio di modifiche da fare per chi usa il server apache di XAMPP
 	
 	
-   -1) Per la parte di utilizzo della posta elettronica, utile per la registrazione o per il remind della password 
+   -A) Per la parte di utilizzo della posta elettronica, utile per la registrazione o per il remind della password 
        dimenticata: 
      	
      	
@@ -38,7 +38,7 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 			* force_sender=my-gmail-id@gmail.com
 			
 			
-	-2) Per la avere la possibilità di caricare/scaricare (upload/download) file di grandi dimensioni:
+	-B) Per la avere la possibilità di caricare/scaricare (upload/download) file di grandi dimensioni:
 		
 		° modificare il file 'C:\xampp\php\php.ini' 
 			
@@ -114,6 +114,7 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 		
 		
 
+8) Il file di inizio del sito web è Web-gene-expression/gene-expression/init.php
 
 
 		
