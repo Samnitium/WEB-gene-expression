@@ -11,7 +11,7 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 	NOTE IMPORTANTE: Queste sono un esempio di modifiche da fare per chi usa il server apache di XAMPP
 	
 	
-   -1) Per la parte di utilizzo della posta elettronica, utile per la registrazione o per il remember della password 
+   -1) Per la parte di utilizzo della posta elettronica, utile per la registrazione o per il remind della password 
        dimenticata: 
      	
      	
