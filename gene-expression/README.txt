@@ -99,7 +99,20 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 			</footer>
 		</div>"
 		
-7) Nel file Web-gene-expression/gene-expression/view/signIn.html sostituire la parte di codice:
+		
+7) Nel file Web-gene-expression/gene-expression/view/login.html, andare su sulla parte 'style' in <head> e posizionarsi su
+   'body #background'. Sostituire la parte di attributo:
+   
+   
+   			background-image: url("http://localhost/workspace/WEB-gene-expression/gene-expression/bootstrap/img/genome.jpg");
+   			
+   			 CON
+   			 
+   			background-image: url("http://(nome del percorso della directory Web-gene-expression)/WEB-gene-expression/gene-expression/bootstrap/img/genome.jpg");
+
+
+		
+8) Nel file Web-gene-expression/gene-expression/view/signIn.html sostituire la parte di codice:
 
 
 		"<div id="logo">
@@ -114,7 +127,7 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 		
 		
 
-8) Il file di inizio del sito web è Web-gene-expression/gene-expression/init.php
+9) Il file di inizio del sito web è Web-gene-expression/gene-expression/init.php
 
 
 		
