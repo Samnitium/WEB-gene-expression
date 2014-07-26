@@ -124,10 +124,16 @@ ALCUNE IMPORTANTI ANNOTAZIONI PER L'UTILIZZO DEL PORTALE Web-Service Gene-Expres
 		"<div id="logo">
 			<img src="http://(nome del percorso della directory Web-gene-expression)/WEB-gene-expression/gene-expression/bootstrap/img/logoMendel.png" style="margin-left:600px;margin-top:-350px;">
 		</div>"
+	
 		
 		
+9) Nel database scritto in SQL all'interno del file 'gene_expression.sql', abbiamo com valore nella relazione 'user' già il superutente in default, con la possibilità 
+   ovviamente con la possibilità di modificare liberamente i dati (del superutente stesso), ma l'importante è che il superutente abbia nel campo 
+   'type' il valore corrispondente "superuser".
 
-9) Il file di inizio del sito web è Web-gene-expression/gene-expression/init.php
+
+
+10) Il file di inizio del sito web è Web-gene-expression/gene-expression/init.php
 
 
 		

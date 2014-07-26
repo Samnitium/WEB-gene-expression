@@ -29,7 +29,6 @@ di\\
 \today
 \end{titlepage}
 
-\tableofcontents
 
 \chapter{Usage Case}
 WEB-gene expression is a platform for the visualization of gene expression data. The platform offers different services basing on the type of user. Indeed, the users are distinguished between \emph{normal user} and \emph{super user}.
@@ -50,11 +49,11 @@ WEB-gene expression is a platform for the visualization of gene expression data.
 
 As shown in Figure \ref{SUservices} , after the login, the platform allows the super user to access to different services. Indeed, the super user can choose among several options.
 
-\subsection{Insert}
+\subsection{Insert new experiment}
 Through the \emph{insert} option, the user is able to store a new experiment with its relative analyses. In a first phase, the user defines the name of the new experiment, then he can choose the file with experiment's data and the system can upload it. 
 
 \subsection{Delete and Modify}
-The super user is able to delete an entire stored experiment with the \emph{delete} option, or he can only modify it. Indeed, with the \emph{modify} service, the super user can change the data of experiments. In a first phase, the user selects an existing  experiment that he want to modify, then he chooses the file with new data and the system updates the selected experiment.
+The super user is able to delete an entire experiment stored with the option \emph{delete} and / or remove certain components analysis of the experiment, or he can only modify it. Indeed, with the \emph{modify} service, the super user can change the data of experiments. In a first phase, the user selects an existing  experiment that he want to modify, then he chooses the file with new data and the system updates the selected experiment.
 
 \subsection{Add permission}
 Another services that the platform provides to the super user  is the possibility to add permissions for the visualization of the experiments. A normal user, indeed, can see only the experiments for which he is enabled. A normal user can not visualize anything without the authorization of the super user.\\
@@ -64,7 +63,7 @@ Thought the \emph{add permission} option, the super user selects firstly the use
 The main interest of the WEB-gene-expression users is to visualize the stored experiments. Therefore the primary service provided by the platform is the \emph{Show} option.\\
 The 	\emph{Show} option is a common service between super user and normal user. However, a super user can visualize all the stored experiments, while a normal user can visualize only the ones for which he is enabled.
 
-\subsection{Show}
+\subsection{Query}
 When a user choose the \emph{show} option, he select the experiment that he want to visualize.\\
 Each experiment is composed of several analyses thus the system offers the possibility to choose only the interesting ones. The two main features of each analyses are the \emph{p-value} and \emph{fold-change} values .\\
 In order to shown only the analyses with user's desired characteristics, the platform provides three types of filters.
@@ -95,7 +94,8 @@ As shown in figure \ref{table} , the first column of the table is the \emph{Gene
 \label{tableHeader}
 \end{figure}
 
-The Figure \ref{tableHeader} shows that at any time the user can reorder the analyses based on the p-value or fold-change values by clicking on \emph{order}. By specifying the \emph{Gene code} in the \emph{search bar} , the user can visualize only the instance of the analyses relative to the specified gene.\\
+The Figure \ref{tableHeader} shows that at any time the user can reorder the analyses  in ascending or descending order based on the p-value or fold-change values by clicking on \emph{order}. By specifying the \emph{Gene code} in the \emph{search bar}, the user can visualize the instance of the analyses relative to the specified gene or can visualize the instances of the analyses on the basis of a list of genes simultaneously entered in the search field and separated by a comma.\\
+There is also the possibility to reset the filters that will be applied to a new table view of the same experiment with the same analyzes as selected by clicking RESET THE FILTERS.\\
 The system provides the user also the possibility to download a file with the experiment data. As shown in Figure \ref{tableHeader}, the \emph{download} option is below the search field. By clicking on it, the user can save all the table in a \emph{.txt} file.
 
 
@@ -179,10 +179,12 @@ The \emph{Gene} table collects information about genes. This information are 	un
 \paragraph{}The following logic schema describes the entity tables:
 \begin{quote}
 \item EXPERIMENT(\underline{id}, name, date) 
-\item ANALYSIS(\underline{id}, geneSymbol, p\_value, foldChange, name, date, id\_experiment) with referential integrity between the \emph{id\_experiment} attribute and the \emph{EXPERIMENT} relation and between the \emph{geneSymbol} attribute and the \emph{GENE} relation.
+\item ANALYSIS(\underline{id}, name, date, id\_experiment) with referential integrity between the \emph{id\_experiment} attribute and the \emph{EXPERIMENT} relation and between the \emph{geneSymbol} attribute and the \emph{GENE} relation.
 \item GENE(\underline{id}, geneSymbol, geneAssignment, refSeq) 
-\item USER(\underline{id}, name, surname, email, password, type) 
+\item USER(\underline{id}, name, surname, email, password, type, code, account\_activated) 
 \item VIEWPERMISSION(\underline{id\_user}, \underline{id\_experiment})  with referential integrity between the \emph{id\_user} attribute and the \emph{USER} relation and between the \emph{id\_experiment} attribute and the \emph{EXPERIMENTS} relation.
+\item ANALYSIS\_INSTANCE(\underline{id\_analysis}, \underline{geneSymbol}, p\_value\_string, p\_value, foldChange) with referential integrity between the \emph{id\_analysis} attribute and the \emph{ANALYSIS} relation and between the \emph{geneSymbol} attribute and the \emph{GENE} relation.
+
 \end{quote}
 
 \subsubsection{JavaScript and jQuery}
